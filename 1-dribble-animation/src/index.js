@@ -3,30 +3,50 @@ require('./main.scss');
 import $ from "jquery";
 
 let $menu = $(".menu"),
-    $menuItems = $menu.children(".menu__item");
+    $menuItems = $menu.children(".menu__item"),
+    $itemWidth = $menuItems.first().width(),
+    $itemHeight = $menuItems.first().height();
+
 let $colorBar = $menu.children(".color-bar");
 
+const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+
+// Metoda przesuwają 'bloczek'
 const moveClip = ($item, index) => {
-  let itemWidth = $item.width();
-  let itemHeight = $item.height();
+  const setNewPosition = (position) => {
+  	$colorBar.css({
+  	  'shape-inside': position,
+  	  '-webkit-clip-path': position
+  	});
+  };
 
-  let clipPosition = `polygon(
-    ${itemWidth * index}px 0, ${itemWidth * (index + 1)}px 0, 
-    ${itemWidth * (index + 1)}px ${itemHeight}px,  ${itemWidth * index}px ${itemHeight}px
-  )`;
+  const modelClipPosition = (index, width = $itemWidth) => [
+  	`${width * index}px 0`,
+  	`${width * (index + 1)}px 0`,
+  	`${width * (index + 1)}px ${$itemHeight}px`,
+  	`${width * index}px ${$itemHeight}px`
+  ];
 
-  $colorBar.css({
-    'shape-inside': clipPosition,
-    '-webkit-clip-path': clipPosition
+  //let clipRightEdgePosition = `polygon(${modelClipPosition(index, $itemWidth * 0.75)})`;
+  //setNewPosition(clipRightEdgePosition);
+
+  let clipPosition = `polygon(${modelClipPosition(index)})`;
+  setNewPosition(clipPosition);
+
+  $item.one(transitionEvent, (e) => {
+  	debugger
+  	let clipPosition = `polygon(${modelClipPosition(index)})`;
+  	setNewPosition(clipPosition);
   });
 }
 
+//Generowanie paska z gradientem
 const loadColorBar = () => {
   const perWidth = 100 / $menuItems.length;
   const getColorPalette = () => {
     const colorArr = [];
     $menuItems.each((index, element) => {
-      let $elColor = $(element).attr('hover-color');
+      let $elColor = $(element).attr('active-color');
       if (index == 0) {
           colorArr.push(`${$elColor} 0%`);
       }
@@ -40,6 +60,8 @@ const loadColorBar = () => {
 
   moveClip($menuItems.first(), 0)
 }
+
+// Poniżej automatyczna animacja
 
 /*const moveBox = (index, el) => {
     setTimeout(() => { moveClip($(el), index) }, 1200 * index);
