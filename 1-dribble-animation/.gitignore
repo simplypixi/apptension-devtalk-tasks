@@ -1,0 +1,7 @@
+bundle.js
+bundle.js.map
+node_modules
+./node_modules/
+node_modules/*
+./node_modules/*
+main.css

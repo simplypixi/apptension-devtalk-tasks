@@ -1,0 +1,20 @@
+{
+  "name": "1-dribble-animation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+    "start": "node ./node_modules/webpack/bin/webpack.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mariusz Wójcik, Paweł Mikutel, Maciej Pecerelowicz",
+  "license": "ISC"
+}
