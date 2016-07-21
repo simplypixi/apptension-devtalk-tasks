@@ -8,6 +8,7 @@ $menuItemColor: #5b4c71;
   height: 100vh;
   position: relative;
   align-items: stretch;
+
   &__item {
     flex: 1 1 auto;
     text-align: center;
@@ -16,12 +17,6 @@ $menuItemColor: #5b4c71;
     left: 0;
     width: 0;
     position: relative;
-    
-    span {
-      z-index: 11;
-      position: relative;
-      height: 100%;
-    }
   }
   
   .color-bar {
@@ -35,5 +30,14 @@ $menuItemColor: #5b4c71;
     transition-duration: 1000ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(.8,.04,.65,.97);
+  }
+}
+
+.item {
+  &__content {
+    z-index: 11;
+    position: relative;
+    height: 100%;
+    cursor: pointer;
   }
 }
