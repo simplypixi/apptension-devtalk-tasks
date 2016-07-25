@@ -14,30 +14,32 @@ const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTra
 // Metoda przesuwają 'bloczek'
 const moveClip = ($item) => {
   const setNewPosition = (position) => {
-  	console.log(position)
   	$colorBar.css({
   	  'shape-inside': position,
   	  '-webkit-clip-path': position
   	});
   };
 
-  const prepareClipPosition = (positionLeft = 0) => [
-  	`${positionLeft}px 0`,
-  	`${positionLeft + $itemWidth}px 0`,
-  	`${positionLeft + $itemWidth}px ${$itemHeight}px`,
-  	`${positionLeft}px ${$itemHeight}px`
+  const prepareClipPosition = (edges) => [
+  	`${edges.left}px 0`,
+  	`${edges.right}px 0`,
+  	`${edges.right}px ${$itemHeight}px`,
+  	`${edges.left}px ${$itemHeight}px`
   ];
 
   //let clipRightEdgePosition = `polygon(${prepareClipPosition(index, $itemWidth * 0.75)})`;
   //setNewPosition(clipRightEdgePosition);
 
-  console.log("click item position", $item.position())
-  const posLeft = $item.position().left;
-  let clipPosition = `polygon(${prepareClipPosition(posLeft)})`;
+  const edges = {
+  	left: $item.position().left,
+  	right: $item.position().left + $itemWidth
+  }
+
+  let clipPosition = `polygon(${prepareClipPosition(edges)})`;
   setNewPosition(clipPosition);
 
   $item.one(transitionEvent, (e) => {
-  	let clipPosition = `polygon(${prepareClipPosition(posLeft)})`;
+  	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
   	setNewPosition(clipPosition);
   });
 }
