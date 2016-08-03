@@ -1,47 +1,59 @@
 require('./main.scss');
 
-import $ from "jquery";
+import $ from 'jquery';
 
-let $menu = $(".menu"),
-    $menuItems = $menu.children(".menu__item"),
+let $menu = $('.menu'),
+    $menuItems = $menu.children('.menu__item'),
     $itemWidth = $menuItems.first().width(),
     $itemHeight = $menuItems.first().height();
 
-let $colorBar = $menu.children(".color-bar");
+let $colorBar = $menu.children('.color-bar');
 
 const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
 
-// Metoda przesuwają 'bloczek'
-const moveClip = ($item) => {
-  const setNewPosition = (position) => {
+
+const setNewPosition = (position) => {
+	$colorBar.css({
+	  'shape-inside': position,
+	  '-webkit-clip-path': position
+	});
+};
+
+const prepareClipPosition = (edges) => [
+	`${edges.left}px 0`,
+	`${edges.right}px 0`,
+	`${edges.right}px ${$itemHeight}px`,
+	`${edges.left}px ${$itemHeight}px`
+];
+
+const onColorBarTransitionEnd = (position) => {
+  $colorBar.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', () => {
   	$colorBar.css({
-  	  'shape-inside': position,
-  	  '-webkit-clip-path': position
-  	});
-  };
+  		'transition-duration': '350ms',
+  		'transition-timing-function': 'cubic-bezier(0,.31,.78,.52)'
+  	})
 
-  const prepareClipPosition = (edges) => [
-  	`${edges.left}px 0`,
-  	`${edges.right}px 0`,
-  	`${edges.right}px ${$itemHeight}px`,
-  	`${edges.left}px ${$itemHeight}px`
-  ];
+  	setNewPosition(position);
+  });
+}
 
-  //let clipRightEdgePosition = `polygon(${prepareClipPosition(index, $itemWidth * 0.75)})`;
-  //setNewPosition(clipRightEdgePosition);
-
-  const edges = {
+// Metoda przesuwają 'bloczek'
+const moveClip = ($item, isBackward = false) => {
+  const edgesOnEnd = {
   	left: $item.position().left,
   	right: $item.position().left + $itemWidth
   }
 
-  let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  setNewPosition(clipPosition);
+  let clipPositionEnd = `polygon(${prepareClipPosition(edgesOnEnd)})`;
+	onColorBarTransitionEnd(clipPositionEnd);
 
-  $item.one(transitionEvent, (e) => {
-  	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  	setNewPosition(clipPosition);
-  });
+	const edgesOnStart = {
+  	left: $item.prev().position().left,
+  	right: $item.position().left + ($itemWidth * 0.25)
+  }
+
+  let clipPositionStart = `polygon(${prepareClipPosition(edgesOnStart)})`;
+  setNewPosition(clipPositionStart);
 }
 
 //Generowanie paska z gradientem
@@ -62,7 +74,7 @@ const loadColorBar = () => {
   }
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
-  moveClip($menuItems.first(), 0)
+  //moveClip($menuItems.first(), 0)
 }
 
 // Poniżej automatyczna animacja

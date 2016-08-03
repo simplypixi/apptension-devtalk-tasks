@@ -28,9 +28,9 @@ $menuItemColor: #5b4c71;
     top: 0;
     width: 100%;
     z-index: 10;
-    transition-duration: 1000ms;
+    transition-duration: 600ms;
     transition-property: all;
-    transition-timing-function: cubic-bezier(.8,.04,.65,.97);
+    transition-timing-function: cubic-bezier(.8,.04,.7,.87);
   }
 }
 
