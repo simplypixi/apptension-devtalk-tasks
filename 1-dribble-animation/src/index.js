@@ -33,7 +33,7 @@ const moveClip = ($item) => {
   const edges = {
   	left: $item.position().left,
   	right: $item.position().left + $itemWidth
-  }
+  };
 
   let clipPosition = `polygon(${prepareClipPosition(edges)})`;
   setNewPosition(clipPosition);
@@ -42,7 +42,7 @@ const moveClip = ($item) => {
   	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
   	setNewPosition(clipPosition);
   });
-}
+};
 
 //Generowanie paska z gradientem
 const loadColorBar = () => {
@@ -59,11 +59,11 @@ const loadColorBar = () => {
     });
 
     return colorArr.join(',');
-  }
+  };
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
   moveClip($menuItems.first(), 0)
-}
+};
 
 // Poniżej automatyczna animacja
 
@@ -88,13 +88,28 @@ const animate = () => {
 
 }*/
 
+const deselectAllTabs = () => {
+  $menuItems.each(
+    (index, element) => {
+      $(element).children().removeClass('active');
+    });
+};
+
+const selectTab = ($item) => {
+  $item.children().addClass('active');
+};
+
 const bindMoveToClick = () => {
 	$menuItems.each(
 		(index, element) => {
-			$(element).click( () => moveClip($(element)))
+			$(element).click( () => {
+        deselectAllTabs();
+        selectTab($(element));
+        moveClip($(element));
+      })
 		}
 	);
-}
+};
 
 loadColorBar();
 bindMoveToClick();

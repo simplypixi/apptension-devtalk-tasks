@@ -40,5 +40,28 @@ $menuItemColor: #5b4c71;
     position: relative;
     height: 100%;
     cursor: pointer;
+    .icon-dialog{
+      position: relative;
+      transform: translateY(50%);
+      display: inline-block;
+
+      .growing-circle{
+        border-radius: 50%;
+        width: 1px;
+        height: 1px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition-duration: 1000ms;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(.8,.04,.65,.97);
+      }
+    }
+    &.active{
+      .growing-circle{
+        transform: scale(100);
+      }
+    }
   }
 }
