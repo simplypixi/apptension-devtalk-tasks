@@ -38,10 +38,10 @@ const moveClip = ($item) => {
   let clipPosition = `polygon(${prepareClipPosition(edges)})`;
   setNewPosition(clipPosition);
 
-  $item.one(transitionEvent, (e) => {
-  	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  	setNewPosition(clipPosition);
-  });
+  //$item.one(transitionEvent, (e) => {
+  //	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
+  //	setNewPosition(clipPosition);
+  //});
 };
 
 //Generowanie paska z gradientem
