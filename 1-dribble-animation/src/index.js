@@ -44,6 +44,12 @@ const moveClip = ($item) => {
   //});
 };
 
+// Oznaczanie aktywnego/kliknietego elementu
+const toggleClass = ($item, $allItems) => {
+  $allItems.removeClass('active');
+  $item.addClass('active');
+};
+
 //Generowanie paska z gradientem
 const loadColorBar = () => {
   const perWidth = 100 / $menuItems.length;
@@ -103,9 +109,11 @@ const bindMoveToClick = () => {
 	$menuItems.each(
 		(index, element) => {
 			$(element).click( () => {
+        //TODO we need to remove double active class function :)
         deselectAllTabs();
         selectTab($(element));
         moveClip($(element));
+        toggleClass($(element), $menuItems);
       })
 		}
 	);
