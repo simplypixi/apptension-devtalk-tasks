@@ -43,31 +43,40 @@ $menuItemColor: #5b4c71;
     position: relative;
     height: 100%;
     cursor: pointer;
-    .icon-dialog{
-      @extend .animateable;
-      position: relative;
-      transform: translateY(50%);
-      display: inline-block;
-      opacity: 0.5;
+  }
+}
 
-      .growing-circle{
-        @extend .animateable;
-        border-radius: 50%;
-        width: 1px;
-        height: 1px;
-        background-color: white;
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
+.content__icon-container{
+  @extend .animateable;
+  position: relative;
+  transform: translateY(50%);
+  display: inline-block;
+  opacity: 0.5;
+
+  &.active{
+    opacity: 1;
+    .icon-container__growing-circle{
+      transform: scale(100);
     }
-    &.active{
-      .icon-dialog{
-        opacity: 1;
-        .growing-circle{
-          transform: scale(100);
-        }
-      }
-    }
+  }
+}
+
+.icon-container__growing-circle{
+  @extend .animateable;
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.icon-container__person{
+  &--left{
+
+  }
+  &--right{
+
   }
 }

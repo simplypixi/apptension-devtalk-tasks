@@ -91,12 +91,12 @@ const animate = () => {
 const deselectAllTabs = () => {
   $menuItems.each(
     (index, element) => {
-      $(element).children().removeClass('active');
+      $(element).children().children('.content__icon-container').removeClass('active');
     });
 };
 
 const selectTab = ($item) => {
-  $item.children().addClass('active');
+  $item.children().children('.content__icon-container').addClass('active');
 };
 
 const bindMoveToClick = () => {
