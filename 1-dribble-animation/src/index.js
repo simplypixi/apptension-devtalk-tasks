@@ -13,6 +13,11 @@ let clipPosition = {
 	right: $itemWidth
 }
 
+let tweens = {
+	left: null,
+	right: null
+}
+
 const setNewPosition = (position) => {
 	$colorBar.css({
 	  'shape-inside': position,
@@ -38,23 +43,24 @@ const moveClip = ($item) => {
 			right: $item.position().left + $itemWidth
 		};
 
-	let isBackward = newPosition.left < clipPosition.left;
+	let isBackward = newPosition.right < clipPosition.right;
 
-	TweenMax.to(clipPosition, 1.0, {
-			ease:Power3.easeOut,
-	    right: newPosition[isBackward ? 'left' : 'right'],
-	    autoCSS: false, 
-	    onUpdate: updateClipPosition, 
-	    onUpdateParams: ["{self}", clipPosition]
-	  }
-	)
-	TweenMax.to(clipPosition, 1.25, {
-			ease: Power4.easeOut,
-	    left: newPosition[isBackward ? 'right' : 'left'],
+	TweenMax.to(clipPosition, isBackward ? 1.25 : 1.0, {
+			ease: isBackward ? Power4.easeOut : Power3.easeOut,
+	    right: newPosition.right,
 	    autoCSS: false, 
 	    onUpdate: updateClipPosition, 
 	    onUpdateParams: ["{self}", clipPosition],
-	    delay: 0.25
+	    delay: isBackward ? 0.25 : 0
+	  }
+	)
+	TweenMax.to(clipPosition, !isBackward ? 1.25 : 1.0, {
+			ease: !isBackward ? Power4.easeOut : Power3.easeOut,
+	    left: newPosition.left,
+	    autoCSS: false, 
+	    onUpdate: updateClipPosition, 
+	    onUpdateParams: ["{self}", clipPosition],
+	    delay: !isBackward ? 0.25 : 0
 	  }
 	);
 }
