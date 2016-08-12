@@ -8,6 +8,10 @@ let $menu = $('.menu'),
     $itemHeight = $menuItems.first().height();
 
 let $colorBar = $menu.children('.color-bar');
+let clipPosition = {
+	left: 0,
+	right: $itemWidth
+}
 
 const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
 
@@ -43,23 +47,25 @@ const moveClip = ($item, isBackward = false) => {
   	left: $item.position().left,
   	right: $item.position().left + $itemWidth
   };
-
-  let clipPositionEnd = `polygon(${prepareClipPosition(edgesOnEnd)})`;
-	onColorBarTransitionEnd(clipPositionEnd);
-
-	const edgesOnStart = {
-  	left: $item.prev().position().left,
-  	right: $item.position().left + ($itemWidth * 0.25)
-  }
-
-  let clipPositionStart = `polygon(${prepareClipPosition(edgesOnStart)})`;
-  setNewPosition(clipPositionStart);
-
-  //$item.one(transitionEvent, (e) => {
-  //	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  //	setNewPosition(clipPosition);
-  //});
 };
+
+const updateClipPosition = (tween, element) => {
+	let clipPositionStart = `polygon(${prepareClipPosition(clipPosition)})`;
+	setNewPosition(clipPositionStart);
+}
+
+const tweenClip = ($item, isBackward = false) => {
+	TweenMax
+	.to(clipPosition, 1.0, {
+			ease:Elastic.easeOut,
+	    left: $item.position().left,
+	    right: $item.position().left + $itemWidth,
+	    autoCSS: false, 
+	    onUpdate: updateClipPosition, 
+	    onUpdateParams: ["{self}", clipPosition]
+	  }
+	);
+}
 
 // Oznaczanie aktywnego/kliknietego elementu
 const toggleClass = ($item, $allItems) => {
@@ -85,32 +91,9 @@ const loadColorBar = () => {
   };
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
-
-  moveClip($menuItems.first(), 0)
+  //Set first menu item as active
+  tweenClip($menuItems.first())
 };
-
-// Poniżej automatyczna animacja
-
-/*const moveBox = (index, el) => {
-    setTimeout(() => { moveClip($(el), index) }, 1200 * index);
-}
-
-const backToStart = () => {
-    $colorBar.css({
-        'transition-duration': '1500ms'
-    });
-    moveClip($menuItems.first(), 0)
-}
-
-const animate = () => {
-    $colorBar.css({
-        'transition-duration': '1000ms'
-    });
-    $menuItems.each(moveBox);
-    setTimeout(() => { backToStart(); }, 6500);
-    setTimeout(animate, 8000);
-
-}*/
 
 const deselectAllTabs = () => {
   $menuItems.each(
@@ -123,18 +106,19 @@ const selectTab = ($item) => {
   $item.children().children('.content__icon-container').addClass('active');
 };
 
+const onClickMenuItem = ($item) => {
+	toggleClass($item, $menuItems);
+	tweenClip($item);
+}
+
 const bindMoveToClick = () => {
-	$menuItems.each(
-		(index, element) => {
-			$(element).click( () => {
-        //TODO we need to remove double active class function :)
-        deselectAllTabs();
-        selectTab($(element));
-        moveClip($(element));
-        toggleClass($(element), $menuItems);
-      })
-		}
-	);
+		$menuItems.each(
+			(index, element) => {
+				$(element).click( () => {
+	        onClickMenuItem($(element));
+	      })
+			}
+		);
 };
 
 loadColorBar();
