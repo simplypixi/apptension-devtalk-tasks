@@ -42,7 +42,7 @@ const moveClip = ($item, isBackward = false) => {
   const edgesOnEnd = {
   	left: $item.position().left,
   	right: $item.position().left + $itemWidth
-  }
+  };
 
   let clipPositionEnd = `polygon(${prepareClipPosition(edgesOnEnd)})`;
 	onColorBarTransitionEnd(clipPositionEnd);
@@ -54,7 +54,18 @@ const moveClip = ($item, isBackward = false) => {
 
   let clipPositionStart = `polygon(${prepareClipPosition(edgesOnStart)})`;
   setNewPosition(clipPositionStart);
-}
+
+  //$item.one(transitionEvent, (e) => {
+  //	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
+  //	setNewPosition(clipPosition);
+  //});
+};
+
+// Oznaczanie aktywnego/kliknietego elementu
+const toggleClass = ($item, $allItems) => {
+  $allItems.removeClass('active');
+  $item.addClass('active');
+};
 
 //Generowanie paska z gradientem
 const loadColorBar = () => {
@@ -71,11 +82,12 @@ const loadColorBar = () => {
     });
 
     return colorArr.join(',');
-  }
+  };
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
-  //moveClip($menuItems.first(), 0)
-}
+
+  moveClip($menuItems.first(), 0)
+};
 
 // Poniżej automatyczna animacja
 
@@ -100,13 +112,30 @@ const animate = () => {
 
 }*/
 
+const deselectAllTabs = () => {
+  $menuItems.each(
+    (index, element) => {
+      $(element).children().children('.content__icon-container').removeClass('active');
+    });
+};
+
+const selectTab = ($item) => {
+  $item.children().children('.content__icon-container').addClass('active');
+};
+
 const bindMoveToClick = () => {
 	$menuItems.each(
 		(index, element) => {
-			$(element).click( () => moveClip($(element)))
+			$(element).click( () => {
+        //TODO we need to remove double active class function :)
+        deselectAllTabs();
+        selectTab($(element));
+        moveClip($(element));
+        toggleClass($(element), $menuItems);
+      })
 		}
 	);
-}
+};
 
 loadColorBar();
 bindMoveToClick();
