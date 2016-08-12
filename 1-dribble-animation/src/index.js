@@ -5,16 +5,13 @@ import $ from 'jquery';
 let $menu = $('.menu'),
     $menuItems = $menu.children('.menu__item'),
     $itemWidth = $menuItems.first().width(),
-    $itemHeight = $menuItems.first().height();
+    $itemHeight = $menuItems.first().height(),
+		$colorBar = $menu.children('.color-bar');
 
-let $colorBar = $menu.children('.color-bar');
 let clipPosition = {
 	left: 0,
 	right: $itemWidth
 }
-
-const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
-
 
 const setNewPosition = (position) => {
 	$colorBar.css({
@@ -30,39 +27,34 @@ const prepareClipPosition = (edges) => [
 	`${edges.left}px ${$itemHeight}px`
 ];
 
-const onColorBarTransitionEnd = (position) => {
-  $colorBar.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', () => {
-  	$colorBar.css({
-  		'transition-duration': '350ms',
-  		'transition-timing-function': 'cubic-bezier(0,.31,.78,.52)'
-  	})
-
-  	setNewPosition(position);
-  });
-}
-
-// Metoda przesuwają 'bloczek'
-const moveClip = ($item, isBackward = false) => {
-  const edgesOnEnd = {
-  	left: $item.position().left,
-  	right: $item.position().left + $itemWidth
-  };
-};
-
 const updateClipPosition = (tween, element) => {
 	let clipPositionStart = `polygon(${prepareClipPosition(clipPosition)})`;
 	setNewPosition(clipPositionStart);
 }
 
-const tweenClip = ($item, isBackward = false) => {
-	TweenMax
-	.to(clipPosition, 1.0, {
-			ease:Elastic.easeOut,
-	    left: $item.position().left,
-	    right: $item.position().left + $itemWidth,
+const moveClip = ($item) => {
+	const newPosition = {
+			left: $item.position().left,
+			right: $item.position().left + $itemWidth
+		};
+
+	let isBackward = newPosition.left < clipPosition.left;
+
+	TweenMax.to(clipPosition, 1.0, {
+			ease:Power3.easeOut,
+	    right: newPosition[isBackward ? 'left' : 'right'],
 	    autoCSS: false, 
 	    onUpdate: updateClipPosition, 
 	    onUpdateParams: ["{self}", clipPosition]
+	  }
+	)
+	TweenMax.to(clipPosition, 1.25, {
+			ease: Power4.easeOut,
+	    left: newPosition[isBackward ? 'right' : 'left'],
+	    autoCSS: false, 
+	    onUpdate: updateClipPosition, 
+	    onUpdateParams: ["{self}", clipPosition],
+	    delay: 0.25
 	  }
 	);
 }
@@ -71,6 +63,7 @@ const tweenClip = ($item, isBackward = false) => {
 const toggleClass = ($item, $allItems) => {
   $allItems.removeClass('active');
   $item.addClass('active');
+
 };
 
 //Generowanie paska z gradientem
@@ -92,7 +85,7 @@ const loadColorBar = () => {
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
   //Set first menu item as active
-  tweenClip($menuItems.first())
+  moveClip($menuItems.first())
 };
 
 const deselectAllTabs = () => {
@@ -107,8 +100,10 @@ const selectTab = ($item) => {
 };
 
 const onClickMenuItem = ($item) => {
+	moveClip($item);
+	deselectAllTabs();
+	selectTab($item);
 	toggleClass($item, $menuItems);
-	tweenClip($item);
 }
 
 const bindMoveToClick = () => {
