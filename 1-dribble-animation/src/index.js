@@ -1,53 +1,75 @@
 require('./main.scss');
 
-import $ from "jquery";
+import $ from 'jquery';
 
-let $menu = $(".menu"),
-    $menuItems = $menu.children(".menu__item"),
+let $menu = $('.menu'),
+    $menuItems = $menu.children('.menu__item'),
     $itemWidth = $menuItems.first().width(),
-    $itemHeight = $menuItems.first().height();
+    $itemHeight = $menuItems.first().height(),
+		$colorBar = $menu.children('.color-bar');
 
-let $colorBar = $menu.children(".color-bar");
+let clipPosition = {
+	left: 0,
+	right: $itemWidth
+}
 
-const transitionEvent = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+let tweens = {
+	left: null,
+	right: null
+}
 
-// Metoda przesuwają 'bloczek'
-const moveClip = ($item) => {
-  const setNewPosition = (position) => {
-  	$colorBar.css({
-  	  'shape-inside': position,
-  	  '-webkit-clip-path': position
-  	});
-  };
-
-  const prepareClipPosition = (edges) => [
-  	`${edges.left}px 0`,
-  	`${edges.right}px 0`,
-  	`${edges.right}px ${$itemHeight}px`,
-  	`${edges.left}px ${$itemHeight}px`
-  ];
-
-  //let clipRightEdgePosition = `polygon(${prepareClipPosition(index, $itemWidth * 0.75)})`;
-  //setNewPosition(clipRightEdgePosition);
-
-  const edges = {
-  	left: $item.position().left,
-  	right: $item.position().left + $itemWidth
-  };
-
-  let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  setNewPosition(clipPosition);
-
-  //$item.one(transitionEvent, (e) => {
-  //	let clipPosition = `polygon(${prepareClipPosition(edges)})`;
-  //	setNewPosition(clipPosition);
-  //});
+const setNewPosition = (position) => {
+	$colorBar.css({
+	  'shape-inside': position,
+	  '-webkit-clip-path': position
+	});
 };
+
+const prepareClipPosition = (edges) => [
+	`${edges.left}px 0`,
+	`${edges.right}px 0`,
+	`${edges.right}px ${$itemHeight}px`,
+	`${edges.left}px ${$itemHeight}px`
+];
+
+const updateClipPosition = (tween, element) => {
+	let clipPositionStart = `polygon(${prepareClipPosition(clipPosition)})`;
+	setNewPosition(clipPositionStart);
+}
+
+const moveClip = ($item) => {
+	const newPosition = {
+			left: $item.position().left,
+			right: $item.position().left + $itemWidth
+		};
+
+	let isBackward = newPosition.right < clipPosition.right;
+
+	TweenMax.to(clipPosition, isBackward ? 1.25 : 1.0, {
+			ease: isBackward ? Power4.easeOut : Power3.easeOut,
+	    right: newPosition.right,
+	    autoCSS: false, 
+	    onUpdate: updateClipPosition, 
+	    onUpdateParams: ["{self}", clipPosition],
+	    delay: isBackward ? 0.25 : 0
+	  }
+	)
+	TweenMax.to(clipPosition, !isBackward ? 1.25 : 1.0, {
+			ease: !isBackward ? Power4.easeOut : Power3.easeOut,
+	    left: newPosition.left,
+	    autoCSS: false, 
+	    onUpdate: updateClipPosition, 
+	    onUpdateParams: ["{self}", clipPosition],
+	    delay: !isBackward ? 0.25 : 0
+	  }
+	);
+}
 
 // Oznaczanie aktywnego/kliknietego elementu
 const toggleClass = ($item, $allItems) => {
   $allItems.removeClass('active');
   $item.addClass('active');
+
 };
 
 //Generowanie paska z gradientem
@@ -68,31 +90,9 @@ const loadColorBar = () => {
   };
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 
-  moveClip($menuItems.first(), 0)
+  //Set first menu item as active
+  moveClip($menuItems.first())
 };
-
-// Poniżej automatyczna animacja
-
-/*const moveBox = (index, el) => {
-    setTimeout(() => { moveClip($(el), index) }, 1200 * index);
-}
-
-const backToStart = () => {
-    $colorBar.css({
-        'transition-duration': '1500ms'
-    });
-    moveClip($menuItems.first(), 0)
-}
-
-const animate = () => {
-    $colorBar.css({
-        'transition-duration': '1000ms'
-    });
-    $menuItems.each(moveBox);
-    setTimeout(() => { backToStart(); }, 6500);
-    setTimeout(animate, 8000);
-
-}*/
 
 const deselectAllTabs = () => {
   $menuItems.each(
@@ -105,18 +105,21 @@ const selectTab = ($item) => {
   $item.children().children('.content__icon-container').addClass('active');
 };
 
+const onClickMenuItem = ($item) => {
+	moveClip($item);
+	deselectAllTabs();
+	selectTab($item);
+	toggleClass($item, $menuItems);
+}
+
 const bindMoveToClick = () => {
-	$menuItems.each(
-		(index, element) => {
-			$(element).click( () => {
-        //TODO we need to remove double active class function :)
-        deselectAllTabs();
-        selectTab($(element));
-        moveClip($(element));
-        toggleClass($(element), $menuItems);
-      })
-		}
-	);
+		$menuItems.each(
+			(index, element) => {
+				$(element).click( () => {
+	        onClickMenuItem($(element));
+	      })
+			}
+		);
 };
 
 loadColorBar();
