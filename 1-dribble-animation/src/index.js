@@ -51,7 +51,7 @@ const moveClip = ($item) => {
 	    autoCSS: false, 
 	    onUpdate: updateClipPosition, 
 	    onUpdateParams: ["{self}", clipPosition],
-	    delay: isBackward ? 0.25 : 0
+	    delay: isBackward ? 0.20 : 0
 	  }
 	)
 	TweenMax.to(clipPosition, !isBackward ? 1.25 : 1.0, {
@@ -60,7 +60,7 @@ const moveClip = ($item) => {
 	    autoCSS: false, 
 	    onUpdate: updateClipPosition, 
 	    onUpdateParams: ["{self}", clipPosition],
-	    delay: !isBackward ? 0.25 : 0
+	    delay: !isBackward ? 0.20 : 0
 	  }
 	);
 }
@@ -73,7 +73,7 @@ const toggleClass = ($item, $allItems) => {
 };
 
 //Generowanie paska z gradientem
-const loadColorBar = () => {
+const initColorBar = () => {
   const perWidth = 100 / $menuItems.length;
   const getColorPalette = () => {
     const colorArr = [];
@@ -89,9 +89,6 @@ const loadColorBar = () => {
     return colorArr.join(',');
   };
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
-
-  //Set first menu item as active
-  moveClip($menuItems.first())
 };
 
 const deselectAllTabs = () => {
@@ -122,5 +119,23 @@ const bindMoveToClick = () => {
 		);
 };
 
-loadColorBar();
-bindMoveToClick();
+const init = () => {
+	initColorBar();
+
+	moveClip($menuItems.first())
+	bindMoveToClick();
+	$(window).resize(() => {
+		$itemWidth = $menuItems.first().width();
+		$itemHeight = $menuItems.first().height();
+		/* 
+			Jak ogarniecie jedną metodę do ustawiania aktywnego 
+			elementu, to trzeba tutaj wrzucić referencję do niego
+			(zamiast $menuItems.first())
+		*/
+		moveClip($menuItems.first());
+		initColorBar();
+	});
+
+}
+
+init();
