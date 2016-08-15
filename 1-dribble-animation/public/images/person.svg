@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<svg version="1.2" baseProfile="tiny" width="49mm" height="53mm" viewBox="14850 1050 4900 5300" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+<svg version="1.2" baseProfile="tiny" width="51mm" height="55mm" viewBox="14750 950 5100 5500" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
  <defs class="ClipPathGroup">
   <clipPath id="presentation_clip_path" clipPathUnits="userSpaceOnUse">
-   <rect x="14850" y="1050" width="4900" height="5300"/>
+   <rect x="14750" y="950" width="5100" height="5500"/>
   </clipPath>
  </defs>
  <defs class="TextShapeIndex">
@@ -45,12 +45,12 @@
     <g class="Page">
      <g class="com.sun.star.drawing.PolyPolygonShape">
       <g id="id3">
-       <path fill="none" stroke="rgb(255,255,255)" stroke-width="500" stroke-linejoin="round" d="M 15100,6100 L 19500,6100 19500,5079 19019,4800 15581,4800 15100,5079 15100,6100 Z"/>
+       <path fill="none" stroke="rgb(255,255,255)" stroke-width="700" stroke-linejoin="round" d="M 15100,6100 L 19500,6100 19500,5079 19019,4800 15581,4800 15100,5079 15100,6100 Z"/>
       </g>
      </g>
      <g class="com.sun.star.drawing.CustomShape">
       <g id="id4">
-       <path fill="none" stroke="rgb(255,255,255)" stroke-width="500" stroke-linejoin="round" d="M 17300,1300 C 18264,1300 19000,2036 19000,3000 19000,3964 18264,4700 17300,4700 16336,4700 15600,3964 15600,3000 15600,2036 16336,1300 17300,1300 Z"/>
+       <path fill="none" stroke="rgb(255,255,255)" stroke-width="700" stroke-linejoin="round" d="M 17300,1300 C 18264,1300 19000,2036 19000,3000 19000,3964 18264,4700 17300,4700 16336,4700 15600,3964 15600,3000 15600,2036 16336,1300 17300,1300 Z"/>
       </g>
      </g>
     </g>
