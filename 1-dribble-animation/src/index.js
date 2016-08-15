@@ -65,13 +65,6 @@ const moveClip = ($item) => {
 	);
 };
 
-// Oznaczanie aktywnego/kliknietego elementu
-const toggleClass = ($item, $allItems) => {
-  $allItems.removeClass('active');
-  $item.addClass('active');
-
-};
-
 //Generowanie paska z gradientem
 const initColorBar = () => {
   const perWidth = 100 / $menuItems.length;
@@ -91,21 +84,14 @@ const initColorBar = () => {
   $colorBar.css({ 'background-image': `linear-gradient(to right,  ${getColorPalette()})` });
 };
 
-const deselectAllTabs = () => {
-  $menuItems.each(
-    (index, element) => {
-      $(element).children().children('.content__icon-container').removeClass('active');
-    });
-};
-
-const selectTab = ($item) => {
-  $item.children().children('.content__icon-container').addClass('active');
+// Oznaczanie aktywnego/kliknietego elementu
+const toggleClass = ($item, $allItems) => {
+	$allItems.children().children('.content__icon-container').removeClass('active');
+	$item.children().children('.content__icon-container').addClass('active');
 };
 
 const onClickMenuItem = ($item) => {
 	moveClip($item);
-	deselectAllTabs();
-	selectTab($item);
 	toggleClass($item, $menuItems);
 };
 
