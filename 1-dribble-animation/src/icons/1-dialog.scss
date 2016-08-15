@@ -1,0 +1,26 @@
+.content__icon-container--first{
+  &.active{
+    .icon-container__growing-circle{
+      transform: scale(100);
+    }
+  }
+}
+
+.icon-container__dialog, .icon-container__growing-circle{
+  margin-top: 10%;
+}
+
+.icon-container__dialog{
+  width: 100%;
+}
+
+.icon-container__growing-circle{
+  @extend .animateable;
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
