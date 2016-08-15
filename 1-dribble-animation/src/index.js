@@ -11,12 +11,12 @@ let $menu = $('.menu'),
 let clipPosition = {
 	left: 0,
 	right: $itemWidth
-}
+};
 
 let tweens = {
 	left: null,
 	right: null
-}
+};
 
 const setNewPosition = (position) => {
 	$colorBar.css({
@@ -35,7 +35,7 @@ const prepareClipPosition = (edges) => [
 const updateClipPosition = (tween, element) => {
 	let clipPositionStart = `polygon(${prepareClipPosition(clipPosition)})`;
 	setNewPosition(clipPositionStart);
-}
+};
 
 const moveClip = ($item) => {
 	const newPosition = {
@@ -53,7 +53,7 @@ const moveClip = ($item) => {
 	    onUpdateParams: ["{self}", clipPosition],
 	    delay: isBackward ? 0.20 : 0
 	  }
-	)
+	);
 	TweenMax.to(clipPosition, !isBackward ? 1.25 : 1.0, {
 			ease: !isBackward ? Power4.easeOut : Power3.easeOut,
 	    left: newPosition.left,
@@ -63,7 +63,7 @@ const moveClip = ($item) => {
 	    delay: !isBackward ? 0.20 : 0
 	  }
 	);
-}
+};
 
 // Oznaczanie aktywnego/kliknietego elementu
 const toggleClass = ($item, $allItems) => {
@@ -107,7 +107,7 @@ const onClickMenuItem = ($item) => {
 	deselectAllTabs();
 	selectTab($item);
 	toggleClass($item, $menuItems);
-}
+};
 
 const bindMoveToClick = () => {
 		$menuItems.each(
@@ -122,7 +122,7 @@ const bindMoveToClick = () => {
 const init = () => {
 	initColorBar();
 
-	moveClip($menuItems.first())
+	moveClip($menuItems.first());
 	bindMoveToClick();
 	$(window).resize(() => {
 		$itemWidth = $menuItems.first().width();
@@ -136,6 +136,6 @@ const init = () => {
 		initColorBar();
 	});
 
-}
+};
 
 init();
