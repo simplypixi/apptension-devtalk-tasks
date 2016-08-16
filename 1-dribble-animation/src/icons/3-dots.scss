@@ -1,0 +1,41 @@
+.dot{
+  $size: 20%;
+
+  display:block;
+  width: $size;
+  height: $size;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: $size / -2;
+  margin-top: $size / -2;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-left: 170%;
+    transition: margin-left $time $fn $time;
+  }
+}
+.dot--r1{
+  transform: rotate(-45deg);
+}
+.dot--r2{
+  transform: rotate(45deg);
+}
+.dot--r3{
+  transform: rotate(135deg);
+}
+.dot--r4{
+  transform: rotate(-135deg);
+}
+
+&.active {
+  .dot::before {
+    margin-left: 300%;
+  }
+}
