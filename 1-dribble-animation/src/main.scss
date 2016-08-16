@@ -1,10 +1,13 @@
 @import "./reset";
+$time: 0.6s;
+$fn: cubic-bezier(1,.21,.48,.7);
+
 .animateable{
-  transition-duration: 600ms;
+  transition-duration: $time;
   transition-property: all;
   //transition-timing-function: cubic-bezier(.8,.04,.65,.97);
   //transition-timing-function: cubic-bezier(.94,.1,.81,.5);
-  transition-timing-function: cubic-bezier(1,.21,.48,.7);
+  transition-timing-function: $fn;
 }
 
 $menuItemColor: #5b4c71;
