@@ -1,5 +1,6 @@
 $translateDistance: 40%;
-$distanceBetweenPersons: 2%;
+$widthBetweenPersons: 2%;
+$heightBetweenPersons: 12%;
 
 .content__icon-container--second{
   &.active{
@@ -17,11 +18,11 @@ $distanceBetweenPersons: 2%;
   width: 55%;
   @extend .animateable;
   &--left{
-    bottom: $distanceBetweenPersons;
-    left: $distanceBetweenPersons;
+    bottom: $heightBetweenPersons;
+    left: $widthBetweenPersons;
   }
   &--right{
-    top: $distanceBetweenPersons;
-    right: $distanceBetweenPersons;
+    top: $heightBetweenPersons;
+    right: $widthBetweenPersons;
   }
 }
