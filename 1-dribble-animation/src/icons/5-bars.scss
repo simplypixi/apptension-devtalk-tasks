@@ -3,12 +3,10 @@ $barTime2: $time * .6;
 $barTime3: $time * .8;
 
 #bars-icon {
+  position: relative;
   display: block;
   width: 60%;
   height: 60%;
-  top: 20%;
-  left: 20%;
-  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
