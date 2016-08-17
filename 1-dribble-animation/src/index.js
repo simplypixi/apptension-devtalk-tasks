@@ -113,12 +113,7 @@ const init = () => {
 	$(window).resize(() => {
 		$itemWidth = $menuItems.first().width();
 		$itemHeight = $menuItems.first().height();
-		/* 
-			Jak ogarniecie jedną metodę do ustawiania aktywnego 
-			elementu, to trzeba tutaj wrzucić referencję do niego
-			(zamiast $menuItems.first())
-		*/
-		moveClip($menuItems.first());
+		moveClip($menuItems.find('.active').parent().parent());
 		initColorBar();
 	});
 };
