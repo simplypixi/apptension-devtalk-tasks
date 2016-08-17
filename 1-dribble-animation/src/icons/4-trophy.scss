@@ -1,11 +1,12 @@
 $timeUnit: .12s;
 $timeTwo: 2 * $timeUnit;
 $timeThree: 3 * $timeUnit;
+$trophyFn: cubic-bezier(.645, .045, .355, 1);
 
 #trophy {
   max-width: 80%;
   margin-top: 15%;
-  transition: margin-top $timeUnit $fn $timeUnit * 7;
+  transition: margin-top $timeTwo $trophyFn $timeUnit * 6.5;
 
   path {
     fill: #fff;
@@ -36,37 +37,38 @@ $timeThree: 3 * $timeUnit;
     width: 5%;
   }
   .podium-1 {
+    left: 0%;
     top: 87%;
     width: 0%;
     transition: all $timeTwo $fn $timeUnit * 8;
   }
   .podium-2 {
-    left: 24%;
+    left: 25.5%;
     height: 0%;
     top: 92%;
-    transition: all $timeUnit $fn $timeUnit * 7;
+    transition: all $timeUnit $trophyFn $timeUnit * 7;
   }
   .podium-3{
-    left: 24%;
+    left: 25.5%;
     width: 0%;
-    transition: all $timeThree $fn $timeUnit * 4;
+    transition: all $timeThree $timeUnit * 4;
   }
   .podium-4 {
     left: 69%;
     height: 0%;
-    transition: all $timeTwo $fn $timeTwo;
+    transition: all $timeTwo $trophyFn $timeTwo;
   }
   .podium-5{
     top: 95%;
     left: 74%;
     width: 0%;
-    transition: all $timeTwo $fn;
+    transition: all $timeTwo;
   }
 }
 .active {
   #trophy {
     margin-top: 0%;
-    transition: margin-top $timeUnit $fn $timeTwo;
+    transition: margin-top $timeTwo $trophyFn $timeUnit * 1.5;
   }
 
   #trophy-icon {
@@ -78,22 +80,22 @@ $timeThree: 3 * $timeUnit;
     .podium-2{
       height: 19%;
       top: 73%;
-      transition: all $timeUnit $fn $timeTwo;
+      transition: all $timeUnit $trophyFn $timeTwo;
     }
 
     .podium-3{
-      width: 50%;
-      transition: all $timeThree $fn $timeThree;
+      width: 48.5%;
+      transition: all $timeThree $timeThree;
     }
 
     .podium-4 {
       height: 27%;
-      transition: all $timeTwo $fn $timeUnit * 6;
+      transition: all $timeUnit $trophyFn $timeUnit * 6;
     }
 
     .podium-5 {
       width: 26%;
-      transition: all $timeTwo $fn $timeUnit * 8;
+      transition: all $timeThree $fn $timeUnit * 7;
     }
   }
 }
