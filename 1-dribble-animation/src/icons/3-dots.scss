@@ -15,7 +15,7 @@ $dotsActiveDistance: 240%;
   margin-left: $size / -2;
   margin-top: $size / -2;
 
-  transition: transform $time $fn;
+  transition: transform $time * 1.2 linear;
 }
 .dot--r1{
   transform: translate($dotsBaseDistance, - $dotsBaseDistance);
@@ -31,6 +31,9 @@ $dotsActiveDistance: 240%;
 }
 
 &.active {
+  .dot{
+    transition: transform $time $fn;
+  }
   .dot--r1{
     transform: translate($dotsActiveDistance, - $dotsActiveDistance);
   }
