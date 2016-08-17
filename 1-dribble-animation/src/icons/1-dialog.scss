@@ -1,8 +1,9 @@
 .content__icon-container--first{
   height: auto;
+  width: 50%;
   &.active{
     .icon-container__growing-circle{
-      transform: scale(30);
+      transform: scale(100);
     }
   }
 }
@@ -13,13 +14,16 @@
 
 .icon-container__dialog{
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .icon-container__growing-circle{
   @extend .animateable;
   border-radius: 50%;
-  width: 2%;
-  height: 2%;
+  width: 1px;
+  height: 1px;
   background-color: white;
   position: absolute;
   top: 0;
