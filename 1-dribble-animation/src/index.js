@@ -105,22 +105,6 @@ const bindMoveToClick = () => {
 		);
 };
 
-window.onresize = function(event){
-	let circle = $('icon-container__growing-circle');
-	let dialog = $('icon-container__dialog');
-	//circle.width(1/192 * );
-	//console.log("I am in "+ "circle", circle);
-	//console.log("I am in "+ "circle", dialog);
-	//console.log("I am in "+ "circle", circle.innerWidth);
-	//console.log("I am in "+ "circle", dialog.innerWidth);
-	//var w = window,
-	//	d = document,
-	//	e = d.documentElement,
-	//	g = d.getElementsByTagName('body')[0],
-	//	x = w.innerWidth || e.clientWidth || g.clientWidth,
-	//	y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-};
-
 const init = () => {
 	initColorBar();
 

@@ -3,7 +3,7 @@
   width: 50%;
   &.active{
     .icon-container__growing-circle{
-      transform: scale(100);
+      transform: scale(6);
     }
   }
 }
@@ -20,12 +20,15 @@
 }
 
 .icon-container__growing-circle{
+  transform: scale(0.1);
   @extend .animateable;
-  border-radius: 50%;
-  width: 1px;
-  height: 1px;
-  background-color: white;
+  //border-radius: 50%;
+  display: block;
+  width: 10%;
+  height: 10%;
+  //background-color: white;
   position: absolute;
   top: 0;
   right: 0;
+  //border: 0;
 }
