@@ -96,13 +96,13 @@ const onClickMenuItem = ($item) => {
 };
 
 const bindMoveToClick = () => {
-		$menuItems.each(
-			(index, element) => {
-				$(element).click( () => {
-	        onClickMenuItem($(element));
-	      })
-			}
-		);
+	$menuItems.each(
+		(index, element) => {
+			$(element).click( () => {
+		onClickMenuItem($(element));
+	  })
+		}
+	);
 };
 
 const init = () => {
