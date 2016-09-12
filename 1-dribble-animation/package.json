@@ -23,6 +23,6 @@
     "start": "node ./node_modules/webpack/bin/webpack.js --progress --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mariusz Wójcik, Paweł Mikutel, Maciej Pecerelowicz",
+  "author": "Mariusz Wójcik, Paweł Mikutel, Marcin Pecelerowicz",
   "license": "ISC"
 }
