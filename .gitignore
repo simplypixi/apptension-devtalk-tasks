@@ -6,3 +6,4 @@
 out
 gen
 .gitignore
+2-functional-js/node_modules/
