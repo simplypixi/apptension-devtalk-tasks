@@ -7,4 +7,6 @@ out
 gen
 .gitignore
 2-functional-js/node_modules/
-
+coverage
+/coverage
+**/coverage
