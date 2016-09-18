@@ -1,1 +1,34 @@
-@import "./reset";
+body {
+  background-color: #eee;
+}
+.header {
+  margin-bottom: 10px;
+  padding: 25px;
+}
+.header__title {
+  color: #fff;
+  font-size: 2em;
+  margin: 0;
+}
+.header__subtitle {
+  font-size: .6em;
+  font-weight: normal;
+}
+.tabs {
+  background-color: transparent;
+
+  .tab a {
+    color: #01579b;
+
+    &:hover {
+      color: #0277bd
+    }
+  }
+
+  .indicator {
+    background-color: #01579b;
+  }
+}
+.page {
+  margin: 30px;
+}

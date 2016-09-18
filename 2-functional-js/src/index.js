@@ -1,3 +1,5 @@
+window.jQuery = require('jquery');
+window.$ = require('jquery');
 require('./main.scss');
 
 import {split} from 'ramda';

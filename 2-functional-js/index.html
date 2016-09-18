@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Functional JS</title>
-	<link rel="stylesheet" href="main.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Functional JS</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<h1>Functional JS</h1>
-	<script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+  <div class=" blue darken-2 z-depth-1 header">
+    <h1 class="header__title">
+      Functional programming in Javascript
+      <span class="header__subtitle">by Mikusie</span>
+    </h1>
+  </div>
+  <div class="page">
+    <div class="row">
+      <ul class="tabs">
+      <li class="tab col s2"><a href="#exercise-1">1. Reduce</a></li>
+      <li class="tab col s2"><a href="#exercise-2">2. Currying</a></li>
+      <li class="tab col s2"><a href="#exercise-3">3. Recursion</a></li>
+      <li class="tab col s2"><a href="#exercise-4">4. Composing</a></li>
+      <li class="tab col s2"><a href="#exercise-5">5. Extra</a></li>
+    </ul>
+    </div>
+    <div class="page-content">
+      <div id="exercise-1" class="col s12">
+        <p>Implement forEach, map, filter, reduceRight and some using only reduce.</p>
+      </div>
+      <div id="exercise-2" class="col s12">
+        <p>Using only currying ...</p>
+      </div>
+      <div id="exercise-3" class="col s12">
+        <p>Implement a recursive version of the flatMapDeep function. Implement a recursive version of the forEach function.</p>
+      </div>
+      <div id="exercise-4" class="col s12">
+        <p>Using Web Service of "MusicBrainz project" do following tasks ...</p>
+      </div>
+      <div id="exercise-5" class="col s12">
+        <p>Using only reduce implement functions: sum, any, max, concat. Extract the common parts of this, propose API, describe the structure of common parts.</p>
+      </div>
+    </div>
+  </div>
+  <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 </body>
 </html>
