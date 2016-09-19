@@ -1,10 +1,8 @@
 import {reduce} from 'ramda';
 
 // --- forEach ---
-const forEach = (func, array) => {
-  reduce(func, null, array);
-  return array;
-};
+export const forEach = (fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);
 
 // --- map ---
-const map = (f, array) => reduce((a, v) => a.concat(f(v)), [], array);
+export const map = (fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);
+
