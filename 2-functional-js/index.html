@@ -28,9 +28,44 @@
     <div class="page-content">
       <div id="exercise-1" class="col s12">
         <p>Implement forEach, map, filter, reduceRight and some using only reduce.</p>
+        <div class="row">
+          <h5 class="function-name">forEach</h5>
+          <pre code="js" class="z-depth-1">(fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);</pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">map</h5>
+          <pre code="js" class="z-depth-1">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">filter</h5>
+          <pre code="js" class="z-depth-1">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">reduceRight</h5>
+          <pre code="js" class="z-depth-1">(array, ...args) => [].reduce.apply(array.reverse(), args);</pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">some</h5>
+          <pre code="js" class="z-depth-1">(array, ...args) => [].reduce.call(Object.keys(array), args);</pre>
+        </div>
       </div>
       <div id="exercise-2" class="col s12">
-        <p>Using only currying ...</p>
+        <p>Using only currying and split make a function called "words" that returns a list of words in a string. Split function is in Ramda R.split or in lodash _.split or you can use any another function that works similar to JavaScript String split() method.</p>
+        <div class="row">
+          <h5 class="function-name">smallest number</h5>
+          <p>Make a function to find the smallest number in an array. Use only less function and one of the listed below functions:map, filter, reduce.</p>
+          <pre code="js" class="z-depth-1">function less(a, b) {
+  return a < b ? a : b;
+}
+
+const smallest = (list) => {
+  if (list.length) {
+    return reduce(less, list[0], list)
+  } else {
+    return null;
+  }
+}</pre>
+        </div>
       </div>
       <div id="exercise-3" class="col s12">
         <p>Implement a recursive version of the flatMapDeep function. Implement a recursive version of the forEach function.</p>
