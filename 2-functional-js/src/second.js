@@ -1,4 +1,4 @@
-import {filter, reduce, map} from 'ramda';
+import {reduce} from 'ramda';
 
 // --- find the smallest number in an array ---
 function less(a, b) {
