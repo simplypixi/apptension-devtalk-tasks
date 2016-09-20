@@ -2,9 +2,7 @@ body {
   background-color: #eee; }
 
 pre {
-  white-space: pre-wrap;
-  background-color: #fff;
-  padding: 10px; }
+  white-space: pre-wrap; }
 
 .header {
   margin-bottom: 10px;
@@ -30,5 +28,9 @@ pre {
 
 .page {
   margin: 30px; }
+
+.code .hljs {
+  background-color: #fff;
+  padding: 10px; }
 
 /*# sourceMappingURL=main.css.map*/

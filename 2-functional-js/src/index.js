@@ -1,9 +1,10 @@
-window.jQuery = require('jquery');
-window.$ = require('jquery');
-require('./main.scss');
+import $ from 'jquery';
+import jQuery from 'jquery';
+import hljs from 'highlight.js/lib';
+import 'highlight.js/styles/atom-one-light.css';
+import './main.scss';
 
-import {split} from 'ramda';
+window.$ = $;
+window.jQuery = jQuery;
 
-//TEST
-const spaceSplit = split(' ');
-console.info(spaceSplit('Hello world'));
+hljs.initHighlightingOnLoad();

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class=" blue darken-2 z-depth-1 header">
+  <div class=" blue darken-2 z-depth-1 code header">
     <h1 class="header__title">
       Functional programming in Javascript
       <span class="header__subtitle">by Mikusie</span>
@@ -30,23 +30,23 @@
         <p>Implement forEach, map, filter, reduceRight and some using only reduce.</p>
         <div class="row">
           <h5 class="function-name">forEach</h5>
-          <pre code="js" class="z-depth-1">(fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);</pre>
+          <pre class="z-depth-1 code"><code class="js">(fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">map</h5>
-          <pre code="js" class="z-depth-1">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</pre>
+          <pre class="z-depth-1 code"><code class="js">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">filter</h5>
-          <pre code="js" class="z-depth-1">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</pre>
+          <pre class="z-depth-1 code"><code class="js">(fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">reduceRight</h5>
-          <pre code="js" class="z-depth-1">(array, ...args) => [].reduce.apply(array.reverse(), args);</pre>
+          <pre class="z-depth-1 code"><code class="js">(array, ...args) => [].reduce.apply(array.reverse(), args);</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">some</h5>
-          <pre code="js" class="z-depth-1">(array, ...args) => [].reduce.call(Object.keys(array), args);</pre>
+          <pre class="z-depth-1 code"><code class="js">(array, ...args) => [].reduce.call(Object.keys(array), args);</code></pre>
         </div>
       </div>
       <div id="exercise-2" class="col s12">
@@ -54,7 +54,7 @@
         <div class="row">
           <h5 class="function-name">smallest number</h5>
           <p>Make a function to find the smallest number in an array. Use only less function and one of the listed below functions:map, filter, reduce.</p>
-          <pre code="js" class="z-depth-1">function less(a, b) {
+          <pre class="z-depth-1 code"><code class="js">function less(a, b) {
   return a < b ? a : b;
 }
 
@@ -64,7 +64,7 @@ const smallest = (list) => {
   } else {
     return null;
   }
-}</pre>
+}</code></pre>
         </div>
       </div>
       <div id="exercise-3" class="col s12">
