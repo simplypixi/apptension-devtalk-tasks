@@ -1,0 +1,325 @@
+{
+	"gender-id": null,
+	"ipis": [],
+	"life-span": {
+		"begin": "1965",
+		"end": "2014",
+		"ended": true
+	},
+	"type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+	"release-groups": [
+		{
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"primary-type": "Album",
+			"first-release-date": "1983-06-18",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": "",
+			"id": "06bc66bb-b9f1-3748-98a9-2acc878a940a",
+			"title": "Works",
+			"secondary-types": [
+				"Compilation"
+			]
+		},
+		{
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": "",
+			"primary-type": "Album",
+			"first-release-date": "1991",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"secondary-types": [
+				"Compilation"
+			],
+			"title": "Before Time Began",
+			"id": "0fb7d204-7220-303b-98cc-2be28b2c462a"
+		},
+		{
+			"title": "A Nice Pair",
+			"secondary-types": [
+				"Compilation"
+			],
+			"id": "1a1387bd-ae1f-3024-8618-eeb2249f5538",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"first-release-date": "1973-12-05",
+			"primary-type": "Album"
+		},
+		{
+			"id": "1a272023-10d3-38ee-bab3-317b55fcc21d",
+			"secondary-types": [],
+			"title": "Wish You Were Here",
+			"first-release-date": "1975-09-12",
+			"primary-type": "Album",
+			"secondary-type-ids": [],
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"id": "20c77fb4-1c9f-33c8-9d7e-c4977f11e847",
+			"title": "Animals",
+			"secondary-types": [],
+			"secondary-type-ids": [],
+			"primary-type": "Album",
+			"first-release-date": "1977-01-23",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"secondary-type-ids": [],
+			"first-release-date": "",
+			"primary-type": "Album",
+			"title": "Animals / A Saucer Full of Secrets",
+			"secondary-types": [],
+			"id": "26847348-411f-453b-92d1-8368cd5a786f"
+		},
+		{
+			"secondary-types": [
+				"Compilation"
+			],
+			"title": "Omayyad",
+			"id": "2daa412c-50c7-3a02-90a5-2843f0f0cff6",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": "",
+			"first-release-date": "1972",
+			"primary-type": "Album",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			]
+		},
+		{
+			"id": "38b4c840-16ce-40fa-b7c0-a354b7c87178",
+			"secondary-types": [],
+			"title": "The Endless River",
+			"first-release-date": "2014-11-07",
+			"primary-type": "Album",
+			"secondary-type-ids": [],
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"secondary-types": [],
+			"title": "A Momentary Lapse of Reason",
+			"id": "4940b8aa-898b-3e60-9992-94e073bab6f6",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"first-release-date": "1987-09-07",
+			"primary-type": "Album",
+			"secondary-type-ids": []
+		},
+		{
+			"id": "4e98c9b4-92f6-3049-b9da-a1088b623672",
+			"secondary-types": [],
+			"title": "Meddle",
+			"first-release-date": "1971-10-30",
+			"primary-type": "Album",
+			"secondary-type-ids": [],
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+		},
+		{
+			"id": "55d6cb50-67b3-3d7e-b2b3-ded09625cb29",
+			"title": "Music for Architectural Students",
+			"secondary-types": [
+				"Compilation"
+			],
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"primary-type": "Album",
+			"first-release-date": "1989",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"id": "66efd350-74e3-3a42-adb2-d6443b045732",
+			"title": "Psychedelic Session",
+			"secondary-types": [
+				"Compilation"
+			],
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"primary-type": "Album",
+			"first-release-date": "1989",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"id": "6792b6d1-4e65-3c3c-9d20-d08aa1dcfc60",
+			"secondary-types": [],
+			"title": "The Piper at the Gates of Dawn",
+			"primary-type": "Album",
+			"first-release-date": "1967-07-07",
+			"secondary-type-ids": [],
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"title": "A Collection of Great Dance Songs",
+			"secondary-types": [
+				"Compilation"
+			],
+			"id": "70300163-5e9c-32b9-b49f-bfb25e5aebee",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": "",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"first-release-date": "1981-11-23",
+			"primary-type": "Album"
+		},
+		{
+			"id": "83593465-37cc-3d6f-a3d2-61c81e3c2be6",
+			"secondary-types": [
+				"Compilation"
+			],
+			"title": "Relics",
+			"primary-type": "Album",
+			"first-release-date": "1971-05-14",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"id": "8a9caa40-b7c6-33eb-a13c-6c15f09b1c44",
+			"title": "A Saucerful of Secrets",
+			"secondary-types": [],
+			"secondary-type-ids": [],
+			"primary-type": "Album",
+			"first-release-date": "1968-06-29",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+		},
+		{
+			"id": "90878b63-f639-3c8b-aefb-190bdf3d1790",
+			"title": "The Division Bell",
+			"secondary-types": [],
+			"secondary-type-ids": [],
+			"primary-type": "Album",
+			"first-release-date": "1994-03-28",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"id": "a888740d-7062-40eb-b984-46c2273e3a56",
+			"secondary-types": [],
+			"title": "The Great Gig in the Sky",
+			"first-release-date": "2008",
+			"primary-type": "Album",
+			"secondary-type-ids": [],
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+		},
+		{
+			"id": "b7aa61ae-3572-32c0-8b93-6af78ea83760",
+			"secondary-types": [],
+			"title": "Ummagumma",
+			"primary-type": "Album",
+			"first-release-date": "1969-10-25",
+			"secondary-type-ids": [],
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"disambiguation": ""
+		},
+		{
+			"first-release-date": "1983",
+			"primary-type": "Album",
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"id": "d466f14b-25f3-4e60-85f6-0e97165780a0",
+			"secondary-types": [
+				"Compilation"
+			],
+			"title": "Hits"
+		},
+		{
+			"secondary-types": [],
+			"title": "Atom Heart Mother",
+			"id": "e2f503d7-5488-3fe1-b3ac-f236d9f1b44c",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"first-release-date": "1970-10-10",
+			"primary-type": "Album",
+			"secondary-type-ids": []
+		},
+		{
+			"primary-type": "Album",
+			"first-release-date": "1983-03-21",
+			"secondary-type-ids": [],
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"id": "e8b7e7a3-ef56-34a5-bedf-085783c9a076",
+			"secondary-types": [],
+			"title": "The Final Cut"
+		},
+		{
+			"id": "f2026101-945b-3d05-9ef4-aa718fc3feef",
+			"secondary-types": [],
+			"title": "The Wall",
+			"primary-type": "Album",
+			"first-release-date": "1979-11-30",
+			"secondary-type-ids": [],
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+		},
+		{
+			"id": "f5093c06-23e3-404f-aeaa-40f72885ee3a",
+			"title": "The Dark Side of the Moon",
+			"secondary-types": [],
+			"secondary-type-ids": [],
+			"primary-type": "Album",
+			"first-release-date": "1973-03-24",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+		},
+		{
+			"secondary-type-ids": [
+				"dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+			],
+			"primary-type": "Album",
+			"first-release-date": "1974-12-12",
+			"disambiguation": "",
+			"primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+			"id": "f8c58cd6-bb8f-334e-92ce-71ca675d442d",
+			"title": "Masters of Rock",
+			"secondary-types": [
+				"Compilation"
+			]
+		}
+	],
+	"end_area": null,
+	"name": "Pink Floyd",
+	"disambiguation": "",
+	"area": {
+		"sort-name": "United Kingdom",
+		"name": "United Kingdom",
+		"id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+		"iso-3166-1-codes": [
+			"GB"
+		],
+		"disambiguation": ""
+	},
+	"id": "83d91898-7763-47d7-b03b-b92132375c47",
+	"gender": null,
+	"sort-name": "Pink Floyd",
+	"type": "Group",
+	"begin_area": {
+		"name": "London",
+		"sort-name": "London",
+		"id": "f03d09b3-39dc-4083-afd6-159e3f0d462f",
+		"disambiguation": ""
+	},
+	"country": "GB"
+}
