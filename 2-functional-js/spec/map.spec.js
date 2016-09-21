@@ -1,8 +1,8 @@
 import {map} from '../src/first.js';
 
 describe('map:', () => {
-  const times2 = (x) => x * 2;
-  const inc = (x) => x + 1;
+  const times2 = x => x * 2;
+  const inc = x => x + 1;
 
 
   it('maps simple functions over array', function() {

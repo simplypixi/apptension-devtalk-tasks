@@ -1,4 +1,5 @@
-import reduceRight from '../src/reduceRight.js';
+import {reduceRight} from '../src/first.js';
+import {reduceRight as ramdaReduceRight} from 'ramda';
 
 describe('reduceRight', () => {
   let sumUp, sampleArray, concat;
@@ -9,19 +10,19 @@ describe('reduceRight', () => {
     concat = (previousValue, currentValue) => previousValue.concat(currentValue)
   })
   it('should sum up all values within an array (without initialValue)', () => {
-    const reducedArray = reduceRight(sampleArray, sumUp);
-    expect(reducedArray).toEqual(sampleArray.reduceRight(sumUp))
+    const reducedArray = reduceRight(sumUp, null, sampleArray);
+    expect(reduceRight(sumUp, null, sampleArray)).toEqual(ramdaReduceRight(sumUp, null, sampleArray))
   });
 
   it('should sum up all values within an array (with initialValue)', () => {
-    const reducedArray = reduceRight(sampleArray, sumUp, 10);
-    expect(reducedArray).toEqual(sampleArray.reduceRight(sumUp, 10))
+    const reducedArray = reduceRight(sumUp, 10, sampleArray);
+    expect(reducedArray).toEqual(ramdaReduceRight(sumUp, 10, sampleArray))
   });
 
   it('should flatten an array of arrays', () => {
     const arrayOfArrays = [[0, 1], [2, 3], [4, 5]],
-      flattenedArray = reduceRight(arrayOfArrays, concat, []);
+      flattenedArray = reduceRight(concat, [], arrayOfArrays);
     //dziwne zachowanie, bo js'owy reduce right zwraca elementy w odwrotnej kolejności
-    expect(flattenedArray).toEqual(arrayOfArrays.reduceRight(concat, []))
+    expect(flattenedArray).toEqual(ramdaReduceRight(concat, [], arrayOfArrays))
   })
 })

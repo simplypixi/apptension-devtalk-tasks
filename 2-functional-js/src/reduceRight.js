@@ -1,1 +1,0 @@
-export default (array, ...args) => [].reduce.apply(array.reverse(), args);

@@ -1,1 +1,0 @@
-export default (array, ...args) => [].reduce.call(Object.keys(array), args);

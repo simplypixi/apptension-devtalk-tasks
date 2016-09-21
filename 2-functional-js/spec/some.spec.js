@@ -1,4 +1,4 @@
-import some from '../src/some.js';
+import {some} from '../src/first.js';
 import _ from 'lodash';
 
 describe('some', () => {
