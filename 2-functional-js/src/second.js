@@ -9,10 +9,10 @@ function add(a, b) {
 }
 
 export const increaseNumbers = array => {
-	return array.map(item => {
-		const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
-		return isNumber ? add(parseFloat(item), 1) : item;
-	})
+  return array.map(item => {
+    const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
+    return isNumber ? add(parseFloat(item), 1) : item;
+  })
 }
 
 // --- find the smallest number in an array ---

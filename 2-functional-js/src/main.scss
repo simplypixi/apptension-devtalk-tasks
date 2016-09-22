@@ -35,7 +35,10 @@ pre {
 .page {
   margin: 30px;
 }
-.code .hljs {
-  background-color: #fff;
-  padding: 10px;
+.code {
+  .js, .hljs {
+    display: block;
+    background-color: #fff;
+    padding: 10px;
+  }
 }
