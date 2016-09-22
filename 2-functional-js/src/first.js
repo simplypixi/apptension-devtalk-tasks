@@ -4,7 +4,7 @@ import {reduce} from 'ramda';
 export const forEach = (fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);
 
 // --- map ---
-export const map = (fn, list) => reduce((a, value) => a.concat(fn(value)), [], list);
+export const map = (fn, list) => reduce((a, value) => [...a, fn(value)], [], list);
 
 // --- reduceRight ---
 export const reduceRight = (fn, initialValue, array) => reduce(fn, initialValue, [...array].reverse());
