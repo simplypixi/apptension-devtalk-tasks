@@ -92,29 +92,7 @@ const smallest = (list) => {
       <div id="exercise-4" class="col s12">
         <p>Using Web Service of "MusicBrainz project" do following tasks ...</p>
         <div class="row z-depth-1 music-brainz-container">
-          <div class="average">
-            <span class="average__label">Average length of tracks in the releases</span>
-            <div class="right">
-              <i class="material-icons average__icon">restore</i>
-              <span class="average__main-value">3:20</span>
-            </div>
-            
-          </div>
-          <div class="track">
-            <div class="track__length">
-              <span class="right track__value">3:10</span>
-            </div>
-          </div>
-          <div class="track" style="width: 190%">
-            <div class="track__length">
-              <span class="right track__value" >4:40</span>
-            </div>
-          </div>
-          <div class="track" style="width: 30%">
-            <div class="track__length">
-              <span class="right track__value">2:10</span>
-            </div>
-          </div>
+          <div id="chart"></div>
         </div>
         <h5>Albums</h5>
         <div class="row" id="albums-list"></div>
@@ -124,7 +102,7 @@ const smallest = (list) => {
       </div>
     </div>
   </div>
-  <script id="template" type="x-tmpl-mustache">
+  <script id="album-template" type="x-tmpl-mustache">
   {{#albums}}
     <div class="col m4 s6">
       <div class="z-depth-2 album">
@@ -145,6 +123,29 @@ const smallest = (list) => {
       </div>
     </div>
   {{/albums}}
+  </script>
+
+  <script id="chart-template" type="x-tmpl-mustache">
+  {{#totalAverage}}
+    <div class="average" style="width:{{value}}%">
+      <div class="row">
+      <div class="left average__label">Average length of tracks in the releases</div>
+      <div class="right">
+        <i class="material-icons average__icon">restore</i>
+        <span class="average__main-value">{{text}}</span>
+      </div>
+    </div>
+    <div class="track__length track__length--average"></div>
+    </div>
+  {{/totalAverage}}
+  <div class="tracks">
+    {{#averages}}
+      <div class="track__length" style="width:{{value}}%">
+        <div class="right track__value">{{text}}</div>
+      </div>
+    {{/averages}}
+    <div class="tracks__title">Averages</div>
+  </div>
   </script>
   <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>

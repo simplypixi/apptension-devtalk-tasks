@@ -39,11 +39,7 @@ pre {
   padding: 20px; }
 
 .average {
-  border-bottom: 30px solid #ffa000;
-  padding-bottom: 0;
-  color: #ffa000;
-  width: 70%;
-  overflow: hidden; }
+  color: #ffa000; }
   .average__icon {
     transform: scaleX(-1);
     font-size: 2em;
@@ -58,21 +54,28 @@ pre {
     font-weight: 300;
     position: relative;
     top: 20px; }
+  .average .track__length {
+    background-color: #ffa000; }
+  .average .row {
+    margin-bottom: -4px; }
 
 .track__length {
   display: block;
-  width: 50%;
+  width: 100%;
   height: 25px;
   background-color: #ffca28;
   margin-top: 3px; }
 
 .track__value {
-  margin-top: 3px;
+  margin-top: 1px;
   font-size: 1.58rem;
   line-height: 1em;
   font-weight: 100;
   margin-right: 3px;
   color: #fff; }
+
+.tracks__title {
+  color: #ffca28; }
 
 #albums-list {
   margin-right: -11px;

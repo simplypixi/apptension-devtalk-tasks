@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {addIndex, map} from 'ramda'
+import {addIndex, map} from 'ramda';
 import Mustache from 'mustache';
 
 const albumsData = [
@@ -40,7 +40,7 @@ function colorWrapper(data) {
 }
 
 function loadAlbums(data) {
-  const template = $('#template').html();
+  const template = $('#album-template').html();
   Mustache.parse(template);
   const rendered = Mustache.render(template, colorWrapper(data));
   $('#albums-list').html(rendered);
