@@ -90,3 +90,48 @@ pre {
     color: #fff;
   }
 }
+#albums-list {
+  margin-right: -11px;
+  margin-left: -11px;
+}
+
+.album {
+  background-color: #fff;
+
+  &__icon {
+    font-size: 4em;
+    display: block;
+    margin: 10px 20px 10px 10px
+  }
+
+  &__title {
+    font-size: 2em;
+    font-weight: 100;
+    margin-top: 20px;
+    display: inline-block;
+    line-height: 1.1em;
+    margin: 20px 0;
+  }
+
+  &__detail {
+    margin-left: 90px;
+  }
+
+  &__value {
+    display: block;
+    font-size: 1.3em;
+    line-height: 1.1em;
+    word-break: break-word;
+  }
+
+  &__label {
+    font-size: .8em;
+    margin-bottom: 1em;
+    display: block;
+    word-break: break-word;
+  }
+
+  .col {
+    padding: 0;
+  }
+}

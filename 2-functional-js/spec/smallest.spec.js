@@ -10,4 +10,12 @@ describe('smallest:', () => {
   it('return null for empty array', function() {
     expect(smallest([])).toEqual(null);
   });
+
+  it('return null if array doesn\'t contain number', function() {
+    expect(smallest(['a', 'b', {a: 'c'}, null, ['d']])).toEqual(null);
+  });
+
+  it('return smallest number for array of different types', function() {
+    expect(smallest([7, 'a', 'b', 3, {a: 'c'}, [1, 3, 6]])).toEqual(3);
+  });
 })

@@ -21,9 +21,10 @@ function less(a, b) {
 }
 
 export const smallest = (list) => {
-  if (list.length) {
-    return reduce(less, list[0], list)
-  } else {
-    return null;
-  }
+  const filteredList = reduce((array, item) => {
+    const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
+    return isNumber ? [...array, parseFloat(item)] : array;
+  }, [], list);
+
+  return filteredList.length ? reduce(less, filteredList[0], filteredList) : null;
 }

@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "core-js": "^2.4.1"
+    "core-js": "^2.4.1",
+    "mustache": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

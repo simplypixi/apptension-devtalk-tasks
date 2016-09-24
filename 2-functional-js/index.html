@@ -77,11 +77,12 @@ const increaseNumbers = array => {
 }
 
 const smallest = (list) => {
-  if (list.length) {
-    return reduce(less, list[0], list)
-  } else {
-    return null;
-  }
+  const filteredList = reduce((array, item) => {
+    const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
+    return isNumber ? [...array, parseFloat(item)] : array;
+  }, [], list);
+
+  return filteredList.length ? reduce(less, filteredList[0], filteredList) : null;
 }</code></pre>
         </div>
       </div>
@@ -115,13 +116,36 @@ const smallest = (list) => {
             </div>
           </div>
         </div>
-        
+        <h5>Albums</h5>
+        <div class="row" id="albums-list"></div>
       </div>
       <div id="exercise-5" class="col s12">
         <p>Using only reduce implement functions: sum, any, max, concat. Extract the common parts of this, propose API, describe the structure of common parts.</p>
       </div>
     </div>
   </div>
+  <script id="template" type="x-tmpl-mustache">
+  {{#albums}}
+    <div class="col m4 s6">
+      <div class="z-depth-2 album">
+        <div class="row album__top {{color}} darken-2 white-text">
+          <div class="col">
+            <i class="material-icons album__icon">album</i>
+          </div>
+          <div class="col">
+            <span class="album__title">{{name}}</span>
+          </div>
+        </div>
+        <div class="row album__detail {{color}}-text text-darken-2">
+          {{#details}}
+            <span class="{{color}}-text text-darken-2 album__value">{{value}}</span>
+            <span class="{{color}}-text text-lighten-3 album__label">{{label}}</span>
+          {{/details}}
+        </div>
+      </div>
+    </div>
+  {{/albums}}
+  </script>
   <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 </body>
