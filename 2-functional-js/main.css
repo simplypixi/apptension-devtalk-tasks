@@ -91,9 +91,13 @@ pre {
     font-size: 2em;
     font-weight: 100;
     margin-top: 20px;
+    text-overflow: ellipsis;
     display: inline-block;
+    max-width: 100%;
     line-height: 1.1em;
-    margin: 20px 0; }
+    margin: 20px 0;
+    white-space: nowrap;
+    overflow: hidden; }
   .album__detail {
     margin-left: 90px; }
   .album__value {
@@ -107,6 +111,8 @@ pre {
     display: block;
     word-break: break-word; }
   .album .col {
-    padding: 0; }
+    padding: 0;
+    max-width: 70%;
+    overflow: hidden;}
 
 /*# sourceMappingURL=main.css.map*/

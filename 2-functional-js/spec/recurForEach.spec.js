@@ -9,9 +9,9 @@ describe('recursive forEach', () => {
   });
 
   it('returns the original list', function() {
-/*    let s = '';
+    let s = '';
     expect(forEach(sampleArrayOfObjects, i => s += i.n)).toEqual(sampleArrayOfObjects);
-    expect(s).toEqual('102030');*/
+    expect(s).toEqual('102030');
 
     let t = '';
     expect(forEach(sampleArray, n => t += n)).toEqual(sampleArray);

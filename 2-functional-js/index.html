@@ -111,14 +111,12 @@ const smallest = (list) => {
             <i class="material-icons album__icon">album</i>
           </div>
           <div class="col">
-            <span class="album__title">{{name}}</span>
+            <span class="album__title">{{title}}</span>
           </div>
         </div>
         <div class="row album__detail {{color}}-text text-darken-2">
-          {{#details}}
-            <span class="{{color}}-text text-darken-2 album__value">{{value}}</span>
-            <span class="{{color}}-text text-lighten-3 album__label">{{label}}</span>
-          {{/details}}
+          <span class="{{color}}-text text-darken-2 album__value">{{date}}</span>
+          <span class="{{color}}-text text-lighten-3 album__label">Release date</span>
         </div>
       </div>
     </div>
