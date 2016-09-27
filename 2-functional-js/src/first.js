@@ -10,4 +10,23 @@ export const map = (fn, list) => reduce((a, value) => [...a, fn(value)], [], lis
 export const reduceRight = (fn, initialValue, array) => reduce(fn, initialValue, [...array].reverse());
 
 // --- some ---
-export const some = (array, ...args) => [].reduce.call(Object.keys(array), args);
+export const some = function () {
+	let [collection, predicate] = arguments,
+		matcher = typeof predicate,
+		matchers = {
+			function: (fn, value) => fn(value),
+			object: (obj, value) => reduce((currentState, key) => currentState || Object.is(value[key], obj[key]), false, Object.keys(obj)),
+			string: (str, value) => value[str] && Boolean(value[str]),
+			array: (arr, value) =>  value[arr[0]] === arr[1]
+		},
+		reductor = (currentState, value) => currentState || matchers[matcher](predicate, value);
+
+	if (!collection.constructor.toString().includes("Array")) {
+		collection = [collection];
+	}
+
+	if (predicate.constructor.toString().includes("Array")) {
+		matcher = 'array';
+	}
+	return reduce(reductor, false, collection);
+}
