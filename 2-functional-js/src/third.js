@@ -1,5 +1,3 @@
-import {pipe} from 'ramda';
-
 export const forEach = function (array, fn) {
 	if (typeof fn !== "function") {
 		throw new TypeError();
