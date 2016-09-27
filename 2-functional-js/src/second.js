@@ -1,7 +1,7 @@
 import {reduce, split} from 'ramda';
 
 // --- return a list of words in a string ---
-export const words = string => split(' ', string);
+export const words = split(' ');
 
 // --- return a list of words in a string ---
 function add(a, b) {
