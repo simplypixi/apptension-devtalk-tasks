@@ -46,14 +46,33 @@
         </div>
         <div class="row">
           <h5 class="function-name">some</h5>
-          <pre class="z-depth-1 code"><code class="js">(array, ...args) => [].reduce.call(Object.keys(array), args);</code></pre>
+          <pre class="z-depth-1 code"><code class="js">function () {
+  let [collection, predicate] = arguments,
+    matcher = typeof predicate,
+    matchers = {
+      function: (fn, value) => fn(value),
+      object: (obj, value) => reduce((currentState, key) => currentState || Object.is(value[key], obj[key]), false, Object.keys(obj)),
+      string: (str, value) => value[str] && Boolean(value[str]),
+      array: (arr, value) =>  value[arr[0]] === arr[1]
+    },
+    reductor = (currentState, value) => currentState || matchers[matcher](predicate, value);
+
+  if (!collection.constructor.toString().includes("Array")) {
+    collection = [collection];
+  }
+
+  if (predicate.constructor.toString().includes("Array")) {
+    matcher = 'array';
+  }
+  return reduce(reductor, false, collection);
+}</code></pre>
         </div>
       </div>
       <div id="exercise-2" class="col s12">
         <div class="row">
           <h5 class="function-name">words</h5>
           <p>Using only currying and split make a function called "words" that returns a list of words in a string. Split function is in Ramda R.split or in lodash _.split or you can use any another function that works similar to JavaScript String split() method.</p>
-          <pre class="z-depth-1 code"><code class="js">words = string => split(' ', string)</code></pre>
+          <pre class="z-depth-1 code"><code class="js">const words = split(' ');</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">add</h5>
@@ -88,6 +107,21 @@ const smallest = (list) => {
       </div>
       <div id="exercise-3" class="col s12">
         <p>Implement a recursive version of the flatMapDeep function. Implement a recursive version of the forEach function.</p>
+        <div class="row">
+          <h5 class="function-name">recursive forEach</h5>
+          <pre class="z-depth-1 code"><code class="js">const forEach = function (array, fn) {
+  if (typeof fn !== "function") {
+    throw new TypeError();
+  }
+
+  const recur = function (element, index, arr) {
+    fn(element);
+    return element && index++ < arr.length - 1 ?  recur(array[index], index, arr) : arr;
+  }
+
+  return recur(array[0], 0, array);
+}</code></pre>
+        </div>
       </div>
       <div id="exercise-4" class="col s12">
         <p>Using Web Service of "MusicBrainz project" do following tasks ...</p>
