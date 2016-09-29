@@ -53,7 +53,7 @@ const getTrackTotalLength = ({tracks}) => {
 
 const getTotalAverage = (releasesData) => {
 	let totalLength = reduce ((acc, cd) => {return acc + getTrackTotalLength(cd)}, 0, prop('media', releasesData));
-	let totalCount = reduce ((acc, cd) => {return acc + cd.tracks.length}, 1, prop('media', releasesData));
+	let totalCount = reduce ((acc, cd) => {return acc + cd.tracks.length}, 0, prop('media', releasesData));
 	return toSeconds(totalLength/totalCount);
 };
 
@@ -64,14 +64,15 @@ const getTrackAverages = (releasesData) => {
 };
 
 export const releasesAverage = () => {
-    console.log('getMax: ',getMax(releasesData));
-    console.log('getTotalAverage: ',getTotalAverage(releasesData));
-    console.log('getTrackAverages: ',getTrackAverages(releasesData));
+	console.log('getMax: ',getMax(releasesData));
+	console.log('getTotalAverage: ',getTotalAverage(releasesData));
+	console.log('getTrackAverages: ',getTrackAverages(releasesData));
 
-     const averagesData = {
-         max: getMax(releasesData),
-         average: getTotalAverage(releasesData),
-         lengths: getTrackAverages(releasesData)
-     };
+	const averagesData = {
+		max: getMax(releasesData),
+		average: getTotalAverage(releasesData),
+		lengths: getTrackAverages(releasesData)
+	};
+	
 	averagesDataChart(averagesData)
 };
