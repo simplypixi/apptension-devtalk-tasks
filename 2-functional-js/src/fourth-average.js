@@ -35,8 +35,7 @@ function loadChartData(data) {
   $('#chart').html(rendered);
 }
 
-
-export default function () {
+export default function averages (averagesData) {
   loadChartData(averagesData);
 }
 
