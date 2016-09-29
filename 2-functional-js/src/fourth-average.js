@@ -11,14 +11,20 @@ const averagesData = {
     300
   ]
 };
+const toMinutes = (time) => {
+  let minutes = Math.floor(time / 60);
+  let seconds = time - minutes * 60;
+  return `${minutes} min and ${seconds} sec`;
+};
+
 function convertData(data) {
   const totalAverage ={
-    text: data.average, //todo convert to min sec format
+    text: toMinutes(data.average),
     value: (data.average / data.max) * 100
   };
 
   const averages = map((len) => ({
-    text: len,
+    text: toMinutes(len),
     value: (len / data.max) * 100
   }), data.lengths);
 
