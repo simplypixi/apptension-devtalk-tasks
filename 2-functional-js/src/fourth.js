@@ -21,18 +21,6 @@ export const readAlbums = () => {
 	dataChart(filterAlbums(albumsData))
 };
 
-//let getTotalAverage = pipe(
-//	prop('media'),
-//	reduce(
-//		plus,
-//		0,
-//		reduce(pipe(
-//			prop('length'),
-//			plus
-//		),0,prop('tracks'))
-//	)
-//);
-
 const toSeconds = (mili) => {
 	return Math.trunc(mili/1000);
 };

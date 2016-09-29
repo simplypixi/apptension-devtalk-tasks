@@ -7,12 +7,7 @@ export const forEach = (fn, list) => reduce((l, value) => {fn(value); return l;}
 export const map = (fn, list) => reduce((a, value) => [...a, fn(value)], [], list);
 
 // --- filter ---
-export const filter = (fn, list) => reduce((acc, value) => {
-	if (fn(value)) {
-		return acc.concat(value);
-	}
-	return acc;
-}, [], list);
+export const filter = (fn, list) => reduce((acc, value) => { return fn(value) ? acc.concat(value) : acc}, [], list);
 
 // --- reduceRight ---
 export const reduceRight = (fn, initialValue, array) => reduce(fn, initialValue, [...array].reverse());

@@ -38,7 +38,7 @@
         </div>
         <div class="row">
           <h5 class="function-name">filter</h5>
-          <pre class="z-depth-1 code"><code class="js">filter</code></pre>
+          <pre class="z-depth-1 code"><code class="js">filter = (fn, list) => reduce((acc, value) => { return fn(value) ? acc.concat(value) : acc}, [], list)</code></pre>
         </div>
         <div class="row">
           <h5 class="function-name">reduceRight</h5>
