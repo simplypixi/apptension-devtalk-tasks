@@ -1,13 +1,185 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Functional JS</title>
-	<link rel="stylesheet" href="main.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Functional JS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<h1>Functional JS</h1>
-	<script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+  <div class=" blue darken-2 z-depth-1 code header">
+    <h1 class="header__title">
+      Functional programming in Javascript
+      <span class="header__subtitle">by Mikusie</span>
+    </h1>
+  </div>
+  <div class="page">
+    <div class="row">
+      <ul class="tabs">
+      <li class="tab col s2"><a href="#exercise-1">1. Reduce</a></li>
+      <li class="tab col s2"><a href="#exercise-2">2. Currying</a></li>
+      <li class="tab col s2"><a href="#exercise-3">3. Recursion</a></li>
+      <li class="tab col s2"><a href="#exercise-4">4. Composing</a></li>
+      <li class="tab col s2"><a href="#exercise-5">5. Extra</a></li>
+    </ul>
+    </div>
+    <div class="page-content">
+      <div id="exercise-1" class="col s12">
+        <p>Implement forEach, map, filter, reduceRight and some using only reduce.</p>
+        <div class="row">
+          <h5 class="function-name">forEach</h5>
+          <pre class="z-depth-1 code"><code class="js">(fn, list) => reduce((l, value) => {fn(value); return l;}, list, list);</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">map</h5>
+          <pre class="z-depth-1 code"><code class="js">map = (fn, list) => reduce((a, value) => [...a, fn(value)], [], list);</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">filter</h5>
+          <pre class="z-depth-1 code"><code class="js">filter = (fn, list) => reduce((acc, value) => { return fn(value) ? acc.concat(value) : acc}, [], list)</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">reduceRight</h5>
+          <pre class="z-depth-1 code"><code class="js">(fn, initialValue, array) => reduce(fn, initialValue, [...array].reverse());</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">some</h5>
+          <pre class="z-depth-1 code"><code class="js">function () {
+  let [collection, predicate] = arguments,
+    matcher = typeof predicate,
+    matchers = {
+      function: (fn, value) => fn(value),
+      object: (obj, value) => reduce((currentState, key) => currentState || Object.is(value[key], obj[key]), false, Object.keys(obj)),
+      string: (str, value) => value[str] && Boolean(value[str]),
+      array: (arr, value) =>  value[arr[0]] === arr[1]
+    },
+    reductor = (currentState, value) => currentState || matchers[matcher](predicate, value);
+
+  if (!collection.constructor.toString().includes("Array")) {
+    collection = [collection];
+  }
+
+  if (predicate.constructor.toString().includes("Array")) {
+    matcher = 'array';
+  }
+  return reduce(reductor, false, collection);
+}</code></pre>
+        </div>
+      </div>
+      <div id="exercise-2" class="col s12">
+        <div class="row">
+          <h5 class="function-name">words</h5>
+          <p>Using only currying and split make a function called "words" that returns a list of words in a string. Split function is in Ramda R.split or in lodash _.split or you can use any another function that works similar to JavaScript String split() method.</p>
+          <pre class="z-depth-1 code"><code class="js">const words = split(' ');</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">add</h5>
+          <p>Using only add and map functions create a function that increases every number in array.</p>
+          <pre class="z-depth-1 code"><code class="js">function add(a, b) {
+  return a + b;
+}
+
+const increaseNumbers = array => {
+  return array.map(item => {
+    const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
+    return isNumber ? add(parseFloat(item), 1) : item;
+  })
+}</code></pre>
+        </div>
+        <div class="row">
+          <h5 class="function-name">smallest number</h5>
+          <p>Make a function to find the smallest number in an array. Use only less function and one of the listed below functions:map, filter, reduce.</p>
+          <pre class="z-depth-1 code"><code class="js">function less(a, b) {
+  return a < b ? a : b;
+}
+
+const smallest = (list) => {
+  const filteredList = reduce((array, item) => {
+    const isNumber = !isNaN(parseFloat(item)) && isFinite(item);
+    return isNumber ? [...array, parseFloat(item)] : array;
+  }, [], list);
+
+  return filteredList.length ? reduce(less, filteredList[0], filteredList) : null;
+}</code></pre>
+        </div>
+      </div>
+      <div id="exercise-3" class="col s12">
+        <p>Implement a recursive version of the flatMapDeep function. Implement a recursive version of the forEach function.</p>
+        <div class="row">
+          <h5 class="function-name">recursive forEach</h5>
+          <pre class="z-depth-1 code"><code class="js">const forEach = function (array, fn) {
+  if (typeof fn !== "function") {
+    throw new TypeError();
+  }
+
+  const recur = function (element, index, arr) {
+    fn(element);
+    return element && index++ < arr.length - 1 ?  recur(array[index], index, arr) : arr;
+  }
+
+  return recur(array[0], 0, array);
+}</code></pre>
+        </div>
+      </div>
+      <div id="exercise-4" class="col s12">
+        <p>Using Web Service of "MusicBrainz project" do following tasks ...</p>
+        <div class="row z-depth-1 music-brainz-container">
+          <div id="chart"></div>
+        </div>
+        <h5>Albums</h5>
+        <div class="row" id="albums-list"></div>
+      </div>
+      <div id="exercise-5" class="col s12">
+        <p>Using only reduce implement functions: sum, any, max, concat. Extract the common parts of this, propose API, describe the structure of common parts.</p>
+      </div>
+    </div>
+  </div>
+  <script id="album-template" type="x-tmpl-mustache">
+  {{#albums}}
+    <div class="col m4 s6">
+      <div class="z-depth-2 album">
+        <div class="row album__top {{color}} darken-2 white-text">
+          <div class="col">
+            <i class="material-icons album__icon">album</i>
+          </div>
+          <div class="col">
+            <span class="album__title">{{title}}</span>
+          </div>
+        </div>
+        <div class="row album__detail {{color}}-text text-darken-2">
+          <span class="{{color}}-text text-darken-2 album__value">{{date}}</span>
+          <span class="{{color}}-text text-lighten-3 album__label">Release date</span>
+        </div>
+      </div>
+    </div>
+  {{/albums}}
+  </script>
+
+  <script id="chart-template" type="x-tmpl-mustache">
+  {{#totalAverage}}
+    <div class="average" style="width:{{value}}%">
+      <div class="row">
+      <div class="left average__label">Average length of tracks in the releases</div>
+      <div class="right">
+        <i class="material-icons average__icon">restore</i>
+        <span class="average__main-value">{{text}}</span>
+      </div>
+    </div>
+    <div class="track__length track__length--average"></div>
+    </div>
+  {{/totalAverage}}
+  <div class="tracks">
+    {{#averages}}
+      <div class="track__length" style="width:{{value}}%">
+        <div class="right track__value">{{text}}</div>
+      </div>
+    {{/averages}}
+    <div class="tracks__title">Averages</div>
+  </div>
+  </script>
+  <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 </body>
 </html>

@@ -1,151 +1,112 @@
-/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
-
 body {
-  margin: 0; }
+  background-color: #eee; }
 
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
-  display: block; }
+pre {
+  white-space: pre-wrap; }
 
-audio, canvas, progress, video {
-  display: inline-block; }
+.header {
+  margin-bottom: 10px;
+  padding: 25px; }
 
-audio:not([controls]) {
-  display: none;
-  height: 0; }
-
-progress {
-  vertical-align: baseline; }
-
-template, [hidden] {
-  display: none; }
-
-a {
-  background-color: transparent; }
-
-a:active, a:hover {
-  outline-width: 0; }
-
-abbr[title] {
-  border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted; }
-
-b, strong {
-  font-weight: inherit; }
-
-b, strong {
-  font-weight: bolder; }
-
-dfn {
-  font-style: italic; }
-
-h1 {
+.header__title {
+  color: #fff;
   font-size: 2em;
-  margin: 0.67em 0; }
-
-mark {
-  background-color: #ff0;
-  color: #000; }
-
-small {
-  font-size: 80%; }
-
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline; }
-
-sub {
-  bottom: -0.25em; }
-
-sup {
-  top: -0.5em; }
-
-img {
-  border-style: none; }
-
-svg:not(:root) {
-  overflow: hidden; }
-
-code, kbd, pre, samp {
-  font-family: monospace, monospace;
-  font-size: 1em; }
-
-figure {
-  margin: 1em 40px; }
-
-hr {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible; }
-
-button, input, select, textarea {
-  font: inherit;
   margin: 0; }
 
-optgroup {
-  font-weight: bold; }
+.header__subtitle {
+  font-size: .6em;
+  font-weight: normal; }
 
-button, input, select {
-  overflow: visible; }
+.tabs {
+  background-color: transparent; }
+  .tabs .tab a {
+    color: #01579b; }
+    .tabs .tab a:hover {
+      color: #0277bd; }
+  .tabs .indicator {
+    background-color: #01579b; }
 
-button, select {
-  text-transform: none; }
+.page {
+  margin: 30px; }
 
-button, [type="button"], [type="reset"], [type="submit"] {
-  cursor: pointer; }
+.code .js, .code .hljs {
+  display: block;
+  background-color: #fff;
+  padding: 10px; }
 
-[disabled] {
-  cursor: default; }
+.music-brainz-container {
+  background-color: #fff;
+  padding: 20px; }
 
-button, html [type="button"], [type="reset"], [type="submit"] {
-  -webkit-appearance: button; }
+.average {
+  color: #ffa000; }
+  .average__icon {
+    transform: scaleX(-1);
+    font-size: 2em;
+    font-weight: 100;
+    line-height: 0; }
+  .average__main-value {
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1em;
+    font-weight: 100; }
+  .average__label {
+    font-weight: 300;
+    position: relative;
+    top: 20px; }
+  .average .track__length {
+    background-color: #ffa000; }
+  .average .row {
+    margin-bottom: -4px; }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
+.track__length {
+  display: block;
+  width: 100%;
+  height: 25px;
+  background-color: #ffca28;
+  margin-top: 3px; }
 
-button:-moz-focusring, input:-moz-focusring {
-  outline: 1px dotted ButtonText; }
+.track__value {
+  margin-top: 1px;
+  font-size: 1.58rem;
+  line-height: 1em;
+  font-weight: 100;
+  margin-right: 3px;
+  color: #fff; }
 
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+.tracks__title {
+  color: #ffca28; }
 
-legend {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  color: inherit;
-  display: table;
-  max-width: 100%;
-  padding: 0;
-  white-space: normal; }
+#albums-list {
+  margin-right: -11px;
+  margin-left: -11px; }
 
-textarea {
-  overflow: auto; }
-
-[type="checkbox"], [type="radio"] {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0; }
-
-[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button {
-  height: auto; }
-
-[type="search"] {
-  -webkit-appearance: textfield; }
-
-[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+.album {
+  background-color: #fff; }
+  .album__icon {
+    font-size: 4em;
+    display: block;
+    margin: 10px 20px 10px 10px; }
+  .album__title {
+    font-size: 2em;
+    font-weight: 100;
+    margin-top: 20px;
+    display: inline-block;
+    line-height: 1.1em;
+    margin: 20px 0; }
+  .album__detail {
+    margin-left: 90px; }
+  .album__value {
+    display: block;
+    font-size: 1.3em;
+    line-height: 1.1em;
+    word-break: break-word; }
+  .album__label {
+    font-size: .8em;
+    margin-bottom: 1em;
+    display: block;
+    word-break: break-word; }
+  .album .col {
+    padding: 0; }
 
 /*# sourceMappingURL=main.css.map*/

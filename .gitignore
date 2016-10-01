@@ -6,4 +6,11 @@
 out
 gen
 .gitignore
-2-functional-js/node_modules/
+*.map
+node_modules
+/node_modules
+**/node_modules
+coverage
+/coverage
+**/coverage
+**/bundle.js
