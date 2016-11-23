@@ -1,10 +1,10 @@
-import {take} from 'lodash';
+import {sampleSize} from 'lodash';
 
-import layout from './layout';
-import {newsApiKey} from '../config';
+import {layout, errorLayout} from './layout';
+import {newsApiKey, readingErrorMsg} from '../config';
 
 function successAction(response) {
-  layout({articles: take(response.articles, 3)});
+  layout({articles: sampleSize(response.articles, 3)});
   return response.articles;
 }
 
@@ -32,16 +32,6 @@ export default function () {
   });
 
   promiseExample
-    .then((response) =>
-      console.info(
-        'Promise success >>\nCo dzis czyta Boniek?\n\n',
-        successAction(response)
-      )
-    )
-    .catch((response) =>
-      console.error(
-        'Promise error >>\nDzis Boniek nic nie czyta. Pojechal dogladac kury.\n\n',
-        response
-      )
-    );
+    .then((response) => successAction(response))
+    .catch((response) => errorLayout({message: readingErrorMsg}));
 }
