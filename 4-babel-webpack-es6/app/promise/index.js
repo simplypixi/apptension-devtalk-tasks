@@ -1,6 +1,10 @@
-import {newsApiKey} from './config';
+import {take} from 'lodash';
+
+import layout from './layout';
+import {newsApiKey} from '../config';
 
 function successAction(response) {
+  layout({articles: take(response.articles, 3)});
   return response.articles;
 }
 

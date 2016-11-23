@@ -5,6 +5,20 @@
 	<title>webpack test</title>
 </head>
 <body>
+	<section>
+		<h1>Co czyta Boniek?</h1>
+		<ul id="what-is-reading"></ul>
+		<em>powered by newsapi.org</em>
+	</section>
+	<script id="what-is-reading-template" type="x-tmpl-mustache">
+		{{#articles}}
+		<li>
+			<h2>{{title}}</h2>
+			<p>{{description}}</p>
+			<em>{{author}}</em>
+		</li>
+		{{/articles}}
+	</script>
 	<script src="bundle.js"></script>
 </body>
 </html>
