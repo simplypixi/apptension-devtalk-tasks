@@ -3,7 +3,7 @@ const jsonObj = {
 		{
 			id: 0,
 			songPhraseStart: 'ole ',
-			songPhraseEnd: 'nie damy sie'
+			songPhraseEnd: ' nie damy sie'
 		},
 		{
 			id: 1,
@@ -29,7 +29,8 @@ const capitalize = (v) => v.charAt(0).toUpperCase() + v.slice(1);
 const displaySongs = (v) => {
 	let id = `songPhraseStart_${v.id}`;
 	let el = document.querySelector('#string-repeating');
-	let phrase = `<p id="${id}"> ${capitalize(v.songPhraseStart)} ${v.songPhraseEnd}.</p>`;
+	let phrase = `<p id="${id}" style="font-size: 20px; font-family: 'Work Sans',
+	sans-serif;"> ${capitalize(v.songPhraseStart)} ${v.songPhraseEnd}.</p>`;
 	el.innerHTML += phrase;
 }
 
@@ -37,30 +38,42 @@ const songsPhrase = jsonObj.songs.map(repeatSongsPhrase);
 
 songsPhrase.forEach(displaySongs);
 
-const doAnimIn = () => {
-	console.log('in');
-	let target = document.querySelector('#songPhraseStart_0');
-	TweenLite.to(target, 3, {
-		text: capitalize(songsPhrase[1].songPhraseStart) + songsPhrase[1].songPhraseEnd + '.',
-		delay: 1,  
-		ease:Expo.easeIn, 
-		onComplete: doAnimOut,
-		onCompleteScope:this
-	});
+let doAnimCounter = 0;
+
+let animParam = {
+	text: '',
+	delay: 1,
+	ease: Power0.easeNone,
+	onComplete: null
 }
 
-const doAnimOut = () => {
-	console.log('out');
-	let target = document.querySelector('#songPhraseStart_1');
-	TweenLite.to(target, 3, {
-		text: capitalize(songsPhrase[0].songPhraseStart) + songsPhrase[0].songPhraseEnd + '.',
-		delay: 1, 
-		ease:Expo.easeOut,
-		onComplete: doAnimIn,
-		onCompleteScope:this
+const gsapAnim = (target, color, animParam) => {
+	TweenMax.set(target, {
+		fontSize: '20px',
+		textShadow: `1px 1px 1px ${color}`
 	});
+	TweenMax.to(target, 2.5, animParam);
 }
 
-doAnimIn();
+const doAnimFirst = () => {
+	let target = document.querySelector('#songPhraseStart_0'),
+		color = '#91e600',
+		songsPhraseParam = (doAnimCounter % 2 ? 0 : 1);
+	animParam.text = capitalize(songsPhrase[songsPhraseParam].songPhraseStart) + songsPhrase[songsPhraseParam].songPhraseEnd + '.',
+	animParam.onComplete = doAnimSecond;
+	gsapAnim(target, color, animParam);
+}
+
+const doAnimSecond = () => {
+	let target = document.querySelector('#songPhraseStart_1'),
+		color = '#ffa500',
+		songsPhraseParam = (doAnimCounter % 2 ? 1 : 0);
+	animParam.text = capitalize(songsPhrase[songsPhraseParam].songPhraseStart) + songsPhrase[songsPhraseParam].songPhraseEnd + '.',
+	animParam.onComplete = doAnimFirst;
+	doAnimCounter ++;
+	gsapAnim(target, color, animParam);
+}
+
+setTimeout(function(){ doAnimFirst(); }, 3000);
 
 export {songsPhrase}
