@@ -11,9 +11,13 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015']
+          presets: ['es2015', 'stage-0'],
+                              plugins: [
+                        'transform-runtime',
+                    ]
         }
-      }
+      },
+      { test: /\.json$/, loader: "json-loader" }
     ]
   }
 };
