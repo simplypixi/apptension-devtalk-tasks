@@ -1,3 +1,4 @@
+//ES2015: Modules export/import
 import {sampleSize} from 'lodash';
 
 import {layout, errorLayout} from './layout';
@@ -8,10 +9,13 @@ function successAction(response) {
   return response.articles;
 }
 
+
 export default function () {
   const source = 'football-italia';
+  //ES2015: Template Literals
   const url = `https://newsapi.org/v1/articles?source=${source}&sortBy=top&apiKey=${newsApiKey}`;
 
+  //ES2015: Promises - First class representation of a value that may be made asynchronously and be available in the future.
   const promiseExample = new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
     request.onload = function () {
@@ -32,6 +36,7 @@ export default function () {
   });
 
   promiseExample
+    //ES2015: Arrow functions
     .then((response) => successAction(response))
     .catch((response) => errorLayout({message: readingErrorMsg}));
 }

@@ -1,15 +1,9 @@
-import {parse, render} from 'mustache';
+import {renderLayout} from '../utils';
 
 export function layout(data) {
-  const template = document.querySelector('#what-is-reading-template').innerHTML;
-  parse(template);   // optional, speeds up future uses
-  const rendered = render(template, data);
-  document.querySelector('#what-is-reading').innerHTML = rendered;
+  renderLayout(data, '#what-is-reading-template', '#what-is-reading');
 }
 
 export function errorLayout(data) {
-  const template = document.querySelector('#error-template').innerHTML;
-  parse(template);   // optional, speeds up future uses
-  const rendered = render(template, data);
-  document.querySelector('#what-is-reading').innerHTML = rendered;
+  renderLayout(data, '#error-template', '#what-is-reading');
 }
