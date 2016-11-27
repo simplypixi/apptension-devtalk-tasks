@@ -29,7 +29,7 @@ const capitalize = (v) => v.charAt(0).toUpperCase() + v.slice(1);
 const displaySongs = (v) => {
 	let id = `songPhraseStart_${v.id}`;
 	let el = document.querySelector('#string-repeating');
-	let phrase = `<p id="${id}" style="font-size: 20px; font-family: 'Work Sans',
+	let phrase = `<p id="${id}" style="font-size: 20px;,
 	sans-serif;"> ${capitalize(v.songPhraseStart)} ${v.songPhraseEnd}.</p>`;
 	el.innerHTML += phrase;
 }
