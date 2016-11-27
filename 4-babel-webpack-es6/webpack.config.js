@@ -30,7 +30,9 @@ module.exports = {
         include: /node_modules/,
         loader: 'style-loader!css-loader'
       },
-      { test: /\.json$/, loader: 'json-loader' }
+      { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.png$/, loader: "url-loader?limit=100000" },
+      { test: /\.jpg$/, loader: "file-loader" }
     ]
   },
   plugins: [extractSCSS],

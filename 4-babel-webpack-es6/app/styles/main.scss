@@ -1,5 +1,41 @@
 @import '~normalize', '~skeleton';
+@import './mixin';
 
 body{
   background: #f5f5f5;
+}
+
+.header {
+  background-color: #fff;
+  padding: 60px 0;
+
+  h1, h2 {
+    line-height: 1.2em;
+    margin-bottom: 0;
+  }
+}
+
+.bg{
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+  position: relative;
+  
+  &__inner{
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+  }
+  &--one{
+    background-image: url(../images/bg-1.jpg);
+    height: 500px;
+  }
+  &--two{
+    background-image: url(../images/bg-2.jpg);
+  }
+  &--h3{height: 300px;}
+  &--h4{height: 400px;}
+  &--h5{height: 500px;}
+  &--h6{height: 600px;}
+  &--h7{height: 700px;}
 }
