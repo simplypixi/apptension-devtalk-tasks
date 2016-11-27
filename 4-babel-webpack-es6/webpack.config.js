@@ -1,3 +1,7 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractSCSS = new ExtractTextPlugin('./main.css');
+var path = require('path');
+
 module.exports = {
   entry: './app/main.js',
   output: {
@@ -17,7 +21,24 @@ module.exports = {
                     ]
         }
       },
-      { test: /\.json$/, loader: "json-loader" }
+      {
+        test: /\.scss$/,
+        loader: extractSCSS.extract(['css?sourceMap','sass?sourceMap'])
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        loader: 'style-loader!css-loader'
+      },
+      { test: /\.json$/, loader: 'json-loader' }
     ]
+  },
+  plugins: [extractSCSS],
+  resolve: {
+    extensions: ['', '.js', '.css', '.scss'],
+    alias: {
+      skeleton: path.join(__dirname, '/node_modules/skeleton-css/css/skeleton.css'),
+      normalize: path.join(__dirname, '/node_modules/skeleton-css/css/normalize.css')
+    }
   }
 };

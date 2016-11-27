@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>webpack test</title>
-	<link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<h1>Wszystko, co chcielibyście wiedzieć o Zbigniewie Bońku, ale baliście się zapytać.</h1>
-	<div id="carrer-in-national-team">
-	</div>
-	<div id="carrer-in-league">		
-	</div>
-	<div id="string-repeating">
-		<h2>Co śpiewali kibice gdy na murawie grał Boniek?</h2>
-	</div>
-	<section>
-		<h2>O czym czyta dzisiaj Boniek?</h2>
-		<ul id="what-is-reading"></ul>
-		<em>powered by newsapi.org</em>
-	</section>
+    <h1>Wszystko, co chcielibyście wiedzieć o Zbigniewie Bońku, ale baliście się zapytać.</h1>
+    <div id="carrer-in-national-team">
+    </div>
+    <div id="carrer-in-league">     
+    </div>
+    <div id="string-repeating">
+        <h2>Co śpiewali kibice gdy na murawie grał Boniek?</h2>
+    </div>
+    <section>
+        <h2>O czym czyta dzisiaj Boniek?</h2>
+        <ul id="what-is-reading"></ul>
+        <em>powered by newsapi.org</em>
+    </section>
 
-	<script id="what-is-reading-template" type="x-tmpl-mustache">
-		{{#articles}}
-		<li>
-			<h3>{{{title}}}</h3>
-			<p>{{{description}}}</p>
-			<em>{{author}}</em>
-		</li>
-		{{/articles}}
-	</script>
-	<script id="error-template" type="x-tmpl-mustache">
-		<p>{{{message}}}</p>
-	</script>
-	<script id="national-carrer-template" type="x-tmpl-mustache">
-		<section >
-			<h2>Kiedy Boniek grał w kadrze narodowej?</h2>
-			<p>{{years}}</p>
-		</section>
-		<section>
-			<h2>Ile goli strzelił dla Biało-Czerownych?</h2>
-			<p>{{goals}}</p>
-		</section>
-		<section>
-			<h2>W ilu meczach polskiej reprezentacji zagrał?</h2>
-			<p>{{matches}}</p>
-		</section>
-	</script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
-	<script src="bundle.js"></script>
+    <script id="what-is-reading-template" type="x-tmpl-mustache">
+        {{#articles}}
+        <li>
+            <h3>{{{title}}}</h3>
+            <p>{{{description}}}</p>
+            <em>{{author}}</em>
+        </li>
+        {{/articles}}
+    </script>
+    <script id="error-template" type="x-tmpl-mustache">
+        <p>{{{message}}}</p>
+    </script>
+    <script id="national-carrer-template" type="x-tmpl-mustache">
+        <section >
+            <h2>Kiedy Boniek grał w kadrze narodowej?</h2>
+            <p>{{years}}</p>
+        </section>
+        <section>
+            <h2>Ile goli strzelił dla Biało-Czerownych?</h2>
+            <p>{{goals}}</p>
+        </section>
+        <section>
+            <h2>W ilu meczach polskiej reprezentacji zagrał?</h2>
+            <p>{{matches}}</p>
+        </section>
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
+    <script src="bundle.js"></script>
 </body>
 </html>
