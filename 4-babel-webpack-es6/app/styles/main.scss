@@ -14,7 +14,9 @@ body{
     margin-bottom: 0;
   }
 }
-
+.container__inner-box{
+  margin: 60px 0;
+}
 .bg{
   overflow: hidden;
   height: 200px;
@@ -26,6 +28,13 @@ body{
     height: 300px;
     width: 100%;
   }
+  
+  &--h3{height: 300px;}
+  &--h4{height: 400px;}
+  &--h5{height: 500px;}
+  &--h6{height: 600px;}
+  &--h7{height: 700px;}
+
   &--one{
     background-image: url(../images/bg-1.jpg);
     height: 500px;
@@ -33,9 +42,34 @@ body{
   &--two{
     background-image: url(../images/bg-2.jpg);
   }
-  &--h3{height: 300px;}
-  &--h4{height: 400px;}
-  &--h5{height: 500px;}
-  &--h6{height: 600px;}
-  &--h7{height: 700px;}
+  &--three{
+    background-image: url(../images/bg-3.jpg);
+  }
+  &--four{
+    background-image: url(../images/b-1982.jpg);
+    background-size: initial;
+    position: absolute;
+    top: 0;
+  }
+  &--five{
+    background-image: url(../images/bg-4.jpg);
+  }
+  &--six{
+    background-image: url(../images/b-2015.jpg);
+  }
+}
+
+.stat-box {
+  margin-top: 20px;
+
+  &__title{
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  &__content{
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #901212;
+  }
 }

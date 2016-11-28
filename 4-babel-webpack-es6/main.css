@@ -828,10 +828,34 @@ body {
 
 .header {
   background-color: #fff;
-  margin: 100px 0 500px 0;
-  padding: 100px 0; }
+  padding: 60px 0; }
+  .header h1, .header h2 {
+    line-height: 1.2em;
+    margin-bottom: 0; }
 
-.top-wrapper__bg {
-  background: url(27440014c514212a3c363d758ab1a237.jpg); }
+.bg {
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+  position: relative; }
+  .bg__inner {
+    background-size: cover;
+    height: 300px;
+    width: 100%; }
+  .bg--one {
+    background-image: url(a36edc2ccfee0ca3b26f2e1fb56075b4.jpg);
+    height: 500px; }
+  .bg--two {
+    background-image: url(27440014c514212a3c363d758ab1a237.jpg); }
+  .bg--h3 {
+    height: 300px; }
+  .bg--h4 {
+    height: 400px; }
+  .bg--h5 {
+    height: 500px; }
+  .bg--h6 {
+    height: 600px; }
+  .bg--h7 {
+    height: 700px; }
 
 /*# sourceMappingURL=main.css.map*/

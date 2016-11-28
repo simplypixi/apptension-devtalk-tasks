@@ -1,77 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="bg">
-        <div class="bg__inner bg--one" 
-             data-0p="transform: translateY(0px);"
-             data-30p="transform: translateY(-200px);"></div>
-        </div>
-    <div class="header">
-        <div class="container header__container"
-             data-25p="transform: translateY(0px);"
-             data-50p="transform: translateY(-40px);">
-            <h2>Wszystko, co chcielibyście wiedzieć o</h2>
-            <h1>
-                <strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-10p="opacity:1;">bigniewie Bońku,</span>
-                </strong>
-            </h1>
-            <h2>ale baliście się zapytać.</h2>
-        </div>
+  <div class="bg bg--h4">
+    <div class="bg__inner bg--three bg--h7" 
+       data-0p="transform: translateY(-150px);"
+       data-50p="transform: translateY(-300px);"></div>
     </div>
-    <div class="bg bg--h4">
-        <div class="bg__inner bg--two bg--h7" 
-             data-0p="transform: translateY(-200px);"
-             data-100p="transform: translateY(0);"></div>
+  <div class="header">
+    <div class="container header__container"
+       data-5p="transform: translateY(0px);"
+       data-50p="transform: translateY(-50px);">
+      <h2>Wszystko, co chcielibyście wiedzieć o</h2>
+      <h1>
+        <strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-10p="opacity:1;">bigniewie Bońku,</span>
+        </strong>
+      </h1>
+      <h2>ale baliście się zapytać.</h2>
     </div>
-    
-
-    <div id="carrer-in-national-team">
-    </div>
-    <div id="carrer-in-league">     
-    </div>
-    <div id="string-repeating">
+  </div>
+  <div class="bg bg--h3">
+    <div class="bg__inner bg--one bg--h7" 
+       data-0p="transform: translateY(-200px);"
+       data-100p="transform: translateY(0);"></div>
+    <div class="bg__inner bg--four bg--h7" 
+       data-20p="width:0%; transform: translateY(-200px);"
+       data-70p="width:100%; transform: translateY(-30px);"
+       data-120p="transform: translateY(-1px);"></div>
+  </div>
+  <div>
+    <div class="container" id="carrer-in-national-team"></div> 
+  </div>
+  <div class="bg bg--h3">
+    <div class="bg__inner bg--five bg--h7" 
+       data-0p="transform: translateY(-380px);"
+       data-200p="transform: translateY(0);"></div>
+  </div>
+  <!-- <div>
+    <div id="carrer-in-league" class="container"></div>
+  </div> -->
+  <div>
+    <div class="container">
+      <div class="container__inner-box">
         <h2>Co śpiewali kibice gdy na murawie grał Boniek?</h2>
+        <div id="string-repeating"></div>
+      </div>
     </div>
-    <section>
+  </div>
+  <div class="bg bg--h3">
+    <div class="bg__inner bg--six bg--h7" 
+       data-top="transform: translateY(-400px);"
+       data-top-bottom="transform: translateY(-1px);"></div>
+  </div>
+  <div>
+    <div class="container">
+      <div class="container__inner-box">
         <h2>O czym czyta dzisiaj Boniek?</h2>
         <ul id="what-is-reading"></ul>
         <em>powered by newsapi.org</em>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <script id="what-is-reading-template" type="x-tmpl-mustache">
-        {{#articles}}
-        <li>
-            <h3>{{{title}}}</h3>
-            <p>{{{description}}}</p>
-            <em>{{author}}</em>
-        </li>
-        {{/articles}}
-    </script>
-    <script id="error-template" type="x-tmpl-mustache">
-        <p>{{{message}}}</p>
-    </script>
-    <script id="national-carrer-template" type="x-tmpl-mustache">
-        <section >
-            <h2>Kiedy Boniek grał w kadrze narodowej?</h2>
-            <p>{{years}}</p>
-        </section>
-        <section>
-            <h2>Ile goli strzelił dla Biało-Czerownych?</h2>
-            <p>{{goals}}</p>
-        </section>
-        <section>
-            <h2>W ilu meczach polskiej reprezentacji zagrał?</h2>
-            <p>{{matches}}</p>
-        </section>
-    </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
-    <script src="bundle.js"></script>
+  <script id="what-is-reading-template" type="x-tmpl-mustache">
+    {{#articles}}
+    <li>
+      <h3>{{{title}}}</h3>
+      <p>{{{description}}}</p>
+      <em>{{author}}</em>
+    </li>
+    {{/articles}}
+  </script>
+  <script id="error-template" type="x-tmpl-mustache">
+    <p>{{{message}}}</p>
+  </script>
+  <script id="national-carrer-template" type="x-tmpl-mustache">
+    <div class="row stat-box">
+      <div class="two-thirds column">
+        <h2 class="stat-box__title">Kiedy Boniek grał w kadrze narodowej?</h2>
+        <p class="stat-box__content">{{years}}</p>
+      </div>
+    </div>
+    <div class="row stat-box">
+      <div class="two-thirds offset-by-one-third column">
+         <h2 class="stat-box__title">Ile goli strzelił dla Biało-Czerownych?</h2>
+          <p class="stat-box__content">{{goals}}</p>
+      </div>
+    </div>
+    <div class="row stat-box">
+      <div class="two-thirds column">
+        <h2 class="stat-box__title">W ilu meczach polskiej reprezentacji zagrał?</h2>
+        <p class="stat-box__content">{{matches}}</p>
+      </div>
+    </div>
+  </script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
+  <script src="bundle.js"></script>
 </body>
 </html>
