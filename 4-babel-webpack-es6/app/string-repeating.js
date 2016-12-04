@@ -50,7 +50,6 @@ let animParam = {
 const gsapAnim = (target, color, animParam) => {
 	TweenMax.set(target, {
 		fontSize: '20px',
-		textShadow: `1px 1px 1px ${color}`
 	});
 	TweenMax.to(target, 2.5, animParam);
 }

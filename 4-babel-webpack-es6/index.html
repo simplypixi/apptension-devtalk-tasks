@@ -18,7 +18,7 @@
        data-50p="transform: translateY(-50px);">
       <h2>Wszystko, co chcielibyście wiedzieć o</h2>
       <h1>
-        <strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-10p="opacity:1;">bigniewie Bońku,</span>
+        <strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-18p="opacity:1;">bigniewie Bońku,</span>
         </strong>
       </h1>
       <h2>ale baliście się zapytać.</h2>
@@ -61,20 +61,24 @@
     <div class="container">
       <div class="container__inner-box">
         <h2>O czym czyta dzisiaj Boniek?</h2>
-        <ul id="what-is-reading"></ul>
-        <em>powered by newsapi.org</em>
+        <div id="what-is-reading"></div>
+        <span class="articles-footnote">powered by <a href="https://newsapi.org">newsapi.org</a></span>
       </div>
     </div>
   </div>
-
+  
   <script id="what-is-reading-template" type="x-tmpl-mustache">
-    {{#articles}}
-    <li>
-      <h3>{{{title}}}</h3>
-      <p>{{{description}}}</p>
-      <em>{{author}}</em>
-    </li>
-    {{/articles}}
+    {{#.}}
+    <div class="row">
+      {{#.}}
+      <div class="one-half column article-summary">
+        <h3 class="article-summary__title"><a href="{{url}}">{{{title}}}</a></h3>
+        <a class="article-summary__image" href="{{url}}"><img src="{{urlToImage}}"></a>
+        <a class="article-summary__desc" href="{{url}}"><em>{{author}}</em>{{{description}}}</a>
+      </div>
+      {{/.}}
+    </div>
+    {{/.}}
   </script>
   <script id="error-template" type="x-tmpl-mustache">
     <p>{{{message}}}</p>

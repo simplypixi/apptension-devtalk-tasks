@@ -1,11 +1,11 @@
 //ES2015: Modules export/import
-import {sampleSize} from 'lodash';
+import {sampleSize, chunk} from 'lodash';
 
 import {layout, errorLayout} from './layout';
 import {newsApiKey, readingErrorMsg} from '../config';
 
 function successAction(response) {
-  layout({articles: sampleSize(response.articles, 3)});
+  layout(chunk(sampleSize(response.articles, 4), 2));
   return response.articles;
 }
 
