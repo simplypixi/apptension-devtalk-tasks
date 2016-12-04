@@ -33,6 +33,10 @@ body{
     height: 300px;
     width: 100%;
   }
+
+  &--nocover {
+    background-size: initial;
+  }
   
   &--h3{height: 300px;}
   &--h4{height: 400px;}
@@ -52,7 +56,6 @@ body{
   }
   &--four{
     background-image: url(../images/b-1982.jpg);
-    background-size: initial;
     position: absolute;
     top: 0;
   }
@@ -61,6 +64,9 @@ body{
   }
   &--six{
     background-image: url(../images/b-2015.jpg);
+  }
+  &--seven{
+    background-image: url(../images/b-7.jpg);
   }
 }
 
