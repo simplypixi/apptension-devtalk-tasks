@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -74,7 +74,8 @@
   <div>
     <div class="container">
       <div class="container__inner-box">
-        <h2>Co ... ?</h2>
+        <h2>Co mówi Boniek?</h2>
+        <div id="meme-generator"></div>
       </div>
     </div>
   </div>
@@ -123,6 +124,12 @@
     {{#.}}
       <p id="{{{id}}}" style="font-size: 20px;, sans-serif;">{{{phrase}}}</p>
     {{/.}}
+  </script>
+  <script id="meme-generator-template" type="x-tmpl-mustache">
+    <div class="row stat-box meme">
+      <img class='meme__image' src='http://static.prsa.pl/images/0179344b-393e-4b1b-b8ca-9a143e780c23.jpg' alt="{{{quote}}}"/>
+      {{{text}}}
+    </div>
   </script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>

@@ -19,17 +19,13 @@ export default {
 		quote: 'Nawet jak będę miał po tym filmie cały tłum gejów przeciwko sobie, to jakoś to przeżyję. G.... mnie to obchodzi.',
 		source: 'wp.pl'
 	},
-	'Gazeta Wyborcza': {
+	'18.04.2006': {
 		quote: 'U nas 16–17-latka już niczego się nie uczy, lecz psuje.',
-		source: '18.04.2006'
+		source: 'Gazeta Wyborcza'
 	},
-	'Życie Warszawy': {
+	'10.01.2005': {
 		quote: 'Z tego kraju zrobił się jeden wielki areszt śledczy.',
-		source: '10.01.2005'
-	},
-	'Życie Warszawy': {
-		quote: 'Z tego kraju zrobił się jeden wielki areszt śledczy.',
-		source: '10.01.2005'
+		source: 'Życie Warszawy'
 	},
 	'29.06.2008': {
 		quote: 'Siedzimy na nich, siedzimy na nich, siedzimy na nich.',

@@ -1,16 +1,21 @@
 import quotes from './quotes.js';
+import {layout, errorLayout} from './layout';
 import {googleAPI} from '../config.js';
+import {isFunction, isUndefined, random, debounce} from 'lodash';
+import Meme from './meme';
 import $ from 'jquery';
 
-const buildMap = obj => new Map(Object.entries(obj));
+//ES2015: Map
+const createMap = obj => new Map(Object.entries(obj));
 const searchImageByQuery = query => $.get(googleAPI.url, {
+	//ES2016: Spread object
 	...googleAPI.config,
 	q: query
 });
 
-const isPromise = (obj) => typeof obj !== 'undefined' &&
-  typeof obj.then === 'function';
+const isPromise = obj => !isUndefined(obj) && isFunction(obj.then);
 
+//ES2015: Defaults
 const next = (iter, callback, prev = undefined) => {
   const item = iter.next(prev);
   const value = item.value;
@@ -19,25 +24,51 @@ const next = (iter, callback, prev = undefined) => {
 
   if (isPromise(value)) {
     value.then(val => {
-      setImmediate(() => next(iter, callback, val));
+      setTimeout(() => next(iter, callback, val));
     });
   } else {
-    setImmediate(() => next(iter, callback, value));
+    setTimeout(() => next(iter, callback, value));
   }
 };
 
 const createSync = (fn) =>
+	//ES2015: Rest && spread && PPromise
   (...args) => new Promise(resolve => next(fn(...args), res => resolve(res)));
 
-const getImage = createSync(function* () {
-  const results = yield searchImageByQuery(...arguments);
-  yield results;
-});
+//ES2015: Generator
+const asyncGen = function* () {
+	const results = yield searchImageByQuery(...arguments);
+	yield results;
+}
 
-export default () => {
-	const quotesMap = buildMap(quotes);
+const getImage = createSync(asyncGen);
 
-	getImage('Zbigniew Boniek').then(({items}) => console.log(items));
+const quotesMap = createMap(quotes);
 
-	console.log(quotesMap.entries())
-};
+const getRandomDate = quotesMap => [...quotesMap.keys()][random(0, quotesMap.size - 1)];
+//ES2015: Spread, Destructuring, find
+const getRandomQuote = randomDate => [...quotesMap.entries()].find(([date]) => date === randomDate)[1];
+
+const getCustomImage = images => images.filter(({a}) => a)
+
+//ES2015: Generator
+const genMeme = function* () {
+  for (;;) {
+  	const randomDate = getRandomDate(quotesMap);
+    yield new Meme(getRandomQuote(randomDate), randomDate);;
+  }
+}
+
+export const run = () => {
+	const dates = quotesMap.keys();
+	const meme = genMeme();
+
+	setInterval(() => {
+		//ES2015: Destructuring
+		const newMeme = meme.next().value;
+		getImage(`Zbigniew Boniek ${newMeme.date}`).then(({items}) => {
+			//newMeme.imageUrl = getCustomImage(items);
+			layout(newMeme);
+		});
+	}, 5000);
+}

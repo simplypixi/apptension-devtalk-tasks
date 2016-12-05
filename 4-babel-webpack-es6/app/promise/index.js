@@ -4,9 +4,9 @@ import {sampleSize, chunk} from 'lodash';
 import {layout, errorLayout} from './layout';
 import {newsApiKey, readingErrorMsg} from '../config';
 
-function successAction(response) {
-  layout(chunk(sampleSize(response.articles, 4), 2));
-  return response.articles;
+function successAction({articles}) {
+  layout(chunk(sampleSize(articles, 4), 2));
+  return articles;
 }
 
 
