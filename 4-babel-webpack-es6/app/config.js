@@ -10,3 +10,4 @@ export const googleAPI = {
 		imgType: 'face'
 	}
 };
+export const salaryLoopDuration = 2000;

@@ -1,90 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
-  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="main.css">
+	<meta charset="UTF-8">
+	<title>ES2015 - Wszystko, co chcielibyście wiedzieć</title>
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class="bg bg--h4">
-    <div class="bg__inner bg--three bg--h7" 
-       data-0p="transform: translateY(-150px);"
-       data-50p="transform: translateY(-300px);"></div>
-    </div>
-  <div class="header">
-    <div class="container header__container"
-       data-5p="transform: translateY(0px);"
-       data-50p="transform: translateY(-50px);">
-      <h2>Wszystko, co chcielibyście wiedzieć o</h2>
-      <h1>
-        <strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-18p="opacity:1;">bigniewie Bońku,</span>
-        </strong>
-      </h1>
-      <h2>ale baliście się zapytać.</h2>
-    </div>
-  </div>
-  <div class="bg bg--h3">
-    <div class="bg__inner bg--one bg--h7" 
-       data-0p="transform: translateY(-200px);"
-       data-100p="transform: translateY(0);"></div>
-    <div class="bg__inner bg--nocover bg--four bg--h7" 
-       data-20p="width:0%; transform: translateY(-200px);"
-       data-70p="width:100%; transform: translateY(-30px);"
-       data-120p="transform: translateY(-1px);"></div>
-  </div>
-  <div>
-    <div class="container" id="carrer-in-national-team"></div> 
-  </div>
-  <div class="bg bg--h3">
-    <div class="bg__inner bg--five bg--h7" 
-       data-0p="transform: translateY(-380px);"
-       data-200p="transform: translateY(0);"></div>
-  </div>
-  <!-- <div>
-    <div id="carrer-in-league" class="container"></div>
-  </div> -->
-  <div>
-    <div class="container">
-      <div class="container__inner-box">
-        <h2>Co śpiewali kibice gdy na murawie grał Boniek?</h2>
-        <div id="string-repeating"></div>
-      </div>
-    </div>
-  </div>
-  <div class="bg bg--h3">
-    <div class="bg__inner bg--six bg--h7" 
-       data-top="transform: translateY(-400px);"
-       data-top-bottom="transform: translateY(-1px);"></div>
-  </div>
-  <div>
-    <div class="container">
-      <div class="container__inner-box">
-        <h2>O czym czyta dzisiaj Boniek?</h2>
-        <div id="what-is-reading"></div>
-        <span class="articles-footnote">powered by <a href="https://newsapi.org">newsapi.org</a></span>
-      </div>
-    </div>
-  </div>
-  <div class="bg bg--h3">
-    <div class="bg__inner bg--nocover bg--seven bg--h7" 
-       data-top="transform: translateY(-200px);"
-       data-top-bottom="transform: translateY(0);"></div>
-  </div>
-  <div>
-    <div class="container">
-      <div class="container__inner-box">
-        <h2>Co mówi Boniek?</h2>
-        <div id="meme-generator"></div>
-      </div>
-    </div>
-  </div>
-  <div class="bg bg--h3">
-    <div class="bg__inner bg--two bg--h7" 
-       data-top="transform: translateY(-400px);"
-       data-top-bottom="transform: translateY(-200px);"></div>
-  </div>
-  <script id="what-is-reading-template" type="x-tmpl-mustache">
+
+	<section class="intro">
+		<div class="bg bg--h4">
+			<div class="bg__inner bg--three bg--h7"
+					 data-0p="transform: translateY(-150px);"
+					 data-50p="transform: translateY(-300px);"></div>
+		</div>
+		<div class="header">
+			<div class="container header__container"
+					 data-5p="transform: translateY(0px);"
+					 data-50p="transform: translateY(-50px);">
+				<h2>Wszystko, co chcielibyście wiedzieć o</h2>
+				<h1>
+					<strong>Z<span data-0="opacity:0;" data-5p="opacity:0;" data-18p="opacity:1;">bigniewie Bońku,</span>
+					</strong>
+				</h1>
+				<h2>ale baliście się zapytać.</h2>
+			</div>
+		</div>
+	</section>
+
+	<section class="facts">
+		<div class="bg bg--h3">
+			<div class="bg__inner bg--one bg--h7"
+					 data-0p="transform: translateY(-200px);"
+					 data-100p="transform: translateY(0);"></div>
+			<div class="bg__inner bg--nocover bg--four bg--h7"
+					 data-20p="width:0%; transform: translateY(-200px);"
+					 data-70p="width:100%; transform: translateY(-30px);"
+					 data-120p="transform: translateY(-1px);"></div>
+		</div>
+		<div>
+			<div class="container" id="carrer-in-national-team"></div>
+		</div>
+	</section>
+
+	<section class="singing">
+		<div class="bg bg--h3">
+			<div class="bg__inner bg--five bg--h7"
+					 data-0p="transform: translateY(-380px);"
+					 data-200p="transform: translateY(0);"></div>
+		</div>
+		<div>
+			<div class="container">
+				<div class="container__inner-box">
+					<h2>Co śpiewali kibice gdy na murawie grał Boniek?</h2>
+					<div id="string-repeating"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="reading">
+		<div class="bg bg--h3">
+			<div class="bg__inner bg--six bg--h7"
+					 data-top="transform: translateY(-400px);"
+					 data-top-bottom="transform: translateY(-1px);"></div>
+		</div>
+		<div class="container">
+			<div class="container">
+				<div class="container__inner-box">
+					<h2>O czym czyta dzisiaj Boniek?</h2>
+					<div id="what-is-reading"></div>
+					<span class="articles-footnote">powered by <a href="https://newsapi.org">newsapi.org</a></span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="salary">
+		<div class="bg bg--h3">
+			<div class="bg__inner bg--nocover bg--seven bg--h7"
+					 data-top="transform: translateY(-200px);"
+					 data-top-bottom="transform: translateY(0);"></div>
+		</div>
+		<div>
+			<div class="container">
+				<div class="container__inner-box">
+					<h2>Ile zarabia Boniek?</h2>
+					<p>Zbigniew Boniek zarabia 40 000 zł, więc...</p>
+					<ul id="what-is-salary" class="salary__list"></ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="memGen">
+		<div class="bg bg--h3">
+			<div class="bg__inner bg--two bg--h7"
+					 data-top="transform: translateY(-400px);"
+					 data-top-bottom="transform: translateY(-200px);"></div>
+		</div>
+		<div>
+			<div class="container">
+				<div class="container__inner-box">
+					<h2>Co mówi Boniek?</h2>
+					<div id="meme-generator"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script id="what-is-reading-template" type="x-tmpl-mustache">
     {{#.}}
     <div class="row">
       {{#.}}
@@ -96,11 +122,13 @@
       {{/.}}
     </div>
     {{/.}}
-  </script>
-  <script id="error-template" type="x-tmpl-mustache">
+
+	</script>
+	<script id="error-template" type="x-tmpl-mustache">
     <p>{{{message}}}</p>
-  </script>
-  <script id="national-carrer-template" type="x-tmpl-mustache">
+
+	</script>
+	<script id="national-carrer-template" type="x-tmpl-mustache">
     <div class="row stat-box">
       <div class="two-thirds column">
         <h2 class="stat-box__title">Kiedy Boniek grał w kadrze narodowej?</h2>
@@ -119,20 +147,30 @@
         <p class="stat-box__content">{{matches}}</p>
       </div>
     </div>
-  </script>
-  <script id="string-repeating-template" type="x-tmpl-mustache">
+
+	</script>
+	<script id="string-repeating-template" type="x-tmpl-mustache">
     {{#.}}
       <p id="{{{id}}}" style="font-size: 20px;, sans-serif;">{{{phrase}}}</p>
     {{/.}}
-  </script>
-  <script id="meme-generator-template" type="x-tmpl-mustache">
+
+	</script>
+	<script id="salary-template" type="x-tmpl-mustache">
+    <li>
+      <p>{{{text}}}</p>
+    </li>
+
+	</script>
+	<script id="meme-generator-template" type="x-tmpl-mustache">
     <div class="row stat-box meme">
       <img class='meme__image' src='http://static.prsa.pl/images/0179344b-393e-4b1b-b8ca-9a143e780c23.jpg' alt="{{{quote}}}"/>
       {{{text}}}
     </div>
-  </script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
-  <script src="bundle.js"></script>
+
+	</script>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.1/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/TextPlugin.min.js"></script>
+	<script src="bundle.js"></script>
 </body>
 </html>
