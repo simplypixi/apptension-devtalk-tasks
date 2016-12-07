@@ -1,4 +1,4 @@
-import {renderLayout} from './utils';
+import {renderLayout} from '../utils';
 
 const types = {
   league: 'league',
@@ -13,16 +13,15 @@ const career = [
   {years: '1976–1988', place: 'Polska', goals: 24, matches: 80, type: types.national}
 ];
 
-function getNationalCarrer() {
+export function getNationalCarrer() {
   //ES2015: New function for finding an element in an array.
   return career.find(({type}) => type === types.national);
 }
 
-function getLeagueCarrer() {
+export function getLeagueCarrer() {
   return career.filter(({type}) => type === types.league);
 }
 export default function() {
- console.info(getNationalCarrer(), getLeagueCarrer()); //temp
   renderLayout(
     getNationalCarrer(),
     '#national-carrer-template',
