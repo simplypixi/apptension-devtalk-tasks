@@ -19,7 +19,7 @@ class IterableSalary {
         const formattedSalary = new Intl.NumberFormat(country.code, { style: "currency", currency: country.currency })
             .format(getExchangedCurrency(data.salary.amount, country.exchangeRate));
         // ES2015: Template Strings
-        const text = `Więc gdy był ${country.label} to by miał ${formattedSalary}.`;
+        const text = `Więc gdy był ${country.label} to by dostawał ${formattedSalary} !`;
         if(this.index === this.countries.length - 1) {
             this.index = 0;
         } else {
