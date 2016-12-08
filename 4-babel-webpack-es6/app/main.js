@@ -13,5 +13,5 @@ const s = skrollr.init();
 promiseExample();
 arrayFinding();
 internationalization();
-// runMemeGenerator();
+runMemeGenerator();
 

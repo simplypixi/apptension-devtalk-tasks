@@ -49,26 +49,32 @@ const getRandomDate = quotesMap => [...quotesMap.keys()][random(0, quotesMap.siz
 //ES2015: Spread, Destructuring, find
 const getRandomQuote = randomDate => [...quotesMap.entries()].find(([date]) => date === randomDate)[1];
 
-const getCustomImage = images => images.filter(({a}) => a)
+const getUrl = ({pagemap: {cse_thumbnail: images}}) => images[0].src;
 
 //ES2015: Generator
-const genMeme = function* () {
+const genMemeContent = function* () {
   for (;;) {
   	const randomDate = getRandomDate(quotesMap);
     yield new Meme(getRandomQuote(randomDate), randomDate);;
   }
 }
 
+const addMeme = () => {
+    const meme = genMemeContent();
+    const newMeme = meme.next().value;
+    //ES2015: Destructuring
+    getImage('Zbigniew Boniek').then(({items}) => {
+        newMeme.imageUrl = getUrl(items[random(0, items.length - 1)]);
+        layout(newMeme);
+    }); 
+}
+
 export const run = () => {
 	const dates = quotesMap.keys();
-	const meme = genMeme();
+	const meme = genMemeContent();
 
+  addMeme();
 	setInterval(() => {
-		//ES2015: Destructuring
-		const newMeme = meme.next().value;
-		getImage(`Zbigniew Boniek ${newMeme.date}`).then(({items}) => {
-			//newMeme.imageUrl = getCustomImage(items);
-			layout(newMeme);
-		});
-	}, 5000);
+		addMeme();
+	}, 10000);
 }

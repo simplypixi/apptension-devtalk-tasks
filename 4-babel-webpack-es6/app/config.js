@@ -3,10 +3,9 @@ export const readingErrorMsg = 'Dziś Boniek nic nie czyta. Pojechał dogladać 
 export const googleAPI = {
 	url: 'https://www.googleapis.com/customsearch/v1',
 	config: {
-		key: 'AIzaSyCSMrS-K5oDimMcDfewos4lY9Ly7fKiikw',
-		cx: '014561454497859727201:mald5s_mr6g',
+		key: 'AIzaSyARqMjcIH6BS80GizKmI8yMkJYkAeMzjso',
+		cx: '003646674828332790354:bdrfo8z25wy',
 		fields: 'items/pagemap/cse_thumbnail/src',
-		imgSize: 'large',
 		imgType: 'face'
 	}
 };
