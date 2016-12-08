@@ -50,9 +50,13 @@ export class MultiNewspapers extends Newspaper {
   }
 
   getArticles() {
-    return this.get().then((data) => data
-      .map(({articles}) => articles)
-        .reduce((a, b) => a.concat(b))
-    )
+    //ES2015: Set
+    return this.get().then((data) => {
+      let articlesSet = new Set();
+      data.forEach(({articles}) =>
+        articles.forEach((article) => articlesSet.add(article))
+      );
+      return [...articlesSet];
+    });
   }
 }
