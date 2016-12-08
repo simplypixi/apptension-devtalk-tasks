@@ -5,11 +5,13 @@ import {salaryLoopDuration} from '../config.js';
 
 const getExchangedCurrency = (amount, exchangeRate = 1) => amount / exchangeRate;
 
+//ES2015: Class
 class IterableSalary {
     constructor(countries) {
         this.countries = countries;
         this.index = 0;
     }
+    //ES2015: Symbol
     [Symbol.iterator]() {
         return this;
     }
@@ -32,12 +34,14 @@ class IterableSalary {
 const renderSalaryLoop = (iterableInstance) => {
     let text = iterableInstance.next().value;
     setTimeout(() => {
+        //ES2015: Enhanced Object Properties - Shorthand
         renderLayout({text}, '#salary-template', '#what-is-salary');
         renderSalaryLoop(iterableInstance);
     }, salaryLoopDuration);
 };
 
 export default () => {
+    //ES2015: Iterator
     const iterableSalaryInstance = new IterableSalary(data.languages);
     renderSalaryLoop(iterableSalaryInstance);
     //ES2015: For-of loop
