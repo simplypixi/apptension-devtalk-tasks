@@ -12,13 +12,15 @@ var _promise = require('./promise');
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _arrayFinding = require('./array-finding');
+var _arrayFinding = require('./arrayFinding');
 
 var _arrayFinding2 = _interopRequireDefault(_arrayFinding);
 
-var _memeGenerator = require('./memeGenerator');
+var _internationalization = require('./internationalization');
 
-var _memeGenerator2 = _interopRequireDefault(_memeGenerator);
+var _internationalization2 = _interopRequireDefault(_internationalization);
+
+var _memeGenerator = require('./memeGenerator');
 
 require('./styles/main.scss');
 
@@ -30,6 +32,7 @@ var s = _skrollr2.default.init();
 
 (0, _promise2.default)();
 (0, _arrayFinding2.default)();
-(0, _memeGenerator2.default)();
+(0, _internationalization2.default)();
+// runMemeGenerator();
 
 //# sourceMappingURL=main-compiled.js.map
