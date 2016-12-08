@@ -34,7 +34,9 @@ export class Newspaper {
   }
 }
 
+//ES2015: Class with extends
 export class MultiNewspapers extends Newspaper {
+  //ES2015: Rest Parameter
   constructor(...urls) {
     super();
     this.urls = urls;

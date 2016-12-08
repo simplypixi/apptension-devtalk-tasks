@@ -19,6 +19,7 @@ export default function () {
   const urlItalia = getUrl('football-italia');
   const urlFour = getUrl('four-four-two');
 
+  //ES2015: Arrow functions
   const news = new MultiNewspapers(urlItalia, urlFour);
   news.getArticles()
     .then((response) => successAction(response))
