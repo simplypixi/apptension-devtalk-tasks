@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = {
-    entry: {},
-    output: {},
-    module: {
-        loaders: []
-    },
-    plugins: []
-};
+const path = require('path');
+const {defaultsDeep} = require('lodash');
+const baseConfig = require('./webpack.base.js');
+
+module.exports = defaultsDeep(baseConfig, {
+  devServer: {
+    
+  }
+});
