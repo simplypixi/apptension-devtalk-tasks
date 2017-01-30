@@ -1,0 +1,251 @@
+@import '~normalize', '~skeleton';
+
+$white: #fff;
+$gray-1: #f5f5f5;
+$gray-2: #222;
+$red-1: #901212;
+
+body{
+  background: $gray-1
+}
+
+.header {
+  background-color: $white;
+  padding: 60px 0;
+
+  h1, h2 {
+    line-height: 1.2em;
+    margin-bottom: 0;
+  }
+}
+.container__inner-box{
+  margin: 60px 0;
+}
+.bg{
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+  position: relative;
+  
+  &__inner{
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+  }
+
+  &--nocover {
+    background-size: initial;
+  }
+  
+  &--h3{height: 300px;}
+  &--h4{height: 400px;}
+  &--h5{height: 500px;}
+  &--h6{height: 600px;}
+  &--h7{height: 700px;}
+
+  &--one{
+    background-image: url(../images/bg-1.jpg);
+    height: 500px;
+  }
+  &--two{
+    background-image: url(../images/bg-2.jpg);
+  }
+  &--three{
+    background-image: url(../images/bg-3.jpg);
+  }
+  &--four{
+    background-image: url(../images/b-1982.jpg);
+    position: absolute;
+    top: 0;
+  }
+  &--five{
+    background-image: url(../images/bg-4.jpg);
+  }
+  &--six{
+    background-image: url(../images/b-2015.jpg);
+  }
+  &--seven{
+    background-image: url(../images/b-7.jpg);
+  }
+}
+
+.stat-box {
+  margin-top: 20px;
+
+  &__title{
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  &__content{
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: $red-1;
+  }
+}
+
+.article-summary {
+  a {
+    color: $gray-2;
+    text-decoration: none;
+    display: block;
+  }
+  &__title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $red-1;
+    margin-bottom: 8px;
+    width: 100%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom .2s;
+
+    a {
+      color: $red-1;
+      width: 100%;
+      white-space: pre;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &:hover {
+      border-bottom-color: $red-1;;
+      transition: border-bottom .2s;
+    };
+  }
+  
+  &__desc {
+    text-align: justify;
+    width: 100%;
+    margin-bottom: 25px;
+    border-bottom: 2px solid transparent;
+
+    em {
+      font-size: .85em;
+      font-style: normal;
+      padding: 0 4px;
+      margin-right: 4px;
+      background-color: #ccc;
+      color: $white;
+      display: inline-block;
+    }
+
+    &:hover {
+      color: $red-1;
+      transition: color .2s;
+    };
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+      transition: transform 2s;
+      transform: scale(1.1);
+
+      &:hover {
+        transform: scale(1.4) translate(0, -6px);
+      }
+    }
+  }
+}
+.articles-footnote {
+  display: block;
+  font-size: .8em;
+  text-align: right;
+  color: #aaa;
+
+  a {
+    color: #aaa;
+  }
+}
+
+.meme{
+  background-color: #000;
+  padding: 30px;
+  color: #fff;
+  margin-top: 50px;
+  width: 520px;
+
+  &__image {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__quote {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__source {
+    margin-top: 20px;
+  }
+
+  &__date, &__source {
+    font-size: 11px;
+    width: 100%;
+    color: #B2B2B2;
+  }
+}
+
+.text--centered {
+  text-align: center;
+}
+
+.salary__subheader{
+  font-size: 2em;
+}
+
+@keyframes example {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-webkit-keyframes example {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.salary__list-item{
+  font-size: 2em;
+  list-style: none;
+
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
