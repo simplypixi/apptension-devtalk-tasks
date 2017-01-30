@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.js'
   },
   resolve: {
     modules: [
@@ -38,7 +38,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
       filename: 'commons.js',
-      minChunks: 2,
+      minChunks: 2
     })
   ]
 };

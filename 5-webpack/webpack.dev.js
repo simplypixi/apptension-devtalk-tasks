@@ -26,5 +26,5 @@ module.exports = defaultsDeep(baseConfig, {
     alias: {
       config$: path.resolve(__dirname, 'src/env/local/conf.js')
     }
-  },
+  }
 });
