@@ -1,21 +1,25 @@
 'use strict';
 
 const path = require('path');
+const webpack = require('webpack');
 const {defaultsDeep} = require('lodash');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {prodConfig} = require('./src/modules/config');
 
 module.exports = defaultsDeep(baseConfig, {
   resolve: {
     alias: {
-      config$: path.resolve(__dirname, 'src/env/prod/conf.js')
+      config$: path.resolve(__dirname, prodConfig())
     }
   },
   plugins: [
     {},
+    new webpack.DefinePlugin({
+      __PRODUCTION__: JSON.stringify(true)
+    }),
     new HtmlWebpackPlugin({
       title: 'Prod main page',
-      filename: 'index.html',
       hash: true,
       excludeChunks: ['unsupported']
     }),

@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.dev.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --config ./webpack.dev.js",
+    "dev": "node_modules/.bin/webpack-dev-server --config ./webpack.dev.js --hot",
     "build": "node_modules/.bin/webpack -p --config ./webpack.prod.js"
   },
   "dependencies": {
