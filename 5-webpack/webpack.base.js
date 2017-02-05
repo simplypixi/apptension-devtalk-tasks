@@ -25,6 +25,10 @@ module.exports = {
       loader: 'json-loader'
     },
     {
+      test: /\.jpg$/,
+      use: [ 'file-loader' ]
+    },
+    {
       test: CSS_REGEX, 
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
