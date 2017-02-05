@@ -6,6 +6,8 @@ const {defaultsDeep} = require('lodash');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {prodConfig} = require('./src/modules/config');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = defaultsDeep(baseConfig, {
   resolve: {
@@ -28,6 +30,7 @@ module.exports = defaultsDeep(baseConfig, {
       filename: 'unsupported.html',
       hash: true,
       excludeChunks: ['main']
-    })
+    }),
+    new ExtractTextPlugin("styles.css"),
   ]
 });

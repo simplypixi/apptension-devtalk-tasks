@@ -3,6 +3,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const CSS_REGEX = /\.css$|\.scss$|\.sass$/
+
 module.exports = {
   entry: {
     main: './src/main.js',
@@ -19,6 +23,17 @@ module.exports = {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
+    },
+    {
+      test: CSS_REGEX, 
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: "style-loader",
+        loader: [
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' }
+        ]
+      })
     }]
   },
   output: {
