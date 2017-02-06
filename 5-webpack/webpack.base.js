@@ -4,8 +4,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const SpritesmithPlugin = require('webpack-spritesmith');
 
-const CSS_REGEX = /\.css$|\.scss$|\.sass$/
+const CSS_REGEX = /\.css$|\.scss$|\.sass$/;
 
 module.exports = {
   entry: {
@@ -23,13 +24,14 @@ module.exports = {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
-    },
-    {
+    }, {
       test: /\.jpg$/,
       use: [ 'file-loader' ]
-    },
-    {
-      test: CSS_REGEX, 
+    }, {
+      test: /\.png$/,
+      loader: 'file-loader?name=i/[hash].[ext]'
+    },{
+      test: CSS_REGEX,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: "style-loader",
         loader: [
@@ -46,7 +48,9 @@ module.exports = {
   },
   resolve: {
     modules: [
-      'node_modules'
+      'web_modules',
+      'node_modules',
+      'spritesmith-generated'
     ],
     alias: {
       modules: path.resolve(__dirname, 'src/modules'),
@@ -58,6 +62,19 @@ module.exports = {
       name: 'commons',
       filename: 'commons.js',
       minChunks: 2
+    }),
+    new SpritesmithPlugin({
+      src: {
+        cwd: path.resolve(__dirname, 'images/sprites'),
+        glob: '*.png'
+      },
+      target: {
+        image: path.resolve(__dirname, 'src/spritesmith-generated/sprite.png'),
+        css: path.resolve(__dirname, 'src/spritesmith-generated/sprite.scss')
+      },
+      apiOptions: {
+        cssImageRef: "~sprite.png"
+      }
     })
   ]
 };

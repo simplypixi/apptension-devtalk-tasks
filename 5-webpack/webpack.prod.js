@@ -31,6 +31,6 @@ module.exports = defaultsDeep(baseConfig, {
       hash: true,
       excludeChunks: ['main']
     }),
-    new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin("styles.css")
   ]
 });

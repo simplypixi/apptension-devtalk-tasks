@@ -1,4 +1,5 @@
 @import "variables";
+@import '~sprite.scss';
 
 body {
 	color: $main-color;
@@ -14,4 +15,16 @@ h1 {
 
 p {
 	transform: scale(.9);
+}
+
+.icon {
+	display: block;
+	margin: auto;
+	@include sprite($icon);
+}
+
+.icon-pink{
+	display: block;
+	margin: auto;
+	@include sprite($icon-pink);
 }

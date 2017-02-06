@@ -16,3 +16,4 @@ coverage
 **/bundle.js
 
 dist
+src/spritesmith-generated
