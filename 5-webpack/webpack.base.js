@@ -3,8 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const CSS_REGEX = /\.css$|\.scss$|\.sass$/;
 
@@ -44,7 +45,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle-[hash].js'
   },
   resolve: {
     modules: [
@@ -60,7 +61,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
-      filename: 'commons.js',
+      filename: 'commons-[hash].js',
       minChunks: 2
     }),
     new SpritesmithPlugin({
@@ -75,6 +76,18 @@ module.exports = {
       apiOptions: {
         cssImageRef: "~sprite.png"
       }
-    })
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Main page',
+      hash: false,
+      excludeChunks: ['unsupported']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Unsupported page',
+      filename: 'unsupported.html',
+      hash: false,
+      excludeChunks: ['main']
+    }),
+    new ExtractTextPlugin("styles-[hash].css")
   ]
 };
