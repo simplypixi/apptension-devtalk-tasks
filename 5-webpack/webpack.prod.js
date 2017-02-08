@@ -14,6 +14,7 @@ module.exports = defaultsDeep(baseConfig, {
     }
   },
   plugins: [
+    {}, {}, {}, {}, {},
     new webpack.DefinePlugin({
       __PRODUCTION__: JSON.stringify(true)
     })
