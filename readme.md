@@ -17,3 +17,7 @@ Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-
 ## Challange #5 - Webpack
 Url: https://gist.github.com/mikeqcp/f7e4699ac5ff86f90e025cb425014068
 Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-EA36y-biTss/edit?pli=1#gid=275286835
+
+## Challange #6 - HTML 5 API - Zestaw Karyny
+Url: http://slides.com/mkmieciak/html5-apis
+Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-EA36y-biTss/edit#gid=857748848
