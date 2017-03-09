@@ -5,12 +5,13 @@ import { Router, Route , Link, browserHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Vibration from './components/vibration/vibration.js';
+import Audio from './components/audio';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 
-import FlatButton from 'material-ui/FlatButton'
+import FlatButton from 'material-ui/FlatButton';
 
 injectTapEventPlugin();
 
@@ -22,6 +23,7 @@ let App = React.createClass({
           <ToolbarGroup>
             <FlatButton to="/"><Link to="/">Home</Link></FlatButton>
             <FlatButton to="/vibration"><Link to="/vibration">Vibration Api</Link></FlatButton>
+            <FlatButton to="/audio"><Link to="/audio">Web RTC Audio</Link></FlatButton>
           </ToolbarGroup>
         </Toolbar>
       </MuiThemeProvider>
@@ -33,6 +35,8 @@ const routes = (
   <Router history={browserHistory}>
     <Route name="app" path="/" component={App}></Route>
     <Route name="vibration" path="/vibration" component={Vibration}/>
+    <Route name="audio" path="/audio" component={Audio}/>
+
   </Router>
 );
 
