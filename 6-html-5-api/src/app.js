@@ -8,6 +8,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Vibration from './components/vibration/vibration.js';
 import Audio from './components/audio';
+import Photobooth from './components/photobooth';
+
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -42,6 +44,7 @@ class App extends React.Component {
             <Tab label="Home" value={0} containerElement={<Link to="/"/>}/>
             <Tab label="Vibration API" value={1} containerElement={<Link to="/vibration"/>}/>
             <Tab label="WebRTC audio" value={2} containerElement={<Link to="/audio"/>}/>
+            <FlatButton to="/photobooth"><Link to="/photobooth">Stunning duck face</Link></FlatButton>
           </Tabs>
         </MuiThemeProvider>
         {this.props.children}
@@ -55,6 +58,7 @@ const routes = (
     <Route name="app" path="/" component={App}>
       <Route name="vibration" path="/vibration" component={Vibration}/>
       <Route name="audio" path="/audio" component={Audio}/>
+      <Route name="photobooth" path="/photobooth" component={Photobooth}/>
     </Route>
   </Router>
 );
