@@ -32,13 +32,12 @@ class Audio extends React.Component {
   visualizeSound(stream) {
     this.analyser.fftSize = 2048;
     const bufferLength = this.analyser.frequencyBinCount;
-    this.setState({
-      soundData: new Uint8Array(bufferLength)
-    });
+    const soundData = new Float32Array(bufferLength);
 
     const visualize = () => {
       requestAnimationFrame(visualize);
-      this.analyser.getByteTimeDomainData(this.state.soundData);
+      this.analyser.getFloatTimeDomainData(soundData);
+      this.setState({soundData});
     };
 
     visualize();

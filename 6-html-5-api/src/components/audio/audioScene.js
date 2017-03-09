@@ -1,10 +1,17 @@
 import React from 'react';
 import * as THREE from 'three';
+import {find} from 'lodash';
 
 const updateIndices = (mesh, soundData) => {
-  mesh.geometry.vertices[ 0 ].x = Math.random() * 1000;
-  mesh.geometry.vertices[ 0 ].y = Math.random() * 1000;
-  mesh.geometry.vertices[ 0 ].z = Math.random() * 1000;
+  if (!soundData) {
+    return;
+  }
+
+  mesh.geometry.vertices.forEach((vertex, index) => {
+    vertex.x = 100 * soundData[index];
+    vertex.y = 100 * soundData[index * 2];
+    vertex.z = 100 * soundData[index *3];
+  });
 
   mesh.geometry.computeFaceNormals();
   mesh.geometry.computeVertexNormals();
@@ -20,10 +27,6 @@ class AudioScene extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      soundData: props.soundData
-    };
-
     this.initScene = this.initScene.bind(this);
     this.animate = this.animate.bind(this);
     this.initScene();
@@ -36,13 +39,11 @@ class AudioScene extends React.Component {
     this.camera.position.z = 100;
 
     //MESH
-    this.geometry = new THREE.SphereGeometry( 20, 64, 64 );
+    this.geometry = new THREE.IcosahedronGeometry( 20, 5 );
     this.material = new THREE.MeshPhongMaterial({color: 0xE78CBE});
     
     this.mesh = new THREE.Mesh( this.geometry,this.material );
     this.mesh.geometry.dynamic = true;
-    this.mesh.geometry.__dirtyVertices = true;
-    this.mesh.geometry.__dirtyNormals = true;
 
     //LIGHTS
     const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
@@ -61,8 +62,6 @@ class AudioScene extends React.Component {
 
   animate() {
     requestAnimationFrame(this.animate);
-
-    //console.log(this.props.soundData);
 
 /*    this.mesh.rotation.x += 0.01;
     this.mesh.rotation.y += 0.02;*/
