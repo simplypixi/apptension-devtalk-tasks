@@ -14,7 +14,7 @@ class Audio extends React.Component {
       stream: null,
       audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
       muted: false
-    }
+    };
 
     this.analyser = this.state.audioCtx.createAnalyser();
     this.distortion = this.state.audioCtx.createWaveShaper();

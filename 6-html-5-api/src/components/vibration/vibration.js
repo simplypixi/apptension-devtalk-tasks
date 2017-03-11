@@ -1,10 +1,10 @@
 import React from 'react';
 
-let Vibration = React.createClass({
+class Vibration extends React.Component {
 
   render() {
     return(<div>Vibration Api</div>);
   }
-});
+};
 
 export default Vibration;
