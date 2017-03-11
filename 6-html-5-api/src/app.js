@@ -15,7 +15,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 injectTapEventPlugin();
 
-let App = React.createClass({
+class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
@@ -29,7 +29,7 @@ let App = React.createClass({
       </MuiThemeProvider>
     );
   }
-});
+}
 
 const routes = (
   <Router history={browserHistory}>
