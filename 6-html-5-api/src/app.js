@@ -1,3 +1,5 @@
+import styles from './assets/stylesheets/style.scss';
+
 import React from 'react';
 import { render } from 'react-dom'
 import { Router, Route , Link, browserHistory } from 'react-router';
@@ -21,9 +23,9 @@ class App extends React.Component {
       <MuiThemeProvider>
         <Toolbar className="nav">
           <ToolbarGroup>
-            <FlatButton to="/"><Link to="/">Home</Link></FlatButton>
-            <FlatButton to="/vibration"><Link to="/vibration">Vibration Api</Link></FlatButton>
-            <FlatButton to="/audio"><Link to="/audio">Web RTC Audio</Link></FlatButton>
+            <FlatButton><Link to="/">Home</Link></FlatButton>
+            <FlatButton><Link to="/vibration">Vibration Api</Link></FlatButton>
+            <FlatButton><Link to="/audio">Web RTC Audio</Link></FlatButton>
           </ToolbarGroup>
         </Toolbar>
       </MuiThemeProvider>
