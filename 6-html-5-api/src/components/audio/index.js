@@ -62,6 +62,7 @@ class Audio extends React.Component {
   componentWillUnmount() {
     cancelAnimationFrame(this.requestId);
     this.stream.getTracks()[0].stop();
+    this.state.audioCtx.close();
   }
 
   render() {
