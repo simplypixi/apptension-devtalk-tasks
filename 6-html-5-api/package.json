@@ -39,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/MichalObi/webpack-2-scss-conf/issues"
   },
-  "homepage": "https://github.com/MichalObi/webpack-2-scss-conf#readme"
+  "homepage": "https://github.com/MichalObi/webpack-2-scss-conf#readme",
+  "dependencies": {}
 }

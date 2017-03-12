@@ -1,21 +1,18 @@
 import React from 'react';
 import * as THREE from 'three';
-import {find} from 'lodash';
+import {find, sum} from 'lodash';
 
 import fragmentShader from '../../assets/shaders/fragment/audio.frag';
 import vertexShader from '../../assets/shaders/vertex/audio.vert';
 
-const updateIndices = (mesh, soundData) => {
+const updateIndices = (start, mesh, soundData) => {
+  mesh.material.uniforms[ 'time' ].value = .00025 * ( Date.now() - start );
   if (!soundData) {
     return;
   }
-
-  mesh.geometry.vertices.forEach((vertex, index) => {
-    vertex.x = 100 * soundData[index];
-    vertex.y = 100 * soundData[index * 2];
-    vertex.z = 100 * soundData[index *3];
-  });
-
+  const newAverage = sum(soundData) * 100 / soundData.length;
+  mesh.average = newAverage - mesh.average;
+  mesh.material.uniforms['intensity'].value = mesh.average;
   mesh.geometry.computeFaceNormals();
   mesh.geometry.computeVertexNormals();
   mesh.geometry.normalsNeedUpdate = true;
@@ -23,7 +20,6 @@ const updateIndices = (mesh, soundData) => {
   mesh.geometry.dynamic = true;
 
   mesh.geometry.verticesNeedUpdate = true;
-
 };
 
 class AudioScene extends React.Component {
@@ -40,9 +36,17 @@ class AudioScene extends React.Component {
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     this.camera.position.z = 100;
 
+    //LIGHTS
+    const directionalLight = new THREE.DirectionalLight( 0xffffff, 1, 100);
+    directionalLight.position.set(0, 0, 200);
+    directionalLight.castShadow = true;
+    this.scene.add( directionalLight );
+    directionalLight.shadow.camera.near = this.camera.near;
+    directionalLight.shadow.camera.far = this.camera.far;
+
     //BACKGROUND MESH
     const bgGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
-    const bgMaterial = new THREE.MeshPhongMaterial({color: 0xE78CBE});
+    const bgMaterial = new THREE.MeshPhongMaterial({color: 0xF2AAD2});
     const plane = new THREE.Mesh( bgGeometry, bgMaterial );
     plane.position.set(0, 0, 0);
     plane.receiveShadow = true;
@@ -50,41 +54,28 @@ class AudioScene extends React.Component {
     this.scene.add( plane );
 
     //CUSTOM MESH
-    this.geometry = new THREE.IcosahedronGeometry( 20, 5 );
-    //this.material = new THREE.MeshPhongMaterial({color: 0xE78CBE});
+    this.geometry = new THREE.IcosahedronBufferGeometry( 20, 5 );
     this.material = new THREE.ShaderMaterial({
       uniforms: {
-        time: {type: 'f', value: 0.0}//,
-        //color: {type: ''}
-      },
-      attributes: {
-        displacement: {
-          type: 'f',
-          value: []
-        }
+        time: {type: 'f', value: 0.0},
+        lightPosition: {type: 'v3', value: directionalLight.position},
+        color: {type: 'v3', value: new THREE.Color(0xED7CBA)},
+        intensity: {type: 'f', value: 0.0}
       },
       vertexShader,
       fragmentShader
     });
 
     this.mesh = new THREE.Mesh( this.geometry,this.material );
-    this.mesh.position.set(0, 0, 20);
-    this.mesh.castShadow = true;
-    this.mesh.receiveShadow = false;
+    this.mesh.average = 0.0;
+    this.mesh.position.set(0, 0, 30);
     this.mesh.geometry.dynamic = true;
     this.scene.add(this.mesh);
-
-    //LIGHTS
-    const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.9, 100);
-    directionalLight.position.set(0, 0, 150);
-    directionalLight.castShadow = true;
-    this.scene.add( directionalLight );
-    directionalLight.shadow.camera.near = this.camera.near;
-    directionalLight.shadow.camera.far = this.camera.far;
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true
     });
+    this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -97,11 +88,7 @@ class AudioScene extends React.Component {
 
   animate() {
     this.requestId = requestAnimationFrame(this.animate);
-
-/*    this.mesh.rotation.x += 0.01;
-    this.mesh.rotation.y += 0.02;*/
-    this.material.uniforms[ 'time' ].value = .00025 * ( Date.now() - this.start );
-    //updateIndices(this.mesh, this.props.soundData);
+    updateIndices(this.start, this.mesh, this.props.soundData);
     this.renderer.render(this.scene, this.camera);
   }
 
