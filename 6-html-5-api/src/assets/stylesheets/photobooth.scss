@@ -1,12 +1,43 @@
 .photobooth {
+  padding: 20px;
+  background: #cc3166;
+  overflow: auto;
+
+  &__title {
+    color: #FFF;
+    margin: 10px 20px;
+    font-weight: normal;
+  }
+
   &__camera {
     float: left;
   }
 
-  &__photo{
+  &__canvas-wrapper{
+    display: block;
+    line-height: 0;
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    width: 250px;
+    height: 720px;
+    overflow: hidden;
+  }
+
+  &__canvas{
+    margin-left: 9px;
+    border: 1px solid rgb(204, 49, 102);
+    box-shadow: 0px 0px 13px #941d45;
+    transform: translateY(-680px);
+    transition: .3s transform cubic-bezier(.53,.33,.51,1.29);
+  }
+
+  &__photo-machine {
+    position: relative;
+    margin: 20px 40px 0 0;
+    width: 320px;
+    height: 720px;
     float: left;
-    border: 1px solid rgba(216, 204, 194, .5);
-    box-shadow: 0px 0px 13px rgb(216, 204, 194);
   }
 }
 
@@ -14,47 +45,40 @@
   float: left;
 
   &__frame {
+    background: url(~/src/assets/images/phone.png) no-repeat;
     float: left;
-    background: #FEFEFE;
-    box-shadow: inset 0px 0px 15px #cfc3b8;
-    border-radius: 20px;
-    border: 2px solid #cfc3b8;
-    width: 270px;
-    height: 550px;
+    width: 319px;
+    height: 582px;
     margin: 30px;
   }
 
   &__screen {
-    background: #000;
-    width: 234px;
-    height: 420px;
-    transform: translate(18px, 65px);
-    border-radius: 5px;
+    width: 238px;
+    height: 357px;
+    transform: translate(41px, 137px);
     position: relative;
   }
 
   &__stream-crop{
     position: absolute;
-    top: 80px;
-    left: 3px;
-    width: 228px;
-    height: 228px;
+    width: 238px;
+    height: 238px;
     overflow: hidden;
   }
 
   &__stream{
     position: absolute;
     background: #222;
-    left: -38px;
-    width: 304px;
-    height: 228px;
+    left: -45px;
+    width: 318px;
+    height: 238px;
     
   }
 
   &__button{
     position: absolute;
-    left: 93px;
-    bottom: 17px;
+    left: 98px;
+    bottom: 20px;
     background: #FFF;
     box-shadow: inset 0px 0px 0px 2px #000;
     border-radius: 50%;
@@ -68,6 +92,48 @@
       transform: scale(1.1);
       border-color: #ccc;
       transition: transform .2s, border-color .2s;
+    }
+  }
+}
+
+.printer {
+  width: 320px;
+  height: 30px;
+  position: absolute;
+
+  &.printer--bottom {
+    top: 32px;
+  }
+
+  &__outer {
+    background-color: #f8f8f8;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &.printer__outer--top {
+      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid #821e40;
+    }
+
+    &.printer__outer--bottom {
+      border-radius: 0 0 20px 20px;
+      border-top: 1px solid #821e40;
+    }
+  }
+
+  &__inner {
+    background-color: #821e40;
+    width: 80%;
+    position: absolute;
+    height: 3px;
+    left: 10%;
+
+    &.printer__inner--top {
+      bottom: 0;
+    }
+
+    &.printer__inner--bottom {
     }
   }
 }
