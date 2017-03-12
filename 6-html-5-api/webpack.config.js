@@ -15,8 +15,7 @@ module.exports = {
     filename: '[name].bundle.js',
   },
   module: {
-    rules: [
-    {
+    rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
       options: {
@@ -38,8 +37,11 @@ module.exports = {
         { loader: 'sass-loader' }
         ]
       }),
-    } 
-    ]
+    },
+    {
+      test: /\.(vert|frag)$/,
+      loader: 'shader-loader'
+    }]
   },
   plugins: [
     new ExtractTextPlugin("styles.css"),
