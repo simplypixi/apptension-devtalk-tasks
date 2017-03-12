@@ -22,8 +22,8 @@ class Photobooth extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>Duck face photobooth</h1>
+      <div className="photobooth">
+        <h1 className="photobooth__title">Karyno! Czy wstawiłaś już dzisiejszą porcję dziubków na insta?</h1>
         <Camera setSnap={this.setSnap.bind(this)} size={this.size}/>
         <Photo snap={this.state.snap} />
       </div>
