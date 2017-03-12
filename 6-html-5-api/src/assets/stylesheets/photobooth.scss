@@ -1,0 +1,73 @@
+.photobooth {
+  &__camera {
+    float: left;
+  }
+
+  &__photo{
+    float: left;
+    border: 1px solid rgba(216, 204, 194, .5);
+    box-shadow: 0px 0px 13px rgb(216, 204, 194);
+  }
+}
+
+.camera {
+  float: left;
+
+  &__frame {
+    float: left;
+    background: #FEFEFE;
+    box-shadow: inset 0px 0px 15px #cfc3b8;
+    border-radius: 20px;
+    border: 2px solid #cfc3b8;
+    width: 270px;
+    height: 550px;
+    margin: 30px;
+  }
+
+  &__screen {
+    background: #000;
+    width: 234px;
+    height: 420px;
+    transform: translate(18px, 65px);
+    border-radius: 5px;
+    position: relative;
+  }
+
+  &__stream-crop{
+    position: absolute;
+    top: 80px;
+    left: 3px;
+    width: 228px;
+    height: 228px;
+    overflow: hidden;
+  }
+
+  &__stream{
+    position: absolute;
+    background: #222;
+    left: -38px;
+    width: 304px;
+    height: 228px;
+    
+  }
+
+  &__button{
+    position: absolute;
+    left: 93px;
+    bottom: 17px;
+    background: #FFF;
+    box-shadow: inset 0px 0px 0px 2px #000;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    outline: 0;
+
+    &:hover{
+      transform: scale(1.1);
+      border-color: #ccc;
+      transition: transform .2s, border-color .2s;
+    }
+  }
+}
