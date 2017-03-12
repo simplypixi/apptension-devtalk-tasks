@@ -12,6 +12,8 @@
 // https://github.com/ashima/webgl-noise
 //
 
+varying vec3 vNormal;
+
 vec3 mod289(vec3 x)
 {
   return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -195,6 +197,7 @@ float turbulence( vec3 p ) {
 void main() {
 
   vUv = uv;
+  vNormal = normal;
 
   noise = 10.0 *  -.10 * turbulence( .5 * normal + time );
   float b = 5.0 * pnoise( 0.05 * position + vec3( 2.0 * time ), vec3( 100.0 ) );

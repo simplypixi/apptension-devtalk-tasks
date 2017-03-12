@@ -36,8 +36,6 @@ class AudioScene extends React.Component {
   }
 
   initScene() {
-
-
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     this.camera.position.z = 100;
@@ -56,7 +54,14 @@ class AudioScene extends React.Component {
     //this.material = new THREE.MeshPhongMaterial({color: 0xE78CBE});
     this.material = new THREE.ShaderMaterial({
       uniforms: {
-        time: {type: 'f', value: 0.0}
+        time: {type: 'f', value: 0.0}//,
+        //color: {type: ''}
+      },
+      attributes: {
+        displacement: {
+          type: 'f',
+          value: []
+        }
       },
       vertexShader,
       fragmentShader
@@ -77,7 +82,9 @@ class AudioScene extends React.Component {
     directionalLight.shadow.camera.near = this.camera.near;
     directionalLight.shadow.camera.far = this.camera.far;
 
-    this.renderer = new THREE.WebGLRenderer();
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true
+    });
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -94,7 +101,7 @@ class AudioScene extends React.Component {
 /*    this.mesh.rotation.x += 0.01;
     this.mesh.rotation.y += 0.02;*/
     this.material.uniforms[ 'time' ].value = .00025 * ( Date.now() - this.start );
-    updateIndices(this.mesh, this.props.soundData);
+    //updateIndices(this.mesh, this.props.soundData);
     this.renderer.render(this.scene, this.camera);
   }
 
