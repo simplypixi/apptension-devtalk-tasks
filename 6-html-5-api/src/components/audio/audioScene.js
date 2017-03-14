@@ -10,9 +10,9 @@ const updateIndices = (start, mesh, soundData) => {
   if (!soundData) {
     return;
   }
-  const newAverage = sum(soundData) * 100 / soundData.length;
-  mesh.average = newAverage - mesh.average;
-  mesh.material.uniforms['intensity'].value = mesh.average;
+  const newAverage = sum(soundData) * 1000 / soundData.length;
+  mesh.average = newAverage;
+  mesh.material.uniforms['intensity'].value = THREE.Math.clamp(mesh.average, -10, 200);
   mesh.geometry.computeFaceNormals();
   mesh.geometry.computeVertexNormals();
   mesh.geometry.normalsNeedUpdate = true;
