@@ -1,7 +1,9 @@
 .photobooth {
   padding: 20px;
   background: #cc3166;
+  min-height: 800px;
   overflow: auto;
+  text-align: center;
 
   &__title {
     color: #FFF;
@@ -10,10 +12,10 @@
   }
 
   &__camera {
-    float: left;
+    display: inline-block;
   }
 
-  &__canvas-wrapper{
+  &__canvas-wrapper {
     display: block;
     line-height: 0;
     position: absolute;
@@ -24,7 +26,7 @@
     overflow: hidden;
   }
 
-  &__canvas{
+  &__canvas {
     margin-left: 9px;
     border: 1px solid rgb(204, 49, 102);
     box-shadow: 0px 0px 13px #941d45;
@@ -37,7 +39,7 @@
     margin: 20px 40px 0 0;
     width: 320px;
     height: 720px;
-    float: left;
+    display: inline-block;
   }
 }
 
@@ -57,41 +59,117 @@
     height: 357px;
     transform: translate(41px, 137px);
     position: relative;
+
+    &.new {
+      .camera__stream {
+        filter: blur(10px);
+        transform: scale(1.2);
+      }
+      .camera__button {
+        display: none;
+
+        &--new {
+          display: block;
+        }
+      }
+    }
   }
 
-  &__stream-crop{
+  &__stream-crop {
     position: absolute;
     width: 238px;
     height: 238px;
     overflow: hidden;
   }
 
-  &__stream{
+  &__stream {
     position: absolute;
-    background: #222;
+    background: #881a3f;
     left: -45px;
     width: 318px;
     height: 238px;
-    
+    transition: filter .2s, transform .2s;
   }
 
-  &__button{
+  &__button {
     position: absolute;
-    left: 98px;
-    bottom: 20px;
     background: #FFF;
-    box-shadow: inset 0px 0px 0px 2px #000;
     border-radius: 50%;
-    border: 3px solid #FFF;
     width: 40px;
     height: 40px;
     cursor: pointer;
     outline: 0;
+    border: 0;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
 
-    &:hover{
-      transform: scale(1.1);
-      border-color: #ccc;
-      transition: transform .2s, border-color .2s;
+    &--new {
+      display: none;
+      background-color: #881a3f;
+      left: 83px;
+      top: 80px;
+      width: 70px;
+      height: 70px;
+      color: #FFF;
+      font-size: 18px;
+
+       &:hover {
+        transform: scale(1.1);
+        transition: transform .2s, border-color .2s;
+      }
+    }
+
+    &--shooter {
+      bottom: 20px;
+      left: 83px;
+      width: 70px;
+      height: 70px;
+      background-color: #000;
+      border: 3px solid #FFF;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 100;
+
+      &:hover {
+        transform: scale(1.1);
+        border-color: #ccc;
+        transition: transform .2s, border-color .2s;
+      }
+    }
+
+    &--renew, &--save {
+      bottom: 33px;
+      left: 20px;
+      width: 45px;
+      height: 45px;
+      background-color: #000;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 10px;
+
+      &:hover {
+        transform: scale(1.1);
+        border-color: #ccc;
+        transition: transform .2s, border-color .2s;
+      }
+    }
+    
+    &--save {
+      left: auto;
+      right: 20px;
+    }
+
+    &--disabled {
+      border: 2px solid #616161;
+      color: #616161;
+      cursor: default;
+
+      &:hover {
+        transform: scale(1);
+        border-color: #616161;
+        transition: none;
+      }
     }
   }
 }

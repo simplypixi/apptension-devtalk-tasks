@@ -5,8 +5,8 @@ class Photo extends React.Component {
     super(props);
 
     this.i = 2;
-    this.yPhases = [10, -215, -430];
-    this.y = this.yPhases[this.i];
+    this.yPhases = [10, -215, -430, -680];
+    this.y = this.yPhases[this.i + 1];
     this.margin = 15;
     this.size = 200;
     this.width = this.size + 2 * this.margin;
@@ -17,6 +17,10 @@ class Photo extends React.Component {
   }
 
   buildSnap() {
+    if (!this.refs.canvas) {return};
+
+    this.i = 2;
+    this.y = this.yPhases[this.i + 1];
     this.snap = this.refs.canvas.getContext('2d');
     this.snap.fillStyle = '#fff';
     this.snap.fillRect(0,0, this.width, this.height * 2);
@@ -33,6 +37,8 @@ class Photo extends React.Component {
       this.y = this.yPhases[this.i];
       this.i = this.i === 0 ? 2 : this.i - 1;
 
+    } else {
+      this.buildSnap();
     }
   }
 
