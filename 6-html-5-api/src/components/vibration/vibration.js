@@ -43,19 +43,21 @@ class Vibration extends React.Component {
   render() {
     return(
       <MuiThemeProvider>
-        <div className="vibration">
-          <h1>Vibration Api</h1>
-          <div className="georg-wrap">
-            <img src="../../../src/assets/images/george-clooney.jpg" alt="georg image"/>
-          </div>
-          {this.isVibrationSupported ? (
-            <div>
-              <RaisedButton className="trigger" label="Press to play" primary={true} onClick={startPeristentVibrate} />
-              <RaisedButton className="trigger" label="Press to stop" primary={true} onClick={stopVibrate} />
+        <div className="vibration-wrap">
+          <div className="vibration">
+            <h1>Oh Georg!</h1>
+            <div className="georg-wrap">
+              <img src="../../../src/assets/images/george-clooney.jpg" alt="georg image"/>
             </div>
-          ) : (
-            <RaisedButton className="trigger" label="Vibration not supported" primary={true} />
-          )}
+            {this.isVibrationSupported ? (
+              <div>
+                <RaisedButton className="trigger" label="Press to play" primary={true} onClick={startPeristentVibrate} />
+                <RaisedButton className="trigger" label="Press to stop" primary={true} onClick={stopVibrate} />
+              </div>
+            ) : (
+              <RaisedButton className="trigger" label="Vibration not supported" primary={true} />
+            )}
+          </div>
         </div>
       </MuiThemeProvider>
     );
