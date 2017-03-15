@@ -57,6 +57,8 @@ class Camera extends React.Component {
   }
 
   onSuccess(stream) {
+    this.stream = stream;
+
     if (navigator.mozGetUserMedia) {
       this.refs.video.mozSrcObject = stream;
     } else {
@@ -73,6 +75,10 @@ class Camera extends React.Component {
 
   componentDidMount() {
     this.buildSnap();
+  }
+
+  componentWillUnmount() {
+    this.stream.getTracks()[0].stop();
   }
 
   render() {
