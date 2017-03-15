@@ -5,7 +5,7 @@ class Photo extends React.Component {
     super(props);
 
     this.i = 2;
-    this.yPhases = [10, -215, -430, -680];
+    this.yPhases = [20, -215, -430, -680];
     this.y = this.yPhases[this.i + 1];
     this.margin = 15;
     this.size = 200;

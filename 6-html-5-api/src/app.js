@@ -3,20 +3,30 @@ import './assets/stylesheets/styles.scss';
 import React from 'react';
 import { render } from 'react-dom'
 import { Router, Route , Link, browserHistory } from 'react-router';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import FlatButton from 'material-ui/FlatButton';
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 import Vibration from './components/vibration/vibration.js';
 import Audio from './components/audio';
 import Photobooth from './components/photobooth';
+import Timing from './components/timing/timing';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import {Tabs, Tab} from 'material-ui/Tabs';
-
-import Footer from './components/footer/footer';
 
 injectTapEventPlugin();
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#FFF',
+    accent1Color: '#942349',
+    textColor: '#942349',
+    alternateTextColor: '#942349'
+  }
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
           <Tabs>
             <Tab label="Home" value={0} containerElement={<Link to="/"/>}/>
             <Tab label="Vibration API" value={1} containerElement={<Link to="/vibration"/>}/>
