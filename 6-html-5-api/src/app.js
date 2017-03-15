@@ -10,14 +10,11 @@ import Vibration from './components/vibration/vibration.js';
 import Audio from './components/audio';
 import Photobooth from './components/photobooth';
 
-import Timing from './components/timing/timing';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
-import FlatButton from 'material-ui/FlatButton';
+import Footer from './components/footer/footer';
 
 injectTapEventPlugin();
 
@@ -46,9 +43,9 @@ class App extends React.Component {
             <Tab label="Vibration API" value={1} containerElement={<Link to="/vibration"/>}/>
             <Tab label="WebRTC audio" value={2} containerElement={<Link to="/audio"/>}/>
             <Tab label="Stunning duck face" value={3} containerElement={<Link to="/photobooth"/>}/>
-            <Tab label="Timing Api" value={4} containerElement={<Link to="/timing"/>}/>
           </Tabs>
         </MuiThemeProvider>
+        <Footer></Footer>
         {this.props.children}
       </div>
     );
@@ -61,7 +58,6 @@ const routes = (
       <Route name="vibration" path="/vibration" component={Vibration}/>
       <Route name="audio" path="/audio" component={Audio}/>
       <Route name="photobooth" path="/photobooth" component={Photobooth}/>
-      <Route name="timing" path="/timing" component={Timing}/>
     </Route>
   </Router>
 );
