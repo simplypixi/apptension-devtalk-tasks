@@ -7,14 +7,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import FlatButton from 'material-ui/FlatButton';
-import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 import Vibration from './components/vibration/vibration.js';
 import Audio from './components/audio';
 import Photobooth from './components/photobooth';
-import Timing from './components/timing/timing';
+import Footer from './components/footer/footer';
 
 
 injectTapEventPlugin();
