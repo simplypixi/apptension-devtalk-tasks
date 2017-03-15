@@ -215,3 +215,37 @@
     }
   }
 }
+
+.main-menu {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 200px;
+}
+.main-menu__link {
+  display: inline-block;
+  font-size: 0;
+  width: 214px;
+  height: 213px;
+  background: url(~/src/assets/images/dot-app.png) no-repeat;
+  margin: 0 15px;
+}
+
+.link {
+  &--vibration {
+    background-image: url(~/src/assets/images/george-app.png);
+    width: 249px;
+  }
+  &--audio {
+    background-image: url(~/src/assets/images/sound-app.png);
+    width: 256px;
+    height: 216px;
+  }
+  &--photobooth {
+    background-image: url(~/src/assets/images/insta-app.png);
+    width: 236px;
+  }
+  &--chat {
+    background-image: url(~/src/assets/images/chat-app.png);
+  }
+}
