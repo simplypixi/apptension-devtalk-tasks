@@ -54,6 +54,14 @@ class App extends React.Component {
           </Tabs>
         </MuiThemeProvider>
         <Footer></Footer>
+        {this.props.children === null &&
+          <div className="main-menu">
+            <Link to="/vibration/" className="main-menu__link link--vibration">Oh Dżordż</Link>
+            <Link to="/audio/" className="main-menu__link link--audio">Audio</Link>
+            <Link to="/photobooth/" className="main-menu__link link--photobooth">Photobooth</Link>
+            <Link to="/chat/" className="main-menu__link link--chat">Chat</Link>
+          </div>
+        }
         {this.props.children}
       </div>
     );

@@ -7,11 +7,9 @@ body {
 }
 
 .vibration-wrap {
-  min-height: 700px;
+  min-height: 900px;
   padding: 10px 0;
-  background-position: center center;
-  background-size: cover;
-  background-image: url("../images/heart-bcg.jpg");
+  background: url(~/src/assets/images/pattern.png);
 }
 
 .vibration {
@@ -22,6 +20,11 @@ body {
     color: pink;
     font-size: 51px;
     text-shadow: 3px 3px 2px #000;
+  }
+
+  img {
+    border-radius: 50px;
+    box-shadow: 0 0 20px 2px #942349;
   }
 }
 
