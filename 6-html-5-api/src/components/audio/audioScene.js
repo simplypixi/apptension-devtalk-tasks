@@ -84,8 +84,6 @@ class AudioScene extends React.Component {
     this.animate();
   }
 
-
-
   animate() {
     this.requestId = requestAnimationFrame(this.animate);
     updateIndices(this.start, this.mesh, this.props.soundData);
