@@ -1,13 +1,14 @@
 body {
   background: #cc3166;
   font-family: Roboto, sans-serif;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
 .vibration-wrap {
-  in-height: 650px;
-  padding: 80px 0;
+  min-height: 700px;
+  padding: 10px 0;
   background-position: center center;
   background-size: cover;
   /*background-image: url("../images/heart-bcg.jpg");*/
@@ -26,6 +27,37 @@ body {
 
 .trigger {
   margin: 80px 10px 0 10px;
+}
+
+footer {
+  position: absolute;
+  padding: 5px 10px;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  width: 100%;
+  background-color: rgb(0, 188, 212);
+
+  .footer-title {
+    display: block;
+    color: #fff;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    color: #fff;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 10px;
+
+      span {
+        color: red;
+      }
+    }
+  }
 }
 
 @import 'photobooth';
