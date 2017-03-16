@@ -13,6 +13,7 @@
 
   &__camera {
     display: inline-block;
+    transform: translateY(-120px);
   }
 
   &__canvas-wrapper {
@@ -154,7 +155,7 @@
         transition: transform .2s, border-color .2s;
       }
     }
-    
+
     &--save {
       left: auto;
       right: 20px;
