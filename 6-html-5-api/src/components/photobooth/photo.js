@@ -5,10 +5,10 @@ class Photo extends React.Component {
     super(props);
 
     this.i = 2;
-    this.yPhases = [20, -215, -430, -680];
+    this.yPhases = [20, -170, -330, -680];
     this.y = this.yPhases[this.i + 1];
     this.margin = 15;
-    this.size = 200;
+    this.size = 150;
     this.width = this.size + 2 * this.margin;
     this.height = this.size * 3 + 5 * this.margin;
 

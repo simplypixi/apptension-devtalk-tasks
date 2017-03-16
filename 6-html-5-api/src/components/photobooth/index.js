@@ -11,7 +11,7 @@ class Photobooth extends React.Component {
       snap: null
     }
 
-    this.size = 200;
+    this.size = 150;
   }
 
   setSnap(value) {
