@@ -1,0 +1,32 @@
+@import "teamsList/teamsList";
+@import "team/team";
+@import "rangeSelector/rangeSelector";
+
+.home {
+}
+
+.home__title {
+  color: white;
+  line-height: 50px;
+  margin-top: 0;
+  padding: 60px;
+}
+
+.home__header {
+  background: $second-color;
+}
+
+.home__title-logo {
+  @include retina-sprite($logo-desktop-group);
+
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.home__sub-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
