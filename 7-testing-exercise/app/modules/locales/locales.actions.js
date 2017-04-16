@@ -5,4 +5,6 @@ const { Types, Creators } = createActions({
 }, {});
 
 export const localesActions = Creators;
+console.log();
 export const localesActionsTypes = Types;
+console.log(localesActionsTypes);
