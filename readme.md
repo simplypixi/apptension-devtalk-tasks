@@ -21,3 +21,8 @@ Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-
 ## Challange #6 - HTML 5 API - Zestaw Karyny
 Url: http://slides.com/mkmieciak/html5-apis
 Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-EA36y-biTss/edit#gid=857748848
+
+## Challange #7 - Testing Exercise
+Url: https://github.com/ellheat/devtalk-testing-exercise
+Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-EA36y-biTss/edit#gid=50660264
+
