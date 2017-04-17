@@ -8,7 +8,7 @@ const typeObj = { SET_LANGUAGE };
 
 describe('locales action', () => {
   it('should proper action and types to be defined', () => {
-    expect(localesActions, localesActionsTypes).to.not.be.undefined; // eslint-disable-line
+    expect(localesActions, localesActionsTypes).to.not.be.equal(undefined);
   });
   it('should proper type be defined', () => {
     expect(typeObj).to.deep.equal(localesActionsTypes);

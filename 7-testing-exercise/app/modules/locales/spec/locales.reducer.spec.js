@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 
 import reducer from '../locales.reducer';
 
-describe('localesReducer', () => {
+describe('locales reducer', () => {
   const falseAction = { type: 'type' };
   const initialState = fromJS({
     language: null,
