@@ -1,12 +1,12 @@
 import { expect } from 'chai';
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
 
 import reducer from '../locales.reducer';
 
 describe('localesReducer', () => {
   const falseAction = {type: 'type'};
   const initialState = fromJS({
-    language: null
+    language: null,
   });
 
   it('should return initial value', () => {
@@ -19,7 +19,6 @@ describe('localesReducer', () => {
     const resultState = reducer(givenState, falseAction);
     expect(resultState).to.equal(givenState);
   });
-
 });
 
 
