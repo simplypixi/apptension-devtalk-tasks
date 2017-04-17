@@ -12,7 +12,7 @@ const INITIAL_STATE = new StateRecord({});
 
 const setLanguageHandler = (state = INITIAL_STATE, action) => state.set('language', action.payload);
 
-const HANDLERS = {
+export const HANDLERS = {
   [localesActionsTypes.SET_LANGUAGE]: setLanguageHandler,
 };
 
