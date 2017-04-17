@@ -4,7 +4,7 @@ import { fromJS } from 'immutable';
 import reducer from '../locales.reducer';
 
 describe('localesReducer', () => {
-  const falseAction = {type: 'type'};
+  const falseAction = { type: 'type' };
   const initialState = fromJS({
     language: null,
   });
@@ -15,7 +15,7 @@ describe('localesReducer', () => {
   });
 
   it('should return given state when unhandled action is passed', () => {
-    const givenState = fromJS({language: 'de'});
+    const givenState = fromJS({ language: 'de' });
     const resultState = reducer(givenState, falseAction);
     expect(resultState).to.equal(givenState);
   });
