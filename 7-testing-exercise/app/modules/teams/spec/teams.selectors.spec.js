@@ -11,15 +11,12 @@ describe('team selector', () => {
 
   describe('average', () => {
     it('should proper count average', () => {
-      const fcOne = times(10, constant({name: 'FC One', squadMarketValue: '1,000,000 €'}));
-      const fcTwo = times(10, constant({name: 'FC Two', squadMarketValue: '2,000,000 €'}));
+      const fcOne = times(10, constant({ name: 'FC One', squadMarketValue: '1,000,000 €' }));
+      const fcTwo = times(10, constant({ name: 'FC Two', squadMarketValue: '2,000,000 €' }));
 
-      const state = fromJS({teams: {list: [...fcOne, ...fcTwo], rangeValues: {min: 0, max: 600}}});
+      const state = fromJS({ teams: { list: [...fcOne, ...fcTwo], rangeValues: { min: 0, max: 600 } } });
 
       expect(selectArithmeticAverage(state)).to.be.equal(1500000);
     });
   });
-
 });
-
-
