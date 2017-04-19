@@ -17,5 +17,4 @@ describe('teams reducer', () => {
     const resultState = reducer(undefined, falseAction);
     expect(resultState.toJS()).to.deep.equal(initialState.toJS());
   });
-
 });
