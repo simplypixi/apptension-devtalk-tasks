@@ -18,5 +18,14 @@ describe('team selector', () => {
 
       expect(selectArithmeticAverage(state)).to.be.equal(1500000);
     });
+
+    it('should proper count average with limit', () => {
+      const fcOne = times(20, constant({ name: 'FC One', squadMarketValue: '1,000,000 €' }));
+      const fcTwo = times(10, constant({ name: 'FC Two', squadMarketValue: '30,000,000 €' }));
+
+      const state = fromJS({ teams: { list: [...fcOne, ...fcTwo], rangeValues: { min: 0, max: 2 } } });
+
+      expect(selectArithmeticAverage(state)).to.be.equal(1000000);
+    });
   });
 });
