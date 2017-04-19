@@ -4,7 +4,7 @@ import { fromJS } from 'immutable';
 import { selectLocationState } from '../router.selectors';
 
 describe('when selectLocationState is called', () => {
-  const sampleRoute = 'route content';
+  const sampleRoute = { key: 'value' };
 
   const sampleState = fromJS({
     route: sampleRoute,
