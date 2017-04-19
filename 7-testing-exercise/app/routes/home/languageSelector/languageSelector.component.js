@@ -13,7 +13,7 @@ export default class LanguageSelector extends PureComponent {
   };
 
   handleLanguageChange = ({ target: { value } }) => {
-    this.props.setLanguage(value);
+    // this.props.setLanguage(value);
 
     const currentLanguage = get(this.props.router, 'params.lang', DEFAULT_LOCALE);
     const currentLanguageUrl = currentLanguage !== DEFAULT_LOCALE ? `/${currentLanguage}` : '';

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { mount } from 'enzyme';
 import LanguageSelector from '../languageSelector.component';
 
-describe('<LanguageSelector />', () => {
+describe('languageSelector component', () => {
   const wrapper = mount(<LanguageSelector value="en" />);
   it('should set up value as props', () => {
     expect(wrapper.props().value).to.equal('en');
