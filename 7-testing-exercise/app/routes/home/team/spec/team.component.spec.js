@@ -17,8 +17,14 @@ describe('Team', () => {
     const wrapper = shallow(<Team data={teamData} />);
     expect(wrapper.find('.team-name').node.props.children[0]).to.equal('testName');
   });
+
   it('should render team value', () => {
     const wrapper = shallow(<Team data={teamData} />);
     expect(wrapper.find('.team-value').node.props.children).to.equal('testValue');
+  });
+
+  it('should render team logo', () => {
+    const wrapper = shallow(<Team data={teamData} />);
+    expect(wrapper.find('.team-logo').props().style.backgroundImage).to.equal('url(testUrl)');
   });
 });
