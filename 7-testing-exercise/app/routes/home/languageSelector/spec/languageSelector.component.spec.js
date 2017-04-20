@@ -6,7 +6,7 @@ import LanguageSelector from '../languageSelector.component';
 describe('languageSelector component', () => {
   const wrapper = mount(<LanguageSelector value="en" />);
   it('should mount a component', () => {
-    expect(wrapper.component.state.mount).to.be.true;
+    expect(wrapper.component.state.mount).to.equal(true);
   });
   it('should set up value as props', () => {
     expect(wrapper.props().value).to.equal('en');
