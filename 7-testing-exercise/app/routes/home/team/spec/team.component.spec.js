@@ -7,13 +7,13 @@ import { fromJS } from 'immutable';
 
 import Team from '../team.component';
 
-describe.only('Team', () => {
+describe('Team', () => {
   const teamData = fromJS({
     crestUrl: 'testUrl',
     name: 'testName',
     squadMarketValue: 'testValue',
   });
-  
+
   it('should render team name', () => {
     const wrapper = shallow(<Team data={teamData} />);
     expect(wrapper.find('.team-name').node.props.children[0]).to.equal('testName');
