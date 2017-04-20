@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 import { FormattedMessage } from 'react-intl';
 import TeamsList from '../teamsList.component';
 import Team from '../../team/team.component';
@@ -19,5 +19,12 @@ describe('<TeamsList/>', () => {
     const wrapper = shallow(<TeamsList items={items} />);
 
     expect(wrapper.find(Team)).to.have.length(2);
+  });
+
+  it('should not render <Team /> components if items is empty', () => {
+    const items = List();
+    const wrapper = shallow(<TeamsList items={items} />);
+
+    expect(wrapper.find(Team)).to.have.length(0);
   });
 });
