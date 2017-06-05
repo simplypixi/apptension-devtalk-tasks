@@ -2,19 +2,16 @@
 
 # IntelliJ project files
 .idea
-*.iml
 out
 gen
 .gitignore
 *.map
 node_modules
-/node_modules
-**/node_modules
 coverage
-/coverage
-**/coverage
 **/bundle.js
 
 dist
 **/src/spritesmith-generated
 
+*/app/images/generated
+*/app/styles/generated
