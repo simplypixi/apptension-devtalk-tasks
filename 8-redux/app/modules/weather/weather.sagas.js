@@ -21,7 +21,7 @@ export function* fetchWeatherSaga({ weather = 'New York' }) {
   try {
     const appid = '01e9c2222acd8930d8bf2c5629971c23';
     const place = weather;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=&${appid}&units=metric`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${appid}&units=metric`;
     const data = yield call(requestWeatherSaga, url);
 
     yield put(WeatherActions.fetchSuccess(data));
