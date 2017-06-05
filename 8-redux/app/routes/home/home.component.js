@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
 
 import messages from './home.messages';
-import { MaintainerList } from './maintainerList/maintainerList.component';
+// import { MaintainerList } from './maintainerList/maintainerList.component';
 import { LanguageSelector } from './languageSelector/languageSelector.component';
 import { Weather } from './weather/weather.component';
 
@@ -35,9 +35,9 @@ export class Home extends PureComponent {
   render() {
     const links = [{
       href: 'https://fonts.googleapis.com/css?family=News+Cycle',
-      rel: 'stylesheet'
+      rel: 'stylesheet',
     }];
-  
+
     return (
       <div className="home">
         <Helmet

@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { assign } from 'lodash';
-import { get, parseJSON } from '../api/api.sagas';
+import { parseJSON } from '../api/api.sagas';
 import { WeatherTypes, WeatherActions } from './weather.redux';
 
 export function* requestWeatherSaga(url) {
   const headers = assign({
     'Content-Type': 'application/json',
-    method: 'GET'
+    method: 'GET',
   });
 
   try {
@@ -19,8 +19,9 @@ export function* requestWeatherSaga(url) {
 
 export function* fetchWeatherSaga({ weather = 'New York' }) {
   try {
+    const appid = '01e9c2222acd8930d8bf2c5629971c23';
     const place = weather;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=01e9c2222acd8930d8bf2c5629971c23&units=metric`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=&${appid}&units=metric`;
     const data = yield call(requestWeatherSaga, url);
 
     yield put(WeatherActions.fetchSuccess(data));
