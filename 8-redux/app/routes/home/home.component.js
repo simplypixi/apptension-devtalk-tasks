@@ -62,7 +62,7 @@ export class Home extends PureComponent {
       <div className="home">
         <Helmet
           title="Homepage"
-          link={links}
+          //link={links}
         />
 
         <div className="menu">

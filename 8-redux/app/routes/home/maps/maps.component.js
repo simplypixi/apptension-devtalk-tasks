@@ -11,7 +11,7 @@ export class Maps extends PureComponent {
 
     const {lat, lon, display_name} = place ? place.toJS() : {lat: "51.505", lon: "-0.09"};
     const position = [lat, lon];
-    debugger
+    // debugger
     return (
       <section className="maps">
         <Map center={position} zoom={13} scrollWheelZoom={false}>
