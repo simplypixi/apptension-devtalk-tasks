@@ -1,13 +1,14 @@
 import React, { PureComponent, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import { debounce } from 'lodash';
 import { FormattedMessage } from 'react-intl';
+import TextField from 'material-ui/TextField';
 import envConfig from 'env-config';
 
 import messages from './home.messages';
-// import { MaintainerList } from './maintainerList/maintainerList.component';
 import { LanguageSelector } from './languageSelector/languageSelector.component';
 import { Weather } from './weather/weather.component';
-
+import { Maps } from './maps/maps.component';
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -20,17 +21,36 @@ export class Home extends PureComponent {
     router: PropTypes.object.isRequired,
   };
 
+  constructor() {
+    super(...arguments);
+
+    this.state = {
+      value: '',
+    };
+  }
+
   componentWillMount() {
     this.props.fetchMaintainers(this.props.language);
     this.props.fetchWeather('Poznan');
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.language !== this.props.language) {
       this.props.fetchMaintainers(nextProps.language);
     }
     this.weather = nextProps.weather;
-  }
+  };
+
+  search = debounce((searchValue) => {
+    this.props.fetchWeather(searchValue);
+  }, 200);
+
+  handleChange = (event, searchValue) => {
+    this.setState({
+      value: searchValue,
+    });
+    this.search(searchValue);
+  };
 
   render() {
     const links = [{
@@ -45,22 +65,17 @@ export class Home extends PureComponent {
           link={links}
         />
 
-        <h1 className="home__title">
-          <i className="home__title-logo" />
-          <FormattedMessage {...messages.welcome} />
-        </h1>
-
-        <div>Environment: {envConfig.name}</div>
-
-        <LanguageSelector
-          language={this.props.language}
-          setLanguage={this.props.setLanguage}
-          router={this.props.router}
+        <TextField
+          id="text-field-controlled"
+          value={this.state.value}
+          onChange={this.handleChange}
         />
 
         <Weather
           data={this.props.weather}
         />
+
+        <Maps places={this.props.places} />
       </div>
     );
   }

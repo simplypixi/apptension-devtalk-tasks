@@ -34,6 +34,8 @@ import routes from './routes';
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
@@ -76,19 +78,21 @@ if (process.env.NODE_ENV === 'development') {
 
 const render = () => {
   ReactDOM.render(
-    <AppContainer>
-      <Provider store={store}>
-        <Router
-          history={history}
-          routes={routes}
-          render={
-            // Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())
-          }
-        />
-      </Provider>
-    </AppContainer>,
+    <MuiThemeProvider>
+      <AppContainer>
+        <Provider store={store}>
+          <Router
+            history={history}
+            routes={routes}
+            render={
+              // Scroll to top when going to a new page, imitating default browser
+              // behaviour
+              applyRouterMiddleware(useScroll())
+            }
+          />
+        </Provider>
+      </AppContainer>
+    </MuiThemeProvider>,
     document.getElementById('app')
   );
 };
