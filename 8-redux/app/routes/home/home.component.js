@@ -57,27 +57,6 @@ export class Home extends PureComponent {
   };
 
   render() {
-    const links = [{
-      href: 'https://fonts.googleapis.com/css?family=News+Cycle',
-      rel: 'stylesheet',
-    }];
-
-    const style = {
-      height: 100,
-      width: 100,
-      margin: 20,
-      textAlign: 'center',
-      display: 'inline-block',
-    };
-
-    const searchBoxStyle = {
-      position: 'absolute',
-      left: '50%',
-      width: '70%',
-      textAlign: 'center',
-      transform: 'translate(-50%, 20px)'
-    };
-
     return (
       <div className="home">
         <Helmet

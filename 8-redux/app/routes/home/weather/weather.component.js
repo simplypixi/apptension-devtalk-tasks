@@ -15,7 +15,7 @@ export class Weather extends PureComponent {
   }
 
   getSrc(icon) {
-    return `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${icon}.png`
+    return `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${icon}.png`;
   }
 
   render() {
@@ -23,7 +23,7 @@ export class Weather extends PureComponent {
       <div>
         <Card  className="weather__card" zDepth={1}>
           <CardHeader
-            title='Weather'
+            title="Weather"
             subtitle={this.props.data.get('name')}
           />
           <CardText>
