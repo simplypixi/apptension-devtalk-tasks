@@ -17,3 +17,20 @@
   margin-right: 20px;
   vertical-align: middle;
 }
+
+
+.menu {
+  width: 70%;
+  max-width: 400px;
+
+  &__search {
+    font-size: 26px;
+    margin-bottom: -9px;
+    padding: 2px 0 7px 0;
+    width: 100% !important;
+
+    input {
+      padding: 0 20px !important;
+    }
+  }
+}

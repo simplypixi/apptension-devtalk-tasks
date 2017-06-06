@@ -1,4 +1,7 @@
 import React, { PropTypes, PureComponent } from 'react';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import Toggle from 'material-ui/Toggle';
 
 
 export class Weather extends PureComponent {
@@ -11,21 +14,48 @@ export class Weather extends PureComponent {
     // console.warn('>>>>', nextProps);
   }
 
+  getSrc(icon) {
+    return `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${icon}.png`
+  }
+
   render() {
     return (
-      <div className="weather-box">
-        <h1>Weather in {this.props.data.get('name')}</h1>
-        <ul>
-          <li>Temperature: {this.props.data.getIn(['main', 'temp'])}°C</li>
-          <li>Humidity: {this.props.data.getIn(['main', 'humidity'])}%</li>
-          <li>Pressure: {this.props.data.getIn(['main', 'pressure'])}hPa</li>
-          <li>Weather: {this.props.data.getIn(['weather', 0, 'main'])}</li>
-          <li>
-            <img src={'http://openweathermap.org/img/w/' + this.props.data.getIn(['weather', 0, 'icon']) + '.png'}>
-            </img>
-          </li>
-          <li>Wind: {this.props.data.getIn(['wind', 'speed'])}m/s</li>
-        </ul>
+      <div>
+        <Card  className="weather__card" zDepth={1}>
+          <CardHeader
+            title='Weather'
+            subtitle={this.props.data.get('name')}
+          />
+          <CardText>
+            <div className="weather__info">
+              <div className="weather__icon-panel">
+                <img src={this.getSrc(this.props.data.getIn(['weather', 0, 'icon']))} className="weather__icon">
+                </img>
+              </div>
+              <div className="weather__data-panel">
+                <p className="weather__row weather__temp">
+                  {this.props.data.getIn(['main', 'temp'])}°C
+                </p>
+                <p className="weather__row weather__desc">
+                  <span>{this.props.data.getIn(['weather', 0, 'main'])}</span>
+                </p>
+                <p className="weather__row">
+                  <span className="weather__label">Humidity</span>
+                  <span>{this.props.data.getIn(['main', 'humidity'])}%</span>
+                </p>
+                <p className="weather__row">
+                  <span className="weather__label">Pressure</span>
+                  <span>{this.props.data.getIn(['main', 'pressure'])}hPa</span>
+                </p>
+                <p className="weather__row">
+                  <span className="weather__label">Wind</span>
+                  <span>{this.props.data.getIn(['wind', 'speed'])}m/s</span>
+                </p>
+              </div>
+            </div>
+            
+          </CardText>
+        </Card>
       </div>
     );
   }

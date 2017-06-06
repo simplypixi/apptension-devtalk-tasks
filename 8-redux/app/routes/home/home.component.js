@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { debounce } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
 import envConfig from 'env-config';
 
 import messages from './home.messages';
@@ -61,6 +62,22 @@ export class Home extends PureComponent {
       rel: 'stylesheet',
     }];
 
+    const style = {
+      height: 100,
+      width: 100,
+      margin: 20,
+      textAlign: 'center',
+      display: 'inline-block',
+    };
+
+    const searchBoxStyle = {
+      position: 'absolute',
+      left: '50%',
+      width: '70%',
+      textAlign: 'center',
+      transform: 'translate(-50%, 20px)'
+    };
+
     return (
       <div className="home">
         <Helmet
@@ -68,11 +85,15 @@ export class Home extends PureComponent {
           link={links}
         />
 
-        <TextField
-          id="text-field-controlled"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
+        <div className="menu">
+          <Paper zDepth={1} className="menu__box">
+            <TextField className="menu__search"
+              id="text-field-controlled"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          </Paper>
+        </div>
 
         <Weather
           data={this.props.weather}

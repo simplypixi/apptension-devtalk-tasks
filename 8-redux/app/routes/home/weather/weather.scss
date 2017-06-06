@@ -21,3 +21,57 @@
   	line-height: 1.6em;
   }
 }
+
+.weather {
+  &__card {
+    margin-top: 30px;
+    width: 70%;
+    max-width: 400px;
+  }
+
+  &__info {
+    overflow: auto;
+  }
+
+  &__icon-panel {
+    display: block;
+    float: left;
+    position: relative;
+    width: 140px;
+    height: 140px;
+    text-align: center;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -20px);
+  }
+  &__data-panel {
+    display: block;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+  }
+
+  &__row {
+    padding: 0;
+    margin: 0;
+
+  }
+
+  &__label {
+    color: gray;
+    margin-right: 4px;
+    font-size: 0.9em;
+  }
+
+  &__temp {
+    font-size: 34px;
+  }
+
+  &__desc {
+    margin-bottom: 10px;
+  }
+}
