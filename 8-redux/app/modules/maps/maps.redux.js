@@ -2,7 +2,7 @@ import { createActions, createReducer } from 'reduxsauce';
 import { Record, List, fromJS } from 'immutable';
 
 export const { Types: MapsTypes, Creators: MapsActions } = createActions({
-  fetch: ['search'],
+  fetch: ['input'],
   fetchSuccess: ['data'],
   fetchError: ['payload'],
 }, { prefix: 'MAPS_' });

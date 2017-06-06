@@ -19,6 +19,7 @@ export class Home extends PureComponent {
     fetchWeather: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
     router: PropTypes.object.isRequired,
+    fetchPlaces: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -32,6 +33,7 @@ export class Home extends PureComponent {
   componentWillMount() {
     this.props.fetchMaintainers(this.props.language);
     this.props.fetchWeather('Poznan');
+    this.props.fetchPlaces('Poznan');
   };
 
   componentWillReceiveProps(nextProps) {
@@ -43,6 +45,7 @@ export class Home extends PureComponent {
 
   search = debounce((searchValue) => {
     this.props.fetchWeather(searchValue);
+    this.props.fetchPlaces(searchValue);
   }, 200);
 
   handleChange = (event, searchValue) => {

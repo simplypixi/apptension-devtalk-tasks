@@ -17,15 +17,14 @@ export function* requestPlacesSaga(url) {
   }
 }
 
-export function* fetchPlacesSaga({ weather = 'New York' }) {
+export function* fetchPlacesSaga({ input }) {
   try {
-    const appid = '01e9c2222acd8930d8bf2c5629971c23';
-    const place = weather;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${appid}&units=metric`;
-    const data = yield call(requestWeatherSaga, url);
+    const url = `http://nominatim.openstreetmap.org/search/${input}?format=json&addressdetails=1&limit=1&extratags=1`;
+    const data = yield call(requestPlacesSaga, url);
 
     yield put(MapsActions.fetchSuccess(data));
   } catch (e) {
+    console.log('api error', e)
     yield put(MapsActions.fetchError(e));
   }
 }

@@ -7,18 +7,21 @@ export class Maps extends PureComponent {
   }
 
   render() {
-    const position = [51.505, -0.09];
+    const place = this.props.places.get(0);
 
+    const {lat, lon, display_name} = place ? place.toJS() : {lat: "51.505", lon: "-0.09"};
+    const position = [lat, lon];
+    debugger
     return (
       <section className="maps">
-        <Map center={position} zoom={5} scrollWheelZoom={false}>
+        <Map center={position} zoom={13} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />
           <Marker position={position}>
             <Popup>
-              <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+              <span>{display_name}</span>
             </Popup>
           </Marker>
         </Map>
