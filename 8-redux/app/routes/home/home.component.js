@@ -16,6 +16,7 @@ export class Home extends PureComponent {
     items: PropTypes.object,
     language: PropTypes.string.isRequired,
     weather: PropTypes.object.isRequired,
+    places: PropTypes.object,
     fetchMaintainers: PropTypes.func.isRequired,
     fetchWeather: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,

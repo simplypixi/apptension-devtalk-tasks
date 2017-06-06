@@ -4,7 +4,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 export class Maps extends PureComponent {
   static propTypes = {
     places: PropTypes.object,
-  }
+  };
 
   render() {
     const place = this.props.places.get(0);
@@ -26,6 +26,6 @@ export class Maps extends PureComponent {
           </Marker>
         </Map>
       </section>
-    )
+    );
   }
 }
