@@ -24,7 +24,7 @@ export function* fetchPlacesSaga({ input }) {
 
     yield put(MapsActions.fetchSuccess(data));
   } catch (e) {
-    console.log('api error', e)
+    console.log('api error', e);
     yield put(MapsActions.fetchError(e));
   }
 }

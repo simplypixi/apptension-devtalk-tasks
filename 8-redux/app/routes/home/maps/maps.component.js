@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { PropTypes, PureComponent } from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
@@ -9,7 +11,7 @@ export class Maps extends PureComponent {
   render() {
     const place = this.props.places.get(0);
 
-    const {lat, lon, display_name} = place ? place.toJS() : {lat: "51.505", lon: "-0.09"};
+    const { lat, lon, display_name } = place ? place.toJS() : { lat: "51.505", lon: "-0.09" };
     const position = [lat, lon];
     // debugger
     return (
