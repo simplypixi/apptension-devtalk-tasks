@@ -21,6 +21,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
 import 'normalize.css/normalize.css';
 import './main.scss';
+import 'leaflet/dist/leaflet.css'
 
 // Import selector for `syncHistoryWithStore`
 import { selectLocationState } from './modules/router/router.selectors';

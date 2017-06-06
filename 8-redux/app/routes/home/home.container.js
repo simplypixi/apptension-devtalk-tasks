@@ -19,11 +19,13 @@ const mapStateToProps = createStructuredSelector({
   items: selectMaintainersItems,
   weather: selectWeathersItem,
   language: selectLocalesLanguage,
+  places: selectPlaces,
 });
 
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchMaintainers: MaintainersActions.fetch,
   fetchWeather: WeatherActions.fetch,
+  fetchPlaces: MapsActions.fetchPlaces,
   setLanguage: LocalesActions.setLanguage,
 }, dispatch);
 
