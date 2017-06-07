@@ -62,7 +62,10 @@ export class Weather extends PureComponent {
               </div>
             ) : (
               <div className="not-found-box">
-                <p><i className="fa fa-question-circle" aria-hidden="true"></i><span className="label">Hmm, I don't know.</span></p>
+                <p>
+                  <i className="fa fa-umbrella" aria-hidden="true"></i>
+                  <span className="label">Hmm, I don't know. I think you'd better take an umbrella.</span>
+                </p>
               </div>
             )}
           </CardText>
