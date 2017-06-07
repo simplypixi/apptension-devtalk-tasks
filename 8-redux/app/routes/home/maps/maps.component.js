@@ -2,7 +2,7 @@ import React, { PropTypes, PureComponent } from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import DivIcon from 'react-leaflet-div-icon';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardHeader } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 export class Maps extends PureComponent {
