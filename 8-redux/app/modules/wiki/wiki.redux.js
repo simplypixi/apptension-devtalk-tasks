@@ -1,5 +1,5 @@
 import { createActions, createReducer } from 'reduxsauce';
-import { Record, Map, fromJS } from 'immutable'
+import { Record, Map, fromJS } from 'immutable';
 
 export const { Types: WikiTypes, Creators: WikiActions } = createActions({
   fetch: ['wiki'],
