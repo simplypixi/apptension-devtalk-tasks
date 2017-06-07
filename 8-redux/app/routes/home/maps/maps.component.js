@@ -1,9 +1,12 @@
 import React, { PropTypes, PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import DivIcon from 'react-leaflet-div-icon';
 import { Card, CardHeader } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+
+import messages from './maps.messages';
 
 export class Maps extends PureComponent {
   static propTypes = {
@@ -28,7 +31,7 @@ export class Maps extends PureComponent {
         <Card className="map">
           <div className="title-bar title-bar--pad">
             <i className="fa fa-map-o" aria-hidden="true"></i>
-            <span className="label">Where the hell is it?</span>
+            <span className="label"><FormattedMessage {...messages.title} /></span>
           </div>
           {place ? (
             <section className="map__container">
@@ -51,7 +54,7 @@ export class Maps extends PureComponent {
             </section>
           ) : (
             <div className="not-found-box">
-              <p><i className="fa fa-binoculars" aria-hidden="true"></i><span className="label">Oops! There is no data... Try with other query</span></p>
+              <p><i className="fa fa-binoculars" aria-hidden="true"></i><span className="label"><FormattedMessage {...messages.nodata} /></span></p>
             </div>
           )}
         </Card>

@@ -3,7 +3,9 @@ import { isNil } from 'lodash';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
+import { FormattedMessage } from 'react-intl';
 
+import messages from './weather.messages';
 
 export class Weather extends PureComponent {
   static propTypes = {
@@ -28,7 +30,7 @@ export class Weather extends PureComponent {
           <CardText>
             <div className="title-bar">
               <i className="fa fa-sun-o" aria-hidden="true"></i>
-              <span className="label">Current weather</span>
+              <span className="label"><FormattedMessage {...messages.title} /></span>
             </div>
             { hasData ? (
               <div className="weather__info">
@@ -47,15 +49,15 @@ export class Weather extends PureComponent {
                     <span>{this.props.data.getIn(['weather', 0, 'description'])}</span>
                   </p>
                   <p className="weather__row">
-                    <span className="weather__label">Humidity</span>
+                    <span className="weather__label"><FormattedMessage {...messages.humidity} /></span>
                     <span>{this.props.data.getIn(['main', 'humidity'])}%</span>
                   </p>
                   <p className="weather__row">
-                    <span className="weather__label">Pressure</span>
+                    <span className="weather__label"><FormattedMessage {...messages.pressure} /></span>
                     <span>{this.props.data.getIn(['main', 'pressure'])}hPa</span>
                   </p>
                   <p className="weather__row">
-                    <span className="weather__label">Wind</span>
+                    <span className="weather__label"><FormattedMessage {...messages.wind} /></span>
                     <span>{this.props.data.getIn(['wind', 'speed'])}m/s</span>
                   </p>
                 </div>
@@ -64,7 +66,7 @@ export class Weather extends PureComponent {
               <div className="not-found-box">
                 <p>
                   <i className="fa fa-umbrella" aria-hidden="true"></i>
-                  <span className="label">Hmm, I don't know. I think you'd better take an umbrella.</span>
+                  <span className="label"><FormattedMessage {...messages.nodata} /></span>
                 </p>
               </div>
             )}

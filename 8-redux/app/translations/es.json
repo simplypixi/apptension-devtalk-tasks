@@ -1,0 +1,11 @@
+{
+  "weather.title": "Tiempo actual",
+  "weather.humidity": "Humedad",
+  "weather.pressure": "Presión",
+  "weather.wind": "Viento",
+  "weather.nodata": "No lo sé. Lleva un paraguas.",
+  "wiki.title": "¿Qué dice wiki sobre...?",
+  "wiki.nodata": "Otra pregunta por favor.",
+  "maps.title": "¿Dónde carajos está?",
+  "maps.nodata": "No hay datos ... Prueba con otra frase"
+}

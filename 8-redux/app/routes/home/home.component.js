@@ -10,6 +10,7 @@ import { LanguageSelector } from './languageSelector/languageSelector.component'
 import { Weather } from './weather/weather.component';
 import { Maps } from './maps/maps.component';
 import { Wiki } from './wiki/wiki.component';
+import { Lang} from './wiki/wiki.component';
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -36,23 +37,25 @@ export class Home extends PureComponent {
 
   componentWillMount() {
     this.props.fetchMaintainers(this.props.language);
-    this.props.fetchWeather('Poznan');
-    this.props.fetchPlaces('Poznan');
-    this.props.fetchWiki('Poznań');
+    this.props.fetchWeather({value: this.state.value, lang: this.props.language});
+    this.props.fetchPlaces({value: this.state.value, lang: this.props.language});
+    this.props.fetchWiki({value: this.state.value, lang: this.props.language});
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.language !== this.props.language) {
-      this.props.fetchMaintainers(nextProps.language);
+      this.props.fetchWeather({value: this.state.value, lang: nextProps.language});
+      this.props.fetchPlaces({value: this.state.value, lang: nextProps.language});
+      this.props.fetchWiki({value: this.state.value, lang: nextProps.language});
     }
     this.weather = nextProps.weather;
     this.wiki = nextProps.wiki;
   };
 
   search = debounce((searchValue) => {
-    this.props.fetchWeather(searchValue);
-    this.props.fetchPlaces(searchValue);
-    this.props.fetchWiki(searchValue);
+    this.props.fetchWeather({value: searchValue, lang: this.props.language});
+    this.props.fetchPlaces({value: searchValue, lang: this.props.language});
+    this.props.fetchWiki({value: searchValue, lang: this.props.language});
   }, 200);
 
   handleChange = (event, searchValue) => {
@@ -90,6 +93,11 @@ export class Home extends PureComponent {
           />
         </div>
         <div className="column column--two">
+          <LanguageSelector
+            language={this.props.language}
+            setLanguage={this.props.setLanguage}
+            router={this.props.router}
+          />
           <Maps places={this.props.places} />
         </div>
 

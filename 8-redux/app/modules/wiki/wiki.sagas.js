@@ -17,9 +17,9 @@ export function* requestWikiSaga(url) {
   }
 }
 
-export function* fetchWikiSaga({ wiki }) {
+export function* fetchWikiSaga({ wiki: {value, lang } }) {
   try {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=&explaintext=&format=json&origin=*&titles=${wiki}`;
+    const url = `https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=&explaintext=&format=json&origin=*&titles=${value}`;
     const data = yield call(requestWikiSaga, url);
     const dataArray = toArray(data.query.pages);
     const extractedData = dataArray[0];
