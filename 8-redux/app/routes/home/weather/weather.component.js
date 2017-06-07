@@ -1,4 +1,5 @@
 import React, { PropTypes, PureComponent } from 'react';
+import { isNil } from 'lodash';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
@@ -19,42 +20,48 @@ export class Weather extends PureComponent {
   }
 
   render() {
-    return (
-      <div>
-        <Card className="weather__card" zDepth={1}>
-          <CardHeader
-            title="Weather"
-            subtitle={this.props.data.get('name')}
-          />
-          <CardText>
-            <i className="fa fa-binoculars" aria-hidden="true"></i>
-            <div className="weather__info">
-              <div className="weather__icon-panel">
-                <img src={this.getSrc(this.props.data.getIn(['weather', 0, 'icon']))} className="weather__icon">
-                </img>
-              </div>
-              <div className="weather__data-panel">
-                <p className="weather__row weather__temp">
-                  {this.props.data.getIn(['main', 'temp'])}°C
-                </p>
-                <p className="weather__row weather__desc">
-                  <span>{this.props.data.getIn(['weather', 0, 'main'])}</span>
-                </p>
-                <p className="weather__row">
-                  <span className="weather__label">Humidity</span>
-                  <span>{this.props.data.getIn(['main', 'humidity'])}%</span>
-                </p>
-                <p className="weather__row">
-                  <span className="weather__label">Pressure</span>
-                  <span>{this.props.data.getIn(['main', 'pressure'])}hPa</span>
-                </p>
-                <p className="weather__row">
-                  <span className="weather__label">Wind</span>
-                  <span>{this.props.data.getIn(['wind', 'speed'])}m/s</span>
-                </p>
-              </div>
-            </div>
+    const hasData = !isNil(this.props.data.getIn(['main', 'temp']));
 
+    return (
+      <div className="column--section">
+        <Card className="weather__card" zDepth={1}>
+          <CardText>
+            <div className="title-bar">
+              <i className="fa fa-sun-o" aria-hidden="true"></i>
+              <span className="label">Current weather</span>
+            </div>
+            { hasData ? (
+              <div className="weather__info">
+                <div className="weather__icon-panel">
+                  <img src={this.getSrc(this.props.data.getIn(['weather', 0, 'icon']))} className="weather__icon">
+                  </img>
+                </div>
+                <div className="weather__data-panel">
+                  <p className="weather__row weather__temp">
+                    {this.props.data.getIn(['main', 'temp'])}°C
+                  </p>
+                  <p className="weather__row weather__desc">
+                    <span>{this.props.data.getIn(['weather', 0, 'main'])}</span>
+                  </p>
+                  <p className="weather__row">
+                    <span className="weather__label">Humidity</span>
+                    <span>{this.props.data.getIn(['main', 'humidity'])}%</span>
+                  </p>
+                  <p className="weather__row">
+                    <span className="weather__label">Pressure</span>
+                    <span>{this.props.data.getIn(['main', 'pressure'])}hPa</span>
+                  </p>
+                  <p className="weather__row">
+                    <span className="weather__label">Wind</span>
+                    <span>{this.props.data.getIn(['wind', 'speed'])}m/s</span>
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="not-found-box">
+                <p><i className="fa fa-question-circle" aria-hidden="true"></i><span className="label">Hmm, I don't know.</span></p>
+              </div>
+            )}
           </CardText>
         </Card>
       </div>

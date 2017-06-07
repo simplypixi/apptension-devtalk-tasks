@@ -70,25 +70,32 @@ export class Home extends PureComponent {
           //link={links}
         />
 
-        <div className="menu">
-          <Paper zDepth={1} className="menu__box">
-            <TextField className="menu__search"
-              id="text-field-controlled"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </Paper>
+        <div className="column column--one">
+          <div className="menu column--section">
+            <Paper zDepth={1} className="menu__box">
+              <TextField className="menu__search"
+                id="text-field-controlled"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+            </Paper>
+          </div>
+
+          <Weather
+            data={this.props.weather}
+          />
+
+          <Wiki
+            data={this.props.wiki}
+          />
+        </div>
+        <div className="column column--two">
+          <Maps places={this.props.places} />
         </div>
 
-        <Weather
-          data={this.props.weather}
-        />
+        
 
-        <Wiki
-          data={this.props.wiki}
-        />
-
-        <Maps places={this.props.places} />
+        
       </div>
     );
   }

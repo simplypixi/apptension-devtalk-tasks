@@ -8,12 +8,13 @@ export class Wiki extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="column--section">
         <Card  className="wiki__card" zDepth={1}>
-          <CardHeader
-            title="Wiki query result"
-          />
           <CardText>
+            <div className="title-bar">
+              <i className="fa fa-wikipedia-w" aria-hidden="true"></i>
+              <span className="label">What does wiki say about...</span>
+            </div>
             <p>{this.props.data}</p>
           </CardText>
         </Card>

@@ -24,30 +24,38 @@ export class Maps extends PureComponent {
     const { lat, lon, display_name: displayName, icon, type } = place ? place.toJS() : { lat: '51.505', lon: '-0.09' };
     const position = [lat, lon];
     return (
-      <Card className="map">
-        <CardHeader
-          title={displayName || 'There is no data...'}
-          avatar={icon}
-          subtitle={type ? `Type: ${type}` : 'try with other query'}
-        />
-        {place ? (
-          <section className="map__container">
-            <Map center={position} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community"
-                url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
-              />
-              <Marker position={position}
-                      icon={this.getIcon()}
-              >
-                <Popup>
-                  <span>{displayName}</span>
-                </Popup>
-              </Marker>
-            </Map>
-          </section>
-        ) : ''}
-      </Card>
+      <div className="column--section column--map-section">
+        <Card className="map">
+          <div className="title-bar title-bar--pad">
+            <i className="fa fa-map-o" aria-hidden="true"></i>
+            <span className="label">Where the hell is it?</span>
+          </div>
+          {place ? (
+            <section className="map__container">
+              <div className="map-location-info">
+                <p><i className="fa fa-map-marker" aria-hidden="true"></i><span className="label">{displayName}</span></p>
+              </div>
+              <Map center={position} zoom={13} scrollWheelZoom={false}>
+                <TileLayer
+                  attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community"
+                  url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+                />
+                <Marker position={position}
+                        icon={this.getIcon()}
+                >
+                  <Popup>
+                    <span>{displayName}</span>
+                  </Popup>
+                </Marker>
+              </Map>
+            </section>
+          ) : (
+            <div className="not-found-box">
+              <p><i className="fa fa-binoculars" aria-hidden="true"></i><span className="label">Oops! There is no data... Try with other query</span></p>
+            </div>
+          )}
+        </Card>
+      </div>
     );
   }
 }
