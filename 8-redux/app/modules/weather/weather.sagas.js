@@ -17,7 +17,7 @@ export function* requestWeatherSaga(url) {
   }
 }
 
-export function* fetchWeatherSaga({ weather: {value, lang } }) {
+export function* fetchWeatherSaga({ weather: { value, lang } }) {
   try {
     const appid = '01e9c2222acd8930d8bf2c5629971c23';
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${appid}&units=metric&lang=${lang}`;

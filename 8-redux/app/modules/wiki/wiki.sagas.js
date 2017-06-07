@@ -17,7 +17,7 @@ export function* requestWikiSaga(url) {
   }
 }
 
-export function* fetchWikiSaga({ wiki: {value, lang } }) {
+export function* fetchWikiSaga({ wiki: { value, lang } }) {
   try {
     const url = `https://${lang}.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=&explaintext=&format=json&origin=*&titles=${value}`;
     const data = yield call(requestWikiSaga, url);

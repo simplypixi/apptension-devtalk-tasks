@@ -17,7 +17,7 @@ export function* requestPlacesSaga(url) {
   }
 }
 
-export function* fetchPlacesSaga({ input: {value } }) {
+export function* fetchPlacesSaga({ input: { value } }) {
   try {
     const url = `http://nominatim.openstreetmap.org/search/${value}?format=json&addressdetails=1&limit=1&extratags=1`;
     const data = yield call(requestPlacesSaga, url);
