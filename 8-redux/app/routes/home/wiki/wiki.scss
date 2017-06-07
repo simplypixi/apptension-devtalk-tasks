@@ -1,0 +1,15 @@
+.wiki__card {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 70%;
+  max-width: 400px;
+}
+
+.wiki__card p {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: auto;
+  max-height: 15em;
+  line-height: 1.8em;
+}
