@@ -6752,6 +6752,10 @@ react-json-tree@^0.10.0:
     react-base16-styling "^0.4.1"
     react-pure-render "^1.0.2"
 
+react-leaflet-div-icon@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-leaflet-div-icon/-/react-leaflet-div-icon-1.0.2.tgz#857c7526696e223ebcc28332cb7ac50fbb8642f6"
+
 react-leaflet@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.2.1.tgz#ee240381f0ced00b09ca8cdce5ec599d16850656"
