@@ -4,7 +4,6 @@ import { debounce } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import envConfig from 'env-config';
 
 import messages from './home.messages';
 import { LanguageSelector } from './languageSelector/languageSelector.component';
@@ -36,14 +35,14 @@ export class Home extends PureComponent {
     this.props.fetchMaintainers(this.props.language);
     this.props.fetchWeather('Poznan');
     this.props.fetchPlaces('Poznan');
-  };
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.language !== this.props.language) {
       this.props.fetchMaintainers(nextProps.language);
     }
     this.weather = nextProps.weather;
-  };
+  }
 
   search = debounce((searchValue) => {
     this.props.fetchWeather(searchValue);

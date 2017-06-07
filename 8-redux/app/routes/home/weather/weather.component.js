@@ -21,7 +21,7 @@ export class Weather extends PureComponent {
   render() {
     return (
       <div>
-        <Card  className="weather__card" zDepth={1}>
+        <Card className="weather__card" zDepth={1}>
           <CardHeader
             title="Weather"
             subtitle={this.props.data.get('name')}
@@ -53,7 +53,7 @@ export class Weather extends PureComponent {
                 </p>
               </div>
             </div>
-            
+
           </CardText>
         </Card>
       </div>
