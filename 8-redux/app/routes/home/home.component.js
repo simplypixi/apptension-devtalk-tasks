@@ -38,7 +38,7 @@ export class Home extends PureComponent {
     this.props.fetchMaintainers(this.props.language);
     this.props.fetchWeather('Poznan');
     this.props.fetchPlaces('Poznan');
-    this.props.fetchWiki('Poznan');
+    this.props.fetchWiki('Poznań');
   };
 
   componentWillReceiveProps(nextProps) {
