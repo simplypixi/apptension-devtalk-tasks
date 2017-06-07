@@ -30,7 +30,7 @@ export class Home extends PureComponent {
     super(...arguments);
 
     this.state = {
-      value: '',
+      value: 'Poznań',
     };
   }
 

@@ -37,11 +37,14 @@ export class Weather extends PureComponent {
                   </img>
                 </div>
                 <div className="weather__data-panel">
+                  <p className="weather__row">
+                    <span className="weather__label">{this.props.data.get('name')}</span>
+                  </p>
                   <p className="weather__row weather__temp">
                     {this.props.data.getIn(['main', 'temp'])}°C
                   </p>
                   <p className="weather__row weather__desc">
-                    <span>{this.props.data.getIn(['weather', 0, 'main'])}</span>
+                    <span>{this.props.data.getIn(['weather', 0, 'description'])}</span>
                   </p>
                   <p className="weather__row">
                     <span className="weather__label">Humidity</span>
