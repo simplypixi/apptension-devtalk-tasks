@@ -27,6 +27,7 @@ export class Weather extends PureComponent {
             subtitle={this.props.data.get('name')}
           />
           <CardText>
+            <i className="fa fa-binoculars" aria-hidden="true"></i>
             <div className="weather__info">
               <div className="weather__icon-panel">
                 <img src={this.getSrc(this.props.data.getIn(['weather', 0, 'icon']))} className="weather__icon">

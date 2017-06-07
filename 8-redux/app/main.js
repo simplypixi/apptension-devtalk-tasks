@@ -22,6 +22,7 @@ import { useScroll } from 'react-router-scroll';
 import 'normalize.css/normalize.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'leaflet/dist/leaflet.css';
+import 'font-awesome/css/font-awesome.css';
 import './main.scss';
 
 
