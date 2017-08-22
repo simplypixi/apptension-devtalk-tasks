@@ -1,0 +1,11 @@
+{
+  "weather.title": "Current weather",
+  "weather.humidity": "Humidity",
+  "weather.pressure": "Pressure",
+  "weather.wind": "Wind",
+  "weather.nodata": "Hmm, I don't know. I think you'd better take an umbrella.",
+  "wiki.title": "What does wiki say about...",
+  "wiki.nodata": "Other question please.",
+  "maps.title": "Where the hell is it?",
+  "maps.nodata": "Oops! There is no data... Try with other query"
+}

@@ -1,13 +1,15 @@
-# Created by .ignore support plugin (hsz.mobi)
-
-# IntelliJ project files
+coverage
+build
+junit
+generated
+node_modules
+.nyc_output
+stats.json
 .idea
 out
 gen
 .gitignore
 *.map
-node_modules
-coverage
 **/bundle.js
 
 dist
