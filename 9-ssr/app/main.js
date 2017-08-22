@@ -101,6 +101,15 @@ const render = () => {
     </MuiThemeProvider>,
     document.getElementById('app')
   );
+
+  setTimeout(() => {
+    const perfData = window.performance.timing; 
+    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+    const renderTime = perfData.domComplete - perfData.domLoading;
+    const connectTime = perfData.responseEnd - perfData.requestStart;
+
+    console.log(`Connect time: ${connectTime}, Page load time: ${pageLoadTime}, Render time: ${renderTime}`);
+  }, 2000);
 };
 
 // Chunked polyfill for browsers without Intl support
