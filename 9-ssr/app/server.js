@@ -9,14 +9,17 @@ import Helmet from 'react-helmet';
 import configureStore from './modules/store';
 import routes from './routes';
 import HtmlDocument from './htmlDocument';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { selectLocationState } from './modules/router/router.selectors';
 
 function renderAppToString(store, renderProps) {
   return renderToString(
-    <Provider store={store}>
-      <RouterContext {...renderProps} />
-    </Provider>
+    <MuiThemeProvider>
+      <Provider store={store}>
+        <RouterContext {...renderProps} />
+      </Provider>
+    </MuiThemeProvider>
   );
 }
 
