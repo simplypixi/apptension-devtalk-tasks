@@ -3,6 +3,19 @@
     width: 100%;
     height: 477px;
   }
+
+  .leaflet-marker-icon:after {
+    content: '';
+    width: 115%;
+    height: 100%;
+    opacity: 1;
+    left: -5px;
+    background-image: url(https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/128/Map-Marker-Marker-Outside-Azure.png);
+    position: absolute;
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    top: 0;
+  }
 }
 
 .column--map-section {

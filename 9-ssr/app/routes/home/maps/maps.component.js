@@ -1,7 +1,6 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet-universal';
-//import L from 'leaflet';
 import { Card } from 'material-ui/Card';
 
 import messages from './maps.messages';
@@ -9,15 +8,6 @@ import messages from './maps.messages';
 export class Maps extends PureComponent {
   static propTypes = {
     places: PropTypes.object,
-  };
-
-  getIcon = () => {
-    return
-    // return new L.Icon({
-    //   iconUrl: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/128/Map-Marker-Marker-Outside-Azure.png',
-    //   iconAnchor: new L.Point(24, 48),
-    //   iconSize: new L.Point(48, 48),
-    // });
   };
 
   render() {
@@ -42,9 +32,7 @@ export class Maps extends PureComponent {
                   attribution="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community"
                   url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
                 />
-                <Marker position={position}
-                        
-                >
+                <Marker position={position} >
                   <Popup>
                     <span>{displayName}</span>
                   </Popup>

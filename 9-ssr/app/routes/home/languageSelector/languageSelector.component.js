@@ -39,8 +39,8 @@ export class LanguageSelector extends PureComponent {
             onChange={this.handleLanguageChange}
             className="lang__selector"
           >
-            {appLocales.map((locale) => (
-              <MenuItem value={locale} primaryText={locale.toUpperCase()} />
+            {appLocales.map((locale, index) => (
+              <MenuItem key={index} value={locale} primaryText={locale.toUpperCase()} />
             ))}
           </SelectField>
         </div>
