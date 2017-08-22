@@ -26,3 +26,11 @@ Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-
 Url: https://github.com/ellheat/devtalk-testing-exercise
 Issues: https://docs.google.com/spreadsheets/d/11PYmXzA0sVjyXCRF8YcXM3SrDTZo0CL-EA36y-biTss/edit#gid=50660264
 
+
+## Challenge #8 - Redux
+Url: ?
+Issues: ?
+
+
+## Challenge #9 - SSR
+Url: https://gist.github.com/mikeqcp/73256f1191a6b64290db907cf135365a
