@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Helmet from 'react-helmet';
 import configureStore from './modules/store';
 import routes from './routes';
 import HtmlDocument from './htmlDocument';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 import { selectLocationState } from './modules/router/router.selectors';
 
