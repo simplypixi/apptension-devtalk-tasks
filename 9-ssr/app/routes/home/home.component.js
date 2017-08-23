@@ -61,7 +61,7 @@ export class Home extends PureComponent {
     this.setState({
       value: searchValue,
     });
-    if (searchValue.length > 0) {
+    if (searchValue.length > 0 && searchValue.match(/[a-z]/i)) {
       this.search(searchValue);
     }
   };
@@ -102,9 +102,9 @@ export class Home extends PureComponent {
           <Maps places={this.props.places} />
         </div>
 
-        
 
-        
+
+
       </div>
     );
   }
