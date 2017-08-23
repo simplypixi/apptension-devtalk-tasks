@@ -14,7 +14,7 @@ export class Maps extends PureComponent {
     const place = this.props.places.get(0);
 
     const { lat, lon, display_name: displayName } = place ? place.toJS() : { lat: '51.505', lon: '-0.09' };
-    const position = [lat, lon];
+    const position = {lat: parseFloat(lat), lng: parseFloat(lon)};
     return (
       <div className="column--section column--map-section">
         <Card className="map">
