@@ -61,7 +61,9 @@ export class Home extends PureComponent {
     this.setState({
       value: searchValue,
     });
-    this.search(searchValue);
+    if (searchValue.length > 0) {
+      this.search(searchValue);
+    }
   };
 
   render() {
