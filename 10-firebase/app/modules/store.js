@@ -3,6 +3,8 @@ import { createLogger } from 'redux-logger';
 import { fromJS, Iterable } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
+import firebase from 'firebase';
+import envConfig from 'env-config';
 import createReducer from './reducers';
 import rootSaga from './sagas';
 
@@ -41,6 +43,8 @@ export default function configureStore(initialState = {}, history) {
       persistState(getDebugSessionKey(), (state) => fromJS(state)),
     ]);
   }
+
+  firebase.initializeApp(envConfig.firebaseConfig);
 
   const store = createStore(
     createReducer(),

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
+import { database } from 'firebase';
 
 import messages from './home.messages';
 import { MaintainerList } from './maintainerList/maintainerList.component';
@@ -22,6 +23,10 @@ export class Home extends PureComponent {
   };
 
   componentWillMount() {
+    // quick firebase test
+    database().ref('chat').on('value', function(snap) {
+      console.log(`firebase: ${snap.val()}`);
+    });
     this.props.fetchMaintainers(this.props.language);
   }
 
