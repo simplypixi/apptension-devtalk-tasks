@@ -1,4 +1,4 @@
-import { isNil } from 'ramda';
+import { isNil, toPairs, pipe, filter, map, sortWith, ascend, prop } from 'ramda';
 import { createActions, createReducer } from 'reduxsauce';
 import { Record, List, fromJS } from 'immutable';
 
@@ -13,17 +13,20 @@ const MessagesRecord = new Record({
 export const INITIAL_STATE = new MessagesRecord({});
 
 const updateHandler = (state = INITIAL_STATE, action) => {
-  const { messages = [] } = action;
+  const { messages = {} } = action;
+  const updatedMessages = pipe(
+    toPairs,
+    map((item) => item[1]),
+    filter((item) => {
+      item.createdDate = new Date(item.created);
 
-  let updatedMessages = messages.filter((item) => {
-    item.createdDate = new Date(item.created);
-
-    return !isNil(item);
-  });
-
-  updatedMessages = fromJS(updatedMessages)
-    .sortBy((item) => item.get('timestamp'))
-    .reverse();
+      return !isNil(item);
+    }),
+    sortWith([
+      ascend(prop('created')),
+    ]),
+    (list) => fromJS(list)
+  )(messages);
 
   return state.set('messages', updatedMessages);
 };

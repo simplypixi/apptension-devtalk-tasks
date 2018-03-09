@@ -8,6 +8,7 @@ import { database } from 'firebase';
 import messages from './home.messages';
 // import { MaintainerList } from './maintainerList/maintainerList.component';
 import { MessagesList } from './messages/messages.component';
+import { SendMessage } from './sendMessage/sendMessage.component';
 import { Container, Title, TitleLogo, EnvName } from './home.styles';
 
 export class Home extends PureComponent {
@@ -57,6 +58,7 @@ export class Home extends PureComponent {
       });
   }
 
+
   render() {
     return (
       <Container>
@@ -70,6 +72,7 @@ export class Home extends PureComponent {
         <EnvName>Environment: {envConfig.name}</EnvName>
 
         <MessagesList messages={this.props.messages} users={this.props.users} />
+        <SendMessage />
       </Container>
     );
   }
