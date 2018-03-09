@@ -4,7 +4,7 @@ const firebaseConfig = {
   databaseURL: 'https://mikuchat-52e4c.firebaseio.com',
   projectId: 'mikuchat-52e4c',
   storageBucket: 'mikuchat-52e4c.appspot.com',
-  messagingSenderId: '784391505489'
+  messagingSenderId: '784391505489',
 };
 
 export default {

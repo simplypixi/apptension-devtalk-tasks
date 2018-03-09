@@ -8,6 +8,7 @@ export const Container = styled.div`
  align-items: center;
  justify-content: center;
  text-align: center;
+ font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const Title = styled.h1`

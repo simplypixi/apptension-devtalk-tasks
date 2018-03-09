@@ -10,16 +10,23 @@ import { MaintainersActions } from '../../modules/maintainers/maintainers.redux'
 import { selectMaintainersItems } from '../../modules/maintainers/maintainers.selectors';
 import { LocalesActions } from '../../modules/locales/locales.redux';
 import { selectLocalesLanguage } from '../../modules/locales/locales.selectors';
-
+import { MessagesActions } from '../../modules/messages/messages.redux';
+import { selectMessages } from '../../modules/messages/messages.selectors';
+import { UsersActions } from '../../modules/users/users.redux';
+import { selectUsers } from '../../modules/users/users.selectors';
 
 const mapStateToProps = createStructuredSelector({
   items: selectMaintainersItems,
   language: selectLocalesLanguage,
+  messages: selectMessages,
+  users: selectUsers,
 });
 
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchMaintainers: MaintainersActions.fetch,
   setLanguage: LocalesActions.setLanguage,
+  updatedMessages: MessagesActions.updated,
+  updatedUsers: UsersActions.updated,
 }, dispatch);
 
 export default compose(

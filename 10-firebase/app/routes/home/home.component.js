@@ -6,7 +6,8 @@ import envConfig from 'env-config';
 import { database } from 'firebase';
 
 import messages from './home.messages';
-import { MaintainerList } from './maintainerList/maintainerList.component';
+// import { MaintainerList } from './maintainerList/maintainerList.component';
+import { MessagesList } from './messages/messages.component';
 import { Container, Title, TitleLogo, EnvName } from './home.styles';
 
 export class Home extends PureComponent {
@@ -16,6 +17,10 @@ export class Home extends PureComponent {
     fetchMaintainers: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
+    updatedMessages: PropTypes.func.isRequired,
+    messages: PropTypes.object,
+    updatedUsers: PropTypes.func.isRequired,
+    users: PropTypes.object,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
@@ -23,10 +28,8 @@ export class Home extends PureComponent {
   };
 
   componentWillMount() {
-    // quick firebase test
-    database().ref('chat').on('value', function(snap) {
-      console.log(`firebase: ${snap.val()}`);
-    });
+    this.updateUsers(this.props);
+    this.updateMessages(this.props);
     this.props.fetchMaintainers(this.props.language);
   }
 
@@ -34,6 +37,24 @@ export class Home extends PureComponent {
     if (nextProps.language !== this.props.language) {
       this.props.fetchMaintainers(nextProps.language);
     }
+  }
+
+  updateUsers(props) {
+    database()
+      .ref('users')
+      .on('value', function onSuccess(snap) {
+        props.updatedUsers(snap.val());
+      });
+  }
+
+  updateMessages(props) {
+    database()
+      .ref('messages')
+      .orderByChild('created')
+      // .limitToLast(2)
+      .on('value', function onSuccess(snap) {
+        props.updatedMessages(snap.val());
+      });
   }
 
   render() {
@@ -48,7 +69,7 @@ export class Home extends PureComponent {
 
         <EnvName>Environment: {envConfig.name}</EnvName>
 
-        <MaintainerList items={this.props.items} />
+        <MessagesList messages={this.props.messages} users={this.props.users} />
       </Container>
     );
   }
