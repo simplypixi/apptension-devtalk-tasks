@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Map } from 'immutable';
-import { Container, List, ListItem, User, Message, When, Avatar } from './messagesList.styles';
+import { Container, List, ListItem, User, Message, When, Avatar, MessageContainer } from './messagesList.styles';
 
 export class MessagesList extends PureComponent {
   static propTypes = {
@@ -30,9 +30,11 @@ export class MessagesList extends PureComponent {
       return (
         <ListItem key={key}>
           <Avatar src={user.get('avatarUrl')}></Avatar>
-          <User>{name}</User>
-          <Message>{item.get('text')}</Message>
-          <When>{this.getDate(item)}</When>
+          <MessageContainer>
+            {/* <User>{name}</User> */}
+            <Message>{item.get('text')}</Message>
+            <When>{this.getDate(item)}</When>
+          </MessageContainer>
         </ListItem>
       );
     };

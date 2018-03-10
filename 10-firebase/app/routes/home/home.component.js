@@ -9,7 +9,7 @@ import messages from './home.messages';
 // import { MaintainerList } from './maintainerList/maintainerList.component';
 import { MessagesList } from './messagesList/messagesList.component';
 import { SendMessage } from './sendMessage/sendMessage.component';
-import { Container, Title, TitleLogo, EnvName, Login } from './home.styles';
+import { Container, Title, TitleLogo, EnvName, Login, Chat, TitleContainer } from './home.styles';
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -75,22 +75,24 @@ export class Home extends PureComponent {
 
     return (
       <Container>
-        <Helmet title="Homepage" />
+        <Chat>
+          <Helmet title="Homepage" />
+          <TitleContainer>
+            <Title>
+              <TitleLogo name="logo" />
+              <FormattedMessage {...messages.welcome} />
+            </Title>
+          </TitleContainer>
 
-        <Title>
-          <TitleLogo name="logo" />
-          <FormattedMessage {...messages.welcome} />
-        </Title>
-
-        <EnvName>Environment: {envConfig.name}</EnvName>
-        {isSigned ? (
-          <React.Fragment>
-            <MessagesList messages={this.props.messages} users={this.props.users} />
-            <SendMessage />
-          </React.Fragment>
-        ) : (
-          <Login onClick={this.signIn}>Sign in with Facebook</Login>
-        )}
+          {isSigned ? (
+            <React.Fragment>
+              <MessagesList messages={this.props.messages} users={this.props.users} />
+              <SendMessage />
+            </React.Fragment>
+          ) : (
+            <Login onClick={this.signIn}>Sign in with Facebook</Login>
+          )}
+        </Chat>
       </Container>
     );
   }

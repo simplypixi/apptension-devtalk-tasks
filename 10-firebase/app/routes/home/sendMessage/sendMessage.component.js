@@ -42,7 +42,7 @@ export class SendMessage extends PureComponent {
     return (
       <Container>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.message} onChange={this.handleChange} />
+          <input type="text" value={this.state.message} onChange={this.handleChange} placeholder="Type a message..." />
           <input type="submit" value="Submit" />
         </form>
       </Container>
