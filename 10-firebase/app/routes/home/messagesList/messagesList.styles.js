@@ -30,3 +30,10 @@ export const When = styled.span`
   font-size: 0.6em;
   opacity: 0.4;
 `;
+
+export const Avatar = styled.img`
+  display:inline-block;
+  margin: 0 10px;
+  width: 30px;
+  height: 30px;
+`;

@@ -7,7 +7,7 @@ import { database } from 'firebase';
 
 import messages from './home.messages';
 // import { MaintainerList } from './maintainerList/maintainerList.component';
-import { MessagesList } from './messages/messages.component';
+import { MessagesList } from './messagesList/messagesList.component';
 import { SendMessage } from './sendMessage/sendMessage.component';
 import { Container, Title, TitleLogo, EnvName } from './home.styles';
 
