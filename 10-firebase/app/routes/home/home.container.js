@@ -14,12 +14,15 @@ import { MessagesActions } from '../../modules/messages/messages.redux';
 import { selectMessages } from '../../modules/messages/messages.selectors';
 import { UsersActions } from '../../modules/users/users.redux';
 import { selectUsers } from '../../modules/users/users.selectors';
+import { CurrentUserActions } from '../../modules/currentUser/currentUser.redux';
+import { selectCurrentUser } from '../../modules/currentUser/currentUser.selectors';
 
 const mapStateToProps = createStructuredSelector({
   items: selectMaintainersItems,
   language: selectLocalesLanguage,
   messages: selectMessages,
   users: selectUsers,
+  currentUser: selectCurrentUser,
 });
 
 export const mapDispatchToProps = (dispatch) => bindActionCreators({
@@ -27,6 +30,7 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   setLanguage: LocalesActions.setLanguage,
   updatedMessages: MessagesActions.updated,
   updatedUsers: UsersActions.updated,
+  signInCurrentUser: CurrentUserActions.signIn,
 }, dispatch);
 
 export default compose(

@@ -9,7 +9,7 @@ import messages from './home.messages';
 // import { MaintainerList } from './maintainerList/maintainerList.component';
 import { MessagesList } from './messagesList/messagesList.component';
 import { SendMessage } from './sendMessage/sendMessage.component';
-import { Container, Title, TitleLogo, EnvName } from './home.styles';
+import { Container, Title, TitleLogo, EnvName, Login } from './home.styles';
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -22,16 +22,22 @@ export class Home extends PureComponent {
     messages: PropTypes.object,
     updatedUsers: PropTypes.func.isRequired,
     users: PropTypes.object,
+    signInCurrentUser: PropTypes.func.isRequired,
+    currentUser: PropTypes.object,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }).isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.signIn = this.signIn.bind(this);
+  }
+
   componentWillMount() {
-    this.updateUsers(this.props);
-    this.updateMessages(this.props);
-    this.props.fetchMaintainers(this.props.language);
+    // this.props.fetchMaintainers(this.props.language);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,8 +64,15 @@ export class Home extends PureComponent {
       });
   }
 
+  signIn() {
+    this.props.signInCurrentUser();
+    this.updateUsers(this.props);
+    this.updateMessages(this.props);
+  }
 
   render() {
+    const isSigned = this.props.currentUser.get('isSigned');
+
     return (
       <Container>
         <Helmet title="Homepage" />
@@ -70,9 +83,14 @@ export class Home extends PureComponent {
         </Title>
 
         <EnvName>Environment: {envConfig.name}</EnvName>
-
-        <MessagesList messages={this.props.messages} users={this.props.users} />
-        <SendMessage />
+        {isSigned ? (
+          <React.Fragment>
+            <MessagesList messages={this.props.messages} users={this.props.users} />
+            <SendMessage />
+          </React.Fragment>
+        ) : (
+          <Login onClick={this.signIn}>Sign in with Facebook</Login>
+        )}
       </Container>
     );
   }
