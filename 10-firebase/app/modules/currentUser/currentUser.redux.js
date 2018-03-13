@@ -13,16 +13,7 @@ const CurrentUserRecord = new Record({
 
 export const INITIAL_STATE = new CurrentUserRecord({});
 
-const signInHandler = (state = INITIAL_STATE) => {
-  // temporary
-  const action = {
-    user: {
-      avatarUrl: 'avatar.jpg',
-      displayName: 'John Smith',
-      email: 'mail@mail.com',
-    },
-  };
-
+const signInHandler = (state = INITIAL_STATE, action) => {
   return state.set('currentUser', fromJS({ ...action.user, isSigned: true }));
 };
 

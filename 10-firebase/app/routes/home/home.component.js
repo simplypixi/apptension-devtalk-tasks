@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
-import { database } from 'firebase';
+import firebase from 'firebase';
 
 import messages from './home.messages';
 // import { MaintainerList } from './maintainerList/maintainerList.component';
 import { MessagesList } from './messagesList/messagesList.component';
 import { SendMessage } from './sendMessage/sendMessage.component';
 import { Container, Title, TitleLogo, EnvName, Login, Chat, TitleContainer } from './home.styles';
+
+const { database, auth } = firebase;
+var provider = new auth.FacebookAuthProvider();
+
 
 export class Home extends PureComponent {
   static propTypes = {
@@ -65,9 +69,35 @@ export class Home extends PureComponent {
   }
 
   signIn() {
-    this.props.signInCurrentUser();
-    this.updateUsers(this.props);
-    this.updateMessages(this.props);
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+
+      const { photoURL, displayName, email } = user;
+
+      const action = {
+        user: {
+          avatarUrl: photoURL,
+          displayName: displayName,
+          email,
+        },
+      };
+
+      this.props.signInCurrentUser(action);
+      this.updateUsers(this.props);
+      this.updateMessages(this.props);
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
   }
 
   render() {
@@ -87,7 +117,7 @@ export class Home extends PureComponent {
           {isSigned ? (
             <React.Fragment>
               <MessagesList messages={this.props.messages} users={this.props.users} />
-              <SendMessage />
+              <SendMessage currentUser={this.props.currentUser} />
             </React.Fragment>
           ) : (
             <Login onClick={this.signIn}>Sign in with Facebook</Login>
