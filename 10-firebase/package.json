@@ -42,7 +42,8 @@
     "test:clean": "rimraf ./coverage",
     "test:watch": "npm run test -- --watch",
     "test:junit": "JEST_JUNIT_OUTPUT=./junit/junitOutput.xml npm test -- --ci --testResultsProcessor='jest-junit'",
-    "test:coverage": "npm run test -- --coverage "
+    "test:coverage": "npm run test -- --coverage ",
+    "deploy": "npm run build && firebase deploy"
   },
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
