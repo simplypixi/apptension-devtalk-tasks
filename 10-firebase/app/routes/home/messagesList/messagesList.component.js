@@ -13,6 +13,17 @@ export class MessagesList extends PureComponent {
     users: PropTypes.object,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { message: '' };
+
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   getUser(item, users) {
     const id = item.get('user', '');
 
@@ -30,6 +41,10 @@ export class MessagesList extends PureComponent {
     const when = moment(createdDate);
 
     return when.diff(moment(), 'minutes') > max ? when.fromNow() : when.format('D.MM.Y h:m');
+  }
+
+  scrollToBottom() {
+    this.chatList.scrollTop = this.chatList.scrollHeight;
   }
 
   render() {
@@ -52,7 +67,7 @@ export class MessagesList extends PureComponent {
 
     return (
       <Container>
-        <List>
+        <List innerRef={(el) => { this.chatList = el; }}>
           {this.props.messages.toArray().map(messageRow)}
         </List>
       </Container>
