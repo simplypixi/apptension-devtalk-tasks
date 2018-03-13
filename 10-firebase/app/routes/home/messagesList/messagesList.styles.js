@@ -6,6 +6,7 @@ export const Container = styled.div`
  align-items: center;
  justify-content: center;
  text-align: left;
+ width: 100%
 `;
 
 export const List = styled.ul`
@@ -14,6 +15,7 @@ export const List = styled.ul`
   margin: 0;
   height: 400px;
   overflow-y: scroll;
+  width: 100%;
 `;
 
 export const ListItem = styled.li`

@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Map } from 'immutable';
-import { Container, List, ListItem, User, Message, When, Avatar, MessageContainer } from './messagesList.styles';
+import moment from 'moment';
+import {
+  Container, List, ListItem, User,
+  Message, When, Avatar, MessageContainer
+} from './messagesList.styles';
 
 export class MessagesList extends PureComponent {
   static propTypes = {
@@ -16,9 +20,16 @@ export class MessagesList extends PureComponent {
   }
 
   getDate(item) {
-    const when = item.get('createdDate');
+    const createdDate = item.get('createdDate');
+    const max = -120;
 
-    return when ? when.toDateString() : '';
+    if (!createdDate) {
+      return '';
+    }
+
+    const when = moment(createdDate);
+
+    return when.diff(moment(), 'minutes') > max ? when.fromNow() : when.format('D.MM.Y h:m');
   }
 
   render() {
