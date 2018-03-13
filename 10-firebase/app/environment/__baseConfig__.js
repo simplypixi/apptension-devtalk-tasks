@@ -1,5 +1,5 @@
 const firebaseConfig = {
-  piKey: 'AIzaSyDc3rOGA5zZdlOK2wqrZdsEzEfSTMpwfEA',
+  apiKey: 'AIzaSyDc3rOGA5zZdlOK2wqrZdsEzEfSTMpwfEA',
   authDomain: 'mikuchat-52e4c.firebaseapp.com',
   databaseURL: 'https://mikuchat-52e4c.firebaseio.com',
   projectId: 'mikuchat-52e4c',
