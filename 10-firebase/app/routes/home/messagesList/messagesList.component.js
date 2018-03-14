@@ -11,6 +11,7 @@ export class MessagesList extends PureComponent {
   static propTypes = {
     messages: PropTypes.object.isRequired,
     users: PropTypes.object,
+    currentUser: PropTypes.object,
   };
 
   constructor(props) {
@@ -51,11 +52,11 @@ export class MessagesList extends PureComponent {
     const messageRow = (item, key) => {
       const user = this.getUser(item, users);
       const name = user.get('displayName', 'Anonym');
-
+      const isCurrentUser = user.get('id') === this.props.currentUser.get('id');
       return (
-        <ListItem key={key}>
-          <Avatar src={user.get('avatarUrl')}></Avatar>
-          <MessageContainer>
+        <ListItem isCurrentUser={isCurrentUser} key={key}>
+          <Avatar isCurrentUser={isCurrentUser} src={user.get('avatarUrl')}></Avatar>
+          <MessageContainer isCurrentUser={isCurrentUser}>
             {/* <User>{name}</User> */}
             <Message>{item.get('text')}</Message>
             <When>{this.getDate(item)}</When>

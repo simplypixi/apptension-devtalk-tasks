@@ -22,6 +22,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   margin: 10px;
   display: flex;
+  justify-content: ${props => props.isCurrentUser ? 'flex-end' : ''}
 `;
 
 export const User = styled.b`
@@ -47,10 +48,11 @@ export const Avatar = styled.img`
   width: 30px;
   height: 30px;
   border-radius: 100%;
+  order: ${props => props.isCurrentUser ? 1 : 0}
 `;
 
 export const MessageContainer = styled.div`
-  background: #f7f7f7;
+  background: ${props => props.isCurrentUser ? '#f3f9ef' : '#f7f7f7'};
   border-radius: 20px;
   padding: 10px;
   max-width: 260px;

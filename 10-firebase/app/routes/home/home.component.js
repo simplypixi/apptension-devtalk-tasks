@@ -78,7 +78,11 @@ export class Home extends PureComponent {
 
           {isSigned ? (
             <React.Fragment>
-              <MessagesList messages={this.props.messages} users={this.props.users} />
+              <MessagesList
+                currentUser={this.props.currentUser}
+                messages={this.props.messages}
+                users={this.props.users}
+              />
               <SendMessage currentUser={this.props.currentUser} />
             </React.Fragment>
           ) : (
