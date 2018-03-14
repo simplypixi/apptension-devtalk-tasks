@@ -12,7 +12,7 @@ import { SendMessage } from './sendMessage/sendMessage.component';
 import { Container, Title, TitleLogo, EnvName, Login, Chat, TitleContainer } from './home.styles';
 
 const { database, auth } = firebase;
-var provider = new auth.FacebookAuthProvider();
+const facebookProvider = new auth.FacebookAuthProvider();
 
 
 export class Home extends PureComponent {
@@ -26,7 +26,7 @@ export class Home extends PureComponent {
     messages: PropTypes.object,
     updatedUsers: PropTypes.func.isRequired,
     users: PropTypes.object,
-    signInCurrentUser: PropTypes.func.isRequired,
+    signIn: PropTypes.func.isRequired,
     currentUser: PropTypes.object,
     location: PropTypes.object.isRequired,
     history: PropTypes.shape({
@@ -37,7 +37,7 @@ export class Home extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.signIn = this.signIn.bind(this);
+    //this.signIn = this.signIn.bind(this);
   }
 
   componentWillMount() {
@@ -45,9 +45,9 @@ export class Home extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.fetchMaintainers(nextProps.language);
-    }
+    // if (nextProps.language !== this.props.language) {
+    //   this.props.fetchMaintainers(nextProps.language);
+    // }
   }
 
   updateUsers(props) {
@@ -69,7 +69,9 @@ export class Home extends PureComponent {
   }
 
   signIn() {
-    firebase.auth().signInWithPopup(provider).then((result) => {
+    this.props.signIn()
+/*    firebase.auth().signInWithPopup(facebookProvider).then((result) => {
+      debugger
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
@@ -84,6 +86,8 @@ export class Home extends PureComponent {
         },
       };
 
+      debugger
+
       this.props.signInCurrentUser(action);
       this.updateUsers(this.props);
       this.updateMessages(this.props);
@@ -97,7 +101,7 @@ export class Home extends PureComponent {
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
       // ...
-    });
+    });*/
   }
 
   render() {
@@ -120,7 +124,7 @@ export class Home extends PureComponent {
               <SendMessage currentUser={this.props.currentUser} />
             </React.Fragment>
           ) : (
-            <Login onClick={this.signIn}>Sign in with Facebook</Login>
+            <Login onClick={this.props.signIn}>Sign in with Facebook</Login>
           )}
         </Chat>
       </Container>

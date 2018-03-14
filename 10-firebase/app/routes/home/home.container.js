@@ -30,7 +30,7 @@ export const mapDispatchToProps = (dispatch) => bindActionCreators({
   setLanguage: LocalesActions.setLanguage,
   updatedMessages: MessagesActions.updated,
   updatedUsers: UsersActions.updated,
-  signInCurrentUser: CurrentUserActions.signIn,
+  signIn: CurrentUserActions.signIn,
 }, dispatch);
 
 export default compose(
