@@ -16,7 +16,9 @@ export class SendMessage extends PureComponent {
     this.handleChange = this.handleChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
     this.chooseFile = this.chooseFile.bind(this);
+    this.cleanForm = this.cleanForm.bind(this);
   }
 
   handleChange(event) {
@@ -47,7 +49,7 @@ export class SendMessage extends PureComponent {
             created: database.ServerValue.TIMESTAMP,
           })
           .then(() => {
-            this.setState({ message: '', file: false });
+            this.cleanForm();
           });
       }
     }
@@ -57,6 +59,7 @@ export class SendMessage extends PureComponent {
     const text = path(['state', 'message'], this);
     const file = path(['state', 'file'], this);
     const user = this.props.currentUser.get('id');
+    const cleanForm = this.cleanForm;
     const storageRef = storage().ref();
 
     const setState = this.setState;
@@ -111,7 +114,7 @@ export class SendMessage extends PureComponent {
           created: database.ServerValue.TIMESTAMP,
         })
         .then(() => {
-          setState({ message: '', file: false });
+          cleanForm();
         });
     });
   }
@@ -120,10 +123,15 @@ export class SendMessage extends PureComponent {
     this.fileInput.click();
   }
 
+  cleanForm() {
+    this.form.reset();
+    this.setState({ message: '', file: false });
+  }
+
   render() {
     return (
       <Container>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} ref={(el) => { this.form = el; }}>
           <input type="text" value={this.state.message} onChange={this.handleChange} placeholder="Type a message..." />
           <AddFile onClick={this.chooseFile}>
             <FileInput type="file" onChange={this.handleFileChange} innerRef={(el) => { this.fileInput = el; }} />

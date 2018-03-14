@@ -40,7 +40,7 @@ export class MessagesList extends PureComponent {
 
     const when = moment(createdDate);
 
-    return when.diff(moment(), 'minutes') > max ? when.fromNow() : when.format('D.MM.Y h:m');
+    return when.diff(moment(), 'minutes') > max ? when.fromNow() : when.format('D.MM.Y H:m');
   }
 
   scrollToBottom() {
