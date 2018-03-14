@@ -36,8 +36,6 @@ export class SendMessage extends PureComponent {
     if (text || file) {
       const text = this.state.message;
 
-      debugger;
-
       if (file) {
         this.fileUpload();
       } else {
