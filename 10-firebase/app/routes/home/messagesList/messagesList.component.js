@@ -15,7 +15,6 @@ export class MessagesList extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = { message: '' };
 
     this.scrollToBottom = this.scrollToBottom.bind(this);
   }

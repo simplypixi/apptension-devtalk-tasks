@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { database } from 'firebase';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Container } from './sendMessage.styles';
 
 export class SendMessage extends PureComponent {
-  // static propTypes = {
-  //   user: PropTypes.object,
-  // };
+  static propTypes = {
+    currentUser: PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -23,19 +23,20 @@ export class SendMessage extends PureComponent {
   handleSubmit(event) {
     event.preventDefault();
 
-    const text = this.state.message;
-    const user = '5P29eFNccZSbgjePTOqSQMoW1Vx2';
+    if (this.state.message) {
+      const text = this.state.message;
 
-    database()
-      .ref('messages')
-      .push({
-        text,
-        user,
-        created: database.ServerValue.TIMESTAMP,
-      })
-      .then(() => {
-        this.setState({ message: '' });
-      });
+      database()
+        .ref('messages')
+        .push({
+          text,
+          user: this.props.currentUser.get('id'),
+          created: database.ServerValue.TIMESTAMP,
+        })
+        .then(() => {
+          this.setState({ message: '' });
+        });
+    }
   }
 
   render() {
@@ -43,7 +44,7 @@ export class SendMessage extends PureComponent {
       <Container>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.message} onChange={this.handleChange} placeholder="Type a message..." />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit"/>
         </form>
       </Container>
     );

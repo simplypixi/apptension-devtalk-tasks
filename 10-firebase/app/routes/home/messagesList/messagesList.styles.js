@@ -6,14 +6,15 @@ export const Container = styled.div`
  align-items: center;
  justify-content: center;
  text-align: left;
- width: 100%
+ width: 100%;
+ height: 100%;
 `;
 
 export const List = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 400px;
+  height: 100%;
   overflow-y: scroll;
   width: 100%;
 `;

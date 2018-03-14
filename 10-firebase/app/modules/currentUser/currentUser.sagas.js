@@ -10,7 +10,17 @@ const facebookProvider = new auth.FacebookAuthProvider();
 export function* signIn() {
   try {
     const data = yield firebase.auth().signInWithPopup(facebookProvider);
-    return yield put(CurrentUserActions.signInSuccess(data));
+    const { photoURL, displayName, email, uid } = data.user;
+    const userData = {
+      id: uid,
+      avatarUrl: photoURL,
+      displayName: displayName,
+      email
+    };
+
+    yield firebase.database().ref(`users/${userData.id}`).set(userData);
+
+    return yield put(CurrentUserActions.signInSuccess(userData));
   } catch (e) {
     if (e.response) {
       return yield put(CurrentUserActions.signInError(e.response.data));

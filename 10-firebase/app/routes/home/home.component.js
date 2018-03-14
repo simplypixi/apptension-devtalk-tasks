@@ -36,18 +36,13 @@ export class Home extends PureComponent {
 
   constructor(props) {
     super(props);
-
-    //this.signIn = this.signIn.bind(this);
   }
 
-  componentWillMount() {
-    // this.props.fetchMaintainers(this.props.language);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // if (nextProps.language !== this.props.language) {
-    //   this.props.fetchMaintainers(nextProps.language);
-    // }
+  componentWillReceiveProps(nextProps, prevProps) {
+    if (nextProps.currentUser.get('isSigned') && !this.props.currentUser.get('isSigned')) {
+      this.updateUsers(nextProps);
+      this.updateMessages(nextProps);
+    }
   }
 
   updateUsers(props) {
@@ -62,46 +57,9 @@ export class Home extends PureComponent {
     database()
       .ref('messages')
       .orderByChild('created')
-      // .limitToLast(2)
       .on('value', function onSuccess(snap) {
         props.updatedMessages(snap.val());
       });
-  }
-
-  signIn() {
-    this.props.signIn()
-/*    firebase.auth().signInWithPopup(facebookProvider).then((result) => {
-      debugger
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-
-      const { photoURL, displayName, email } = user;
-
-      const action = {
-        user: {
-          avatarUrl: photoURL,
-          displayName: displayName,
-          email,
-        },
-      };
-
-      debugger
-
-      this.props.signInCurrentUser(action);
-      this.updateUsers(this.props);
-      this.updateMessages(this.props);
-      // ...
-    }).catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });*/
   }
 
   render() {
