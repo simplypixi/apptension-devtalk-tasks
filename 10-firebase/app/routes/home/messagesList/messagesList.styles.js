@@ -57,3 +57,8 @@ export const MessageContainer = styled.div`
   padding: 10px;
   max-width: 260px;
 `;
+
+export const Media = styled.img`
+  max-width: 250px;
+  border-radius: 10px;
+`;

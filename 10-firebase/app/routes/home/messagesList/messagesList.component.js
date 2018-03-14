@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Map } from 'immutable';
 import moment from 'moment';
 import {
-  Container, List, ListItem, User,
+  Container, List, ListItem, User, Media,
   Message, When, Avatar, MessageContainer
 } from './messagesList.styles';
 
@@ -52,12 +52,16 @@ export class MessagesList extends PureComponent {
     const messageRow = (item, key) => {
       const user = this.getUser(item, users);
       const name = user.get('displayName', 'Anonym');
+      const url = item.get('url');
       const isCurrentUser = user.get('id') === this.props.currentUser.get('id');
+
       return (
         <ListItem isCurrentUser={isCurrentUser} key={key}>
           <Avatar isCurrentUser={isCurrentUser} src={user.get('avatarUrl')}></Avatar>
           <MessageContainer isCurrentUser={isCurrentUser}>
-            {/* <User>{name}</User> */}
+            {url &&
+              <Media src={url} />
+            }
             <Message>{item.get('text')}</Message>
             <When>{this.getDate(item)}</When>
           </MessageContainer>

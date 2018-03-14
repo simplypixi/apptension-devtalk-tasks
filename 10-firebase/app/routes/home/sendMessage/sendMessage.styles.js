@@ -53,3 +53,33 @@ export const Container = styled.div`
     box-shadow: 0 0 16px -13px #000;
  }
 `;
+
+export const FileInput = styled.input`
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+`;
+
+export const AddFile = styled.div`
+  height: 34px;
+  width: 34px;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+  background-color: #53c84a;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: '+';
+    display: block;
+    width: 100%;
+    line-height: 34px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.3em;
+  }
+`;

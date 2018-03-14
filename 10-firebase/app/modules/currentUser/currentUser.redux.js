@@ -15,7 +15,7 @@ const CurrentUserRecord = new Record({
 
 export const INITIAL_STATE = new CurrentUserRecord({});
 
-const signInSuccess = (state = INITIAL_STATE, {data}) => {
+const signInSuccess = (state = INITIAL_STATE, { data }) => {
   data.isSigned = true;
   return state.set('currentUser', fromJS(data));
 };
