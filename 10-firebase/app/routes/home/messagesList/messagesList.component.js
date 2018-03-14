@@ -32,7 +32,7 @@ export class MessagesList extends PureComponent {
 
   getDate(item) {
     const createdDate = item.get('createdDate');
-    const max = -120;
+    const max = -60;
 
     if (!createdDate) {
       return '';
