@@ -11,6 +11,7 @@ export const Container = styled.div`
  box-shadow: inset 1px 46px 25px -61px #ABABAB,-50px -50px 5px -100px #DDDDDD;
  padding: 0 20px;
  box-sizing: border-box;
+ flex: none;
 
  form {
     display: flex;

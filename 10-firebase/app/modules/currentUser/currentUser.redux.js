@@ -3,7 +3,7 @@ import { Record, Map, fromJS } from 'immutable';
 
 export const { Types: CurrentUserTypes, Creators: CurrentUserActions } = createActions({
   signIn: [],
-  signInSuccess: ['user'],
+  signInSuccess: ['data'],
   signInError: [],
 }, { prefix: 'CURRENT_USER_' });
 
@@ -15,8 +15,9 @@ const CurrentUserRecord = new Record({
 
 export const INITIAL_STATE = new CurrentUserRecord({});
 
-const signInSuccess = (state = INITIAL_STATE, action) => {
-  return state.set('currentUser', fromJS({ ...action.user, isSigned: true }));
+const signInSuccess = (state = INITIAL_STATE, {data}) => {
+  data.isSigned = true;
+  return state.set('currentUser', fromJS(data));
 };
 
 const signInError = (state = INITIAL_STATE) => {
