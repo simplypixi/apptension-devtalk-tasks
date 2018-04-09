@@ -6,12 +6,11 @@ const {
 } = require('graphql');
 
 const {
-    getNoteAuthor,
     getAuthors,
     getNotes,
     getGroups,
-    getNoteGroup,
-    getGroupAuthor
+    getItemGroup,
+    getItemAuthor
 } = require('./resolvers');
 
 const AuthorType = new GraphQLObjectType({
@@ -31,7 +30,7 @@ const GroupType = new GraphQLObjectType({
         name: {type: GraphQLString},
         author: {
             type: AuthorType,
-            resolve: getGroupAuthor
+            resolve: getItemAuthor
         },
     }
 });
@@ -44,11 +43,11 @@ const NoteType = new GraphQLObjectType({
         content: {type: GraphQLString},
         author: {
             type: AuthorType,
-            resolve: getNoteAuthor
+            resolve: getItemAuthor
         },
         group: {
             type: GroupType,
-            resolve: getNoteGroup
+            resolve: getItemGroup
         }
     }
 });

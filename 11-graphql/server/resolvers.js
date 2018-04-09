@@ -1,7 +1,7 @@
 const fakeDatabase = require('./fakeDatabase');
 
-const getNoteAuthor = (note) => {
-    return fakeDatabase.authors.find(author => author.id == note.author_id);
+const getItemAuthor = (item) => {
+    return fakeDatabase.authors.find(author => author.id == item.author_id);
 }        
 
 const getAuthors = (_, {id}) => {
@@ -19,19 +19,14 @@ const getGroups = (_, {id}) => {
     return fakeDatabase.groups;
 }
 
-const getGroupAuthor = (group) => {
-    return fakeDatabase.authors.find(author => author.id == group.author_id);
-} 
-
-const getNoteGroup = (note) => {
-    return fakeDatabase.groups.find(group => group.id == note.group_id);
+const getItemGroup = (item) => {
+    return fakeDatabase.groups.find(group => group.id == item.group_id);
 } 
 
 module.exports = {
-    getNoteAuthor,
+    getItemAuthor,
     getAuthors,
     getNotes,
     getGroups,
-    getNoteGroup,
-    getGroupAuthor
+    getItemGroup,
 }
