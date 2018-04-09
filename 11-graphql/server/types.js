@@ -5,7 +5,14 @@ const {
     GraphQLList
 } = require('graphql');
 
-const {getNotes, getAuthors, getNoteAuthor} = require('./resolvers');
+const {
+    getNoteAuthor,
+    getAuthors,
+    getNotes,
+    getGroups,
+    getNoteGroup,
+    getGroupAuthor
+} = require('./resolvers');
 
 const AuthorType = new GraphQLObjectType({
     name: 'author',
@@ -13,6 +20,19 @@ const AuthorType = new GraphQLObjectType({
     fields: {
         id: {type: GraphQLString},
         name: {type: GraphQLString}
+    }
+});
+
+const GroupType = new GraphQLObjectType({
+    name: 'group',
+    description: 'a note group',
+    fields: {
+        id: {type: GraphQLString},
+        name: {type: GraphQLString},
+        author: {
+            type: AuthorType,
+            resolve: getGroupAuthor
+        },
     }
 });
 
@@ -26,6 +46,10 @@ const NoteType = new GraphQLObjectType({
             type: AuthorType,
             resolve: getNoteAuthor
         },
+        group: {
+            type: GroupType,
+            resolve: getNoteGroup
+        }
     }
 });
 
@@ -51,6 +75,16 @@ const QueryType = new GraphQLObjectType({
                 }
             },
             resolve: getNotes
+        },
+        groups: {
+            type: new GraphQLList(GroupType),
+            description: "List of all groups",
+            args: {
+                id: {
+                    type: GraphQLString
+                }
+            },
+            resolve: getGroups
         }
     }
 });
@@ -58,5 +92,6 @@ const QueryType = new GraphQLObjectType({
 module.exports = {
     AuthorType,
     NoteType,
+    GroupType,
     QueryType
 }
