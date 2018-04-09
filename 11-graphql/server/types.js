@@ -10,7 +10,9 @@ const {
     getNotes,
     getGroups,
     getItemGroup,
-    getItemAuthor
+    getItemAuthor,
+    createNote,
+    deleteNote
 } = require('./resolvers');
 
 const AuthorType = new GraphQLObjectType({
@@ -88,9 +90,34 @@ const QueryType = new GraphQLObjectType({
     }
 });
 
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        createNote: {
+            type: new GraphQLList(NoteType),
+            args: {
+                content: {
+                    type: GraphQLString
+                }
+            },
+            resolve: createNote
+        },
+        deleteNote: {
+            type: new GraphQLList(NoteType),
+            args: {
+                id: {
+                    type: GraphQLString
+                }
+            },
+            resolve: deleteNote
+        }
+    }
+});
+
 module.exports = {
     AuthorType,
     NoteType,
     GroupType,
-    QueryType
+    QueryType,
+    Mutation
 }
