@@ -1,5 +1,6 @@
 const fakeDatabase = require('./fakeDatabase');
 const Note = require('./models/Note');
+const Group = require('./models/Group');
 
 const getItemAuthor = (item) => {
     return fakeDatabase.authors.find(author => author.id == item.author_id);
@@ -35,6 +36,18 @@ const deleteNote = (_, {id}) => {
     return fakeDatabase.notes;
 }
 
+const createGroup = (_, {name}) => {
+    const newNote = new Group(name);
+    fakeDatabase.groups.push(newNote);
+    return fakeDatabase.groups;
+}
+
+const deleteGroup = (_, {id}) => {
+    fakeDatabase.groups = fakeDatabase.groups.filter(group => group.id !== id)
+    fakeDatabase.notes = fakeDatabase.notes.filter(note => note.group_id !== id)
+    return fakeDatabase.groups;
+}
+
 module.exports = {
     getItemAuthor,
     getAuthors,
@@ -42,5 +55,7 @@ module.exports = {
     getGroups,
     getItemGroup,
     createNote,
-    deleteNote
+    deleteNote,
+    createGroup,
+    deleteGroup
 }

@@ -12,7 +12,9 @@ const {
     getItemGroup,
     getItemAuthor,
     createNote,
-    deleteNote
+    deleteNote,
+    createGroup,
+    deleteGroup
 } = require('./resolvers');
 
 const AuthorType = new GraphQLObjectType({
@@ -110,7 +112,25 @@ const Mutation = new GraphQLObjectType({
                 }
             },
             resolve: deleteNote
-        }
+        },
+        createGroup: {
+            type: new GraphQLList(GroupType),
+            args: {
+                name: {
+                    type: GraphQLString
+                }
+            },
+            resolve: createGroup
+        },
+        deleteGroup: {
+            type: new GraphQLList(GroupType),
+            args: {
+                id: {
+                    type: GraphQLString
+                }
+            },
+            resolve: deleteGroup
+        },
     }
 });
 
