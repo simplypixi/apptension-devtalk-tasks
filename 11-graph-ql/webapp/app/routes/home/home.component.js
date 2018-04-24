@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 import messages from './home.messages';
 import { MaintainerList } from './maintainerList/maintainerList.component';
 import { Container, Title, TitleLogo, EnvName } from './home.styles';
 
-export class Home extends PureComponent {
+export class HomeComponent extends PureComponent {
   static propTypes = {
     items: PropTypes.object,
     language: PropTypes.string.isRequired,
@@ -32,6 +34,8 @@ export class Home extends PureComponent {
   }
 
   render() {
+    console.log('Feed query: ', this.props.feedQuery);
+    console.log('Notes: ', this.props.feedQuery.notes);
     return (
       <Container>
         <Helmet title="Homepage" />
@@ -48,3 +52,16 @@ export class Home extends PureComponent {
     );
   }
 }
+
+const FEED_QUERY = gql`
+  query FeedQuery {
+    notes{
+      id,
+      content,
+      author{
+        name
+      }
+    }
+  }
+`;
+export const Home = graphql(FEED_QUERY, { name: 'feedQuery' }) (HomeComponent);
