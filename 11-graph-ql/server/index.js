@@ -9,8 +9,9 @@ const {QueryType, Mutation} = require('./types');
 const appSchema = new GraphQLSchema({query: QueryType, mutation: Mutation});
 
 const app = express();
+const cors = require('cors');
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', cors(), graphqlHTTP({
     schema: appSchema,
     graphiql: true,
 }));
