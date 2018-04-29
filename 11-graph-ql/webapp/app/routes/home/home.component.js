@@ -1,50 +1,48 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import envConfig from 'env-config';
+import {debounce} from 'lodash';
 
-import messages from './home.messages';
-import { MaintainerList } from './maintainerList/maintainerList.component';
-import { Container, Title, TitleLogo, EnvName } from './home.styles';
+import { Desktop, Window, WindowContainer, Note } from './home.styles';
+
+import { Toolbar } from './toolbar';
+import { NotesList } from './notesList';
+
 
 export class Home extends PureComponent {
   static propTypes = {
-    items: PropTypes.object,
-    language: PropTypes.string.isRequired,
-    fetchMaintainers: PropTypes.func.isRequired,
-    setLanguage: PropTypes.func.isRequired,
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.shape({
-      push: PropTypes.func.isRequired,
-    }).isRequired,
+    notes: PropTypes.object.isRequired,
+    selectedNote: PropTypes.object.isRequired,
+    setSelectedNote: PropTypes.func.isRequired,
+    removeSelectedNote: PropTypes.func.isRequired,
+    updateNoteDescription: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
-    this.props.fetchMaintainers(this.props.language);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.fetchMaintainers(nextProps.language);
-    }
-  }
+  handleDescriptionChange = (event) => {
+    this.props.updateNoteDescription(event.target.value);
+  };
 
   render() {
     return (
-      <Container>
-        <Helmet title="Homepage" />
-
-        <Title>
-          <TitleLogo name="logo" />
-          <FormattedMessage {...messages.welcome} />
-        </Title>
-
-        <EnvName>Environment: {envConfig.name}</EnvName>
-
-        <MaintainerList items={this.props.items} />
-      </Container>
+      <Desktop>
+        <Window>
+          <Toolbar
+            onCreateNew={this.props.createNewNote}
+            onDelete={this.props.removeSelectedNote}
+            disableCreate={this.props.selectedNote.get('isNew')}
+          />
+          <WindowContainer>
+            <NotesList
+              items={this.props.notes}
+              selected={this.props.selectedNote.get('id')}
+              onItemClick={this.props.setSelectedNote}
+            ></NotesList>
+            <Note
+              value={this.props.selectedNote.get('description')}
+              onChange={this.handleDescriptionChange}
+            ></Note>
+          </WindowContainer>
+        </Window>
+      </Desktop>
     );
   }
 }
