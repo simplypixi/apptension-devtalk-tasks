@@ -1,4 +1,3 @@
-const fakeDatabase = require('./fakeDatabase');
 const Note = require('./models/Note');
 const Group = require('./models/Group');
 const Author = require('./models/Author');
@@ -72,8 +71,13 @@ const createNote = (_, {content}) => {
 };
 
 const deleteNote = (_, {id}) => {
-    fakeDatabase.notes = fakeDatabase.notes.filter(note => note.id !== id)
-    return fakeDatabase.notes;
+  return new Promise((resolve, reject) => {
+    Note.remove({ _id: id }, function (err) {
+      Note.find((err, notes) => {
+        err ? reject(err) : resolve(notes)
+      });
+    });
+  });
 };
 
 const createGroup = (_, {name}) => {
@@ -87,9 +91,29 @@ const createGroup = (_, {name}) => {
 };
 
 const deleteGroup = (_, {id}) => {
-  fakeDatabase.groups = fakeDatabase.groups.filter(group => group.id !== id)
-  fakeDatabase.notes = fakeDatabase.notes.filter(note => note.group_id !== id)
-  return fakeDatabase.groups;
+  return new Promise((resolve, reject) => {
+    const resolveGroupDelete = resolve;
+    const rejectGroupDelete = reject;
+
+    const removePromises = [
+      new Promise((resolve, reject) => {
+        Group.remove({ _id: id }, function (err) {
+          resolve()
+        });
+      }),
+      new Promise((resolve, reject) => {
+        Note.remove({ group_id: id }, function (err) {
+          resolve()
+        });
+      }),
+    ];
+
+    Promise.all(removePromises).then(() => {
+      Group.find((err, groups) => {
+        err ? rejectGroupDelete(err) : resolveGroupDelete([groups])
+      });
+    });
+  });
 };
 
 module.exports = {
