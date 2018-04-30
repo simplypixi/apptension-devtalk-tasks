@@ -4,12 +4,8 @@ const mongoose = require('mongoose');
 const { 
   GraphQLSchema
 } = require('graphql');
-
 const Db = require('./Db');
-
 const mockDb = require('./mockDatabase');
-console.log(mockDb);
-
 const {QueryType, Mutation} = require('./types');
 
 mongoose.connect('mongodb://localhost:27017');
