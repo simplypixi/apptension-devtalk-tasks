@@ -1,6 +1,7 @@
 const Note = require('./models/Note');
 const Group = require('./models/Group');
 const Author = require('./models/Author');
+const mockDb = require('./mockDatabase');
 
 const getItemAuthor = (item) => {
   return new Promise((resolve, reject) => {
@@ -61,7 +62,7 @@ const getItemGroup = (item) => {
 };
 
 const createNote = (_, {content}) => {
-  const note = new Note({content, author_id: '1', group_id: '1'});
+  const note = new Note({content, author_id: mockDb.exampleAuthor, group_id: mockDb.exampleGroup});
   return new Promise((resolve, reject) => {
     note.save((err, note) => {
       if (err) reject(err);
@@ -81,7 +82,7 @@ const deleteNote = (_, {id}) => {
 };
 
 const createGroup = (_, {name}) => {
-  const group = new Group({name, author_id: '1'});
+  const group = new Group({name, author_id: mockDb.exampleAuthor});
   return new Promise((resolve, reject) => {
     group.save((err, group) => {
       if (err) reject(err);

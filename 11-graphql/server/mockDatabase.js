@@ -2,7 +2,7 @@ const Note = require('./models/Note');
 const Group = require('./models/Group');
 const Author = require('./models/Author');
 
-module.exports = {
+const mock = {
   exampleAuthor: '',
   exampleGroup: '',
   mock: function() {
@@ -62,3 +62,23 @@ module.exports = {
     });
   }
 };
+
+const mockObj = (() => {
+  let instance;
+
+  function init() {
+    return mock;
+  }
+
+  return {
+    getInstance: function() {
+      if (!instance) {
+        instance = init();
+      }
+
+      return instance;
+    }
+  };
+})();
+
+module.exports = mockObj.getInstance();
