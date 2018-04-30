@@ -1,12 +1,11 @@
-class Note {
-    constructor(content) {
-        this.content = content;
-        this.author_id = '1';
-        this.group_id = '1';
-        this.id = `${++Note.id}`;
-    }
-}
+const mongoose = require('mongoose');
 
-Note.id = 100;
+const noteSchema = mongoose.Schema({
+  content: String,
+  author_id: String,
+  group_id: String,
+});
+
+const Note = mongoose.model('Note', noteSchema);
 
 module.exports = Note;
