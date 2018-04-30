@@ -1,7 +1,7 @@
-const Note = require('./models/Note');
-const Group = require('./models/Group');
-const Author = require('./models/Author');
-const mockDb = require('./mockDatabase');
+const Note = require('../models/Note');
+const Group = require('../models/Group');
+const Author = require('../models/Author');
+const mockDb = require('../db/mockDatabase');
 
 const getItemAuthor = (item) => {
   return new Promise((resolve, reject) => {

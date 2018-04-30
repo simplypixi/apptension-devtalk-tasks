@@ -1,6 +1,6 @@
-const Note = require('./models/Note');
-const Group = require('./models/Group');
-const Author = require('./models/Author');
+const Note = require('../models/Note');
+const Group = require('../models/Group');
+const Author = require('../models/Author');
 
 const mock = {
   exampleAuthor: '',
