@@ -1,11 +1,10 @@
-class Group {
-    constructor(name) {
-        this.name = name;
-        this.author_id = '1';
-        this.id = `${++Group.id}`;
-    }
-}
+const mongoose = require('mongoose');
 
-Group.id = 100;
+const groupSchema = mongoose.Schema({
+  name: String,
+  author_id: String,
+});
+
+const Group = mongoose.model('Group', groupSchema);
 
 module.exports = Group;
