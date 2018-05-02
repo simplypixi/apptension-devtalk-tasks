@@ -61,8 +61,8 @@ const getItemGroup = (item) => {
   });
 };
 
-const createNote = (_, {content}) => {
-  const note = new Note({content, author_id: mockDb.exampleAuthor, group_id: mockDb.exampleGroup});
+const createNote = (_, {description}) => {
+  const note = new Note({description, author_id: mockDb.exampleAuthor, group_id: mockDb.exampleGroup});
   return new Promise((resolve, reject) => {
     note.save((err, note) => {
       if (err) reject(err);

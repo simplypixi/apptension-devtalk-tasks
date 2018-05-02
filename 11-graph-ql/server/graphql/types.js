@@ -44,7 +44,7 @@ const NoteType = new GraphQLObjectType({
     description: 'a note',
     fields: {
         id: {type: GraphQLString},
-        content: {type: GraphQLString},
+        description: {type: GraphQLString},
         author: {
             type: AuthorType,
             resolve: getItemAuthor
@@ -98,7 +98,7 @@ const Mutation = new GraphQLObjectType({
         createNote: {
             type: new GraphQLList(NoteType),
             args: {
-                content: {
+                description: {
                     type: GraphQLString
                 }
             },

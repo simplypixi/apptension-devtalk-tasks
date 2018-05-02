@@ -49,9 +49,9 @@ const mock = {
       });
 
       Promise.all([authorPromise, groupPromise]).then(() => {
-        const note1 = new Note({content: 'example note 1', author_id: this.exampleAuthor, group_id: this.exampleGroup});
-        const note2 = new Note({content: 'example note 2', author_id: this.exampleAuthor, group_id: this.exampleGroup});
-        const note3 = new Note({content: 'example note 3', author_id: this.exampleAuthor, group_id: this.exampleGroup});
+        const note1 = new Note({description: 'example note 1', author_id: this.exampleAuthor, group_id: this.exampleGroup});
+        const note2 = new Note({description: 'example note 2', author_id: this.exampleAuthor, group_id: this.exampleGroup});
+        const note3 = new Note({description: 'example note 3', author_id: this.exampleAuthor, group_id: this.exampleGroup});
 
         note1.save();
         note2.save();

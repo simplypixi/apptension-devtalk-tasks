@@ -1,25 +1,25 @@
 const notes = [
     {
         id: '1',
-        content: 'My first note',
+        description: 'My first note',
         author_id: '1',
         group_id: '1'
     },
     {
         id: '2',
-        content: 'Do something cool',
+        description: 'Do something cool',
         author_id: '1',
         group_id: '2'
     },
     {
         id: '3',
-        content: 'Do something',
+        description: 'Do something',
         author_id: '2',
         group_id: '3'
     },
     {
         id: '4',
-        content: 'Do something',
+        description: 'Do something',
         author_id: '3',
         group_id: null
     }
