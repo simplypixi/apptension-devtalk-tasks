@@ -1,7 +1,8 @@
 const { 
     GraphQLInt, 
     GraphQLString,
-    GraphQLObjectType, 
+    GraphQLBoolean,
+    GraphQLObjectType,
     GraphQLList
 } = require('graphql');
 
@@ -45,6 +46,8 @@ const NoteType = new GraphQLObjectType({
     fields: {
         id: {type: GraphQLString},
         description: {type: GraphQLString},
+        date: {type: GraphQLString},
+        isDone: {type: GraphQLBoolean},
         author: {
             type: AuthorType,
             resolve: getItemAuthor
@@ -98,9 +101,9 @@ const Mutation = new GraphQLObjectType({
         createNote: {
             type: new GraphQLList(NoteType),
             args: {
-                description: {
-                    type: GraphQLString
-                }
+              description: { type: GraphQLString },
+              date: {type: GraphQLString},
+              isDone: {type: GraphQLBoolean},
             },
             resolve: createNote
         },

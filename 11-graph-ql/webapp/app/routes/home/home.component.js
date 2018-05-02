@@ -58,6 +58,8 @@ const FEED_QUERY = gql`
     notes{
       id,
       description,
+      date,
+      isDone,
       author{
         name
       }
