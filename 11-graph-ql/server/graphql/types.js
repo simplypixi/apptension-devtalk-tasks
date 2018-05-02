@@ -45,6 +45,7 @@ const NoteType = new GraphQLObjectType({
     description: 'a note',
     fields: {
         id: {type: GraphQLString},
+        title: {type: GraphQLString},
         description: {type: GraphQLString},
         date: {type: GraphQLString},
         isDone: {type: GraphQLBoolean},
@@ -101,6 +102,7 @@ const Mutation = new GraphQLObjectType({
         createNote: {
             type: new GraphQLList(NoteType),
             args: {
+              title: { type: GraphQLString },
               description: { type: GraphQLString },
               date: {type: GraphQLString},
               isDone: {type: GraphQLBoolean},

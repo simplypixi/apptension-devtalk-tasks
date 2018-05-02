@@ -50,6 +50,7 @@ const mock = {
 
       Promise.all([authorPromise, groupPromise]).then(() => {
         const note1 = new Note({
+          title: 'example note title',
           description: 'example note 1',
           date: '2018-04-20',
           isDone: true,
@@ -57,6 +58,7 @@ const mock = {
           group_id: this.exampleGroup
         });
         const note2 = new Note({
+          title: 'title for note nr 2',
           description: 'example note 2',
           date: '2018-05-02',
           isDone: true,
@@ -64,6 +66,7 @@ const mock = {
           group_id: this.exampleGroup
         });
         const note3 = new Note({
+          title: 'Uncompleted note 3',
           description: 'example note 3',
           date: '2018-05-03',
           isDone: false,

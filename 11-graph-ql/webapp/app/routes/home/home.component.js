@@ -57,6 +57,7 @@ const FEED_QUERY = gql`
   query FeedQuery {
     notes{
       id,
+      title,
       description,
       date,
       isDone,

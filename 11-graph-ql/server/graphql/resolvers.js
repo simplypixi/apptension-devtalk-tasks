@@ -61,8 +61,9 @@ const getItemGroup = (item) => {
   });
 };
 
-const createNote = (_, {description, date, isDone}) => {
+const createNote = (_, {title, description, date, isDone}) => {
   const note = new Note({
+    title,
     description,
     date,
     isDone,
