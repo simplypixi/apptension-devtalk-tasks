@@ -27,23 +27,23 @@ export class HomeComponent extends PureComponent {
 
   render() {
     console.log('Feed query: ', this.props.feedQuery);
-    console.log('Notes: ', this.props.feedQuery.notes);
+    const {createNewNote, removeSelectedNote, selectedNote, setSelectedNote, feedQuery} = this.props;
     return (
       <Desktop>
         <Window>
           <Toolbar
-            onCreateNew={this.props.createNewNote}
-            onDelete={this.props.removeSelectedNote}
-            disableCreate={this.props.selectedNote.get('isNew')}
+            onCreateNew={createNewNote}
+            onDelete={removeSelectedNote}
+            disableCreate={selectedNote.get('isNew')}
           />
           <WindowContainer>
             <NotesList
-              items={this.props.notes}
-              selected={this.props.selectedNote.get('id')}
-              onItemClick={this.props.setSelectedNote}
+              items={feedQuery.notes}
+              selected={selectedNote.get('id')}
+              onItemClick={setSelectedNote}
             ></NotesList>
             <Note
-              value={this.props.selectedNote.get('description')}
+              value={selectedNote.get('description')}
               onChange={this.handleDescriptionChange}
             ></Note>
           </WindowContainer>
