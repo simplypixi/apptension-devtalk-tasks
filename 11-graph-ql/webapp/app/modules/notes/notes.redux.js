@@ -49,7 +49,7 @@ const createNewNote = (state = INITIAL_STATE) => {
 
 
 const setSelectedNote = (state = INITIAL_STATE, {note}) => {
-  return state.set('selectedNote', note);
+  return state.set('selectedNote', fromJS(note));
 };
 
 const removeSelectedNote = (state = INITIAL_STATE) => {

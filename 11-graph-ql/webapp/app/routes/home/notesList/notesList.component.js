@@ -23,7 +23,7 @@ export class NotesList extends PureComponent {
   };
 
   isSelectedNote = (note) => {
-    return this.props.selected && note.get('id') === this.props.selected;
+    return this.props.selected && note && note.id === this.props.selected;
   };
 
   renderNotes() {
