@@ -90,7 +90,7 @@ const deleteNote = (_, {id}) => {
 
 const updateNote = (_, {id, description}) => {
   return new Promise((resolve, reject) => {
-    Note.findByIdAndUpdate(id, { $set: { description, title: description.slice(0, 10) }}, {}, (err, note) => {
+    Note.findByIdAndUpdate(id, { $set: { description, title: description.slice(0, 20) }}, {}, (err, note) => {
       err ? reject(err) : resolve([note])
     });
   });
