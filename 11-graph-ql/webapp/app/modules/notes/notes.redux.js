@@ -5,7 +5,7 @@ import { uniqueId } from 'lodash';
 export const { Types: NotesTypes, Creators: NotesActions } = createActions({
   setSelectedNote: ['note'],
   removeSelectedNote: [],
-  createNewNote: [],
+  createNewNote: ['note'],
   updateNoteDescription: ['description']
 }, { prefix: 'NOTES_' });
 
@@ -34,16 +34,20 @@ export const INITIAL_STATE = new NotesRecord(fromJS({
   }]
 }));
 
-const createNewNote = (state = INITIAL_STATE) => {
+const createNewNote = (state = INITIAL_STATE, {note: rawNote}) => {
+  const note = rawNote.createNote[0];
+
   const newNote = Map({
-    id: '-1',
+    id: note.id,
     isNew: true,
-    description: '',
-    date: (new Date).toISOString().slice(0, 10),
-    isDone: false
+    title: note.title,
+    description: note.description,
+    date: note.date,
+    isDone: note.isDone || false,
   });
 
   const stateWithSelectedNew = setSelectedNote(state, {note: newNote});
+
   return stateWithSelectedNew.update('items', (items) => items.unshift(newNote));
 };
 

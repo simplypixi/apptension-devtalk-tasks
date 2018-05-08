@@ -61,12 +61,12 @@ const getItemGroup = (item) => {
   });
 };
 
-const createNote = (_, {title, description, date, isDone}) => {
+const createNote = (_, {}) => {
   const note = new Note({
-    title,
-    description,
-    date,
-    isDone,
+    title: 'New note',
+    description: '',
+    date: (new Date).toISOString().slice(0, 10),
+    isDone: false,
     author_id: mockDb.exampleAuthor,
     group_id: mockDb.exampleGroup
   });

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import envConfig from 'env-config';
 import { FormattedMessage } from 'react-intl';
-import { graphql, Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql, Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 import {debounce} from 'lodash';
 
 import { Desktop, Window, WindowContainer, Note } from './home.styles';
@@ -50,12 +50,12 @@ export class HomeComponent extends PureComponent {
     updateNoteDescription: PropTypes.func.isRequired,
   };
 
-  handleDescriptionChange = (updateNote) => (event) => {
+  handleDescriptionChange = (updateNote, props) => (event) => {
     updateNote({variables: {
-      id: this.props.selectedNote.get('id'),
+      id: props.selectedNote.get('id'),
       description: event.target.value }
     });
-    this.props.updateNoteDescription(event.target.value);
+    props.updateNoteDescription(event.target.value);
   };
 
   render() {
@@ -68,6 +68,7 @@ export class HomeComponent extends PureComponent {
             onCreateNew={createNewNote}
             onDelete={removeSelectedNote}
             disableCreate={selectedNote.get('isNew')}
+            selectedNote={selectedNote}
           />
           <WindowContainer>
             <NotesList
@@ -79,7 +80,7 @@ export class HomeComponent extends PureComponent {
               {(updateNote, {data}) => (
                 <Note
                   value={selectedNote.get('description')}
-                  onChange={this.handleDescriptionChange(updateNote) }
+                  onChange={this.handleDescriptionChange(updateNote, this.props) }
                 ></Note>
               )}
             </Mutation>
