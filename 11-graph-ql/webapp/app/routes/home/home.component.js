@@ -55,6 +55,7 @@ export class HomeComponent extends PureComponent {
       id: props.selectedNote.get('id'),
       description: event.target.value }
     });
+
     props.updateNoteDescription(event.target.value);
   };
 

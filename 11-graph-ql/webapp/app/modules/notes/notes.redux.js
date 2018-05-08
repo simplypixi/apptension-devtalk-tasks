@@ -6,7 +6,7 @@ export const { Types: NotesTypes, Creators: NotesActions } = createActions({
   setSelectedNote: ['note'],
   removeSelectedNote: [],
   createNewNote: ['note'],
-  updateNoteDescription: ['description']
+  updateNoteDescription: ['description'],
 }, { prefix: 'NOTES_' });
 
 const NotesRecord = new Record({
@@ -74,7 +74,7 @@ const updateNoteDescription = (state = INITIAL_STATE, {description}) => {
   let updatedNote = state.get('selectedNote').set('description', description);
 
   if (state.getIn(['selectedNote', 'isNew'])) {
-    updatedNote = updatedNote.delete('isNew').set('id', uniqueId());
+    updatedNote = updatedNote.delete('isNew');
   }
 
   const updatedNoteIndex = state.get('items').findIndex((item) => {
