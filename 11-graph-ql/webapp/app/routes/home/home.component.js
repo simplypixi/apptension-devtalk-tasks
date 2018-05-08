@@ -69,6 +69,7 @@ export class HomeComponent extends PureComponent {
             onDelete={removeSelectedNote}
             disableCreate={selectedNote.get('isNew')}
             selectedNote={selectedNote}
+            feedQuery={feedQuery}
           />
           <WindowContainer>
             <NotesList

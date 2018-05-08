@@ -29,7 +29,8 @@ export class Toolbar extends PureComponent {
     onDelete: PropTypes.func.isRequired,
     onCreateNew: PropTypes.func.isRequired,
     disableCreate: PropTypes.bool,
-    selectedNote: PropTypes.object
+    selectedNote: PropTypes.object,
+    feedQuery: PropTypes.object,
   };
 
   handleCreateNote = (createNote) => () => {
@@ -39,7 +40,9 @@ export class Toolbar extends PureComponent {
   };
 
   onCreateCompleted = (data) => {
-    this.props.onCreateNew(data);
+    this.props.feedQuery.refetch();
+
+    return this.props.onCreateNew(data);
   }
 
   handleDeleteNote = (deleteNote) => () => {
@@ -49,7 +52,9 @@ export class Toolbar extends PureComponent {
   };
 
   onDeleteCompleted = (data) => {
-    this.props.onDelete;
+    this.props.feedQuery.refetch();
+
+    return this.props.onDelete(data);
   }
 
   render() {
@@ -68,7 +73,7 @@ export class Toolbar extends PureComponent {
             </ToolbarButton>
           )}
         </Mutation>
-        <Mutation mutation={DELETE_NOTE} onCompleted={this.onDeleteCompleted} >
+        <Mutation mutation={DELETE_NOTE} onCompleted={(e) => this.onDeleteCompleted(e)} >
           {(deleteNote, {data}) => (
             <ToolbarButton
               disabled={this.props.disableCreate}

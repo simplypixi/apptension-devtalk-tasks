@@ -16,22 +16,23 @@ const NotesRecord = new Record({
 
 export const INITIAL_STATE = new NotesRecord(fromJS({
   //Mock
-  items: [{
-    id: uniqueId(),
-    description: 'Testowa notka - wykonana',
-    date: '2018-04-20',
-    isDone: true,
-  }, {
-    id: uniqueId(),
-    description: 'Test',
-    date: '2018-05-02',
-    isDone: false,
-  }, {
-    id: uniqueId(),
-    description: 'Test',
-    date: '2018-05-03',
-    isDone: false,
-  }]
+  items: []
+  // items: [{
+  //   id: uniqueId(),
+  //   description: 'Testowa notka - wykonana',
+  //   date: '2018-04-20',
+  //   isDone: true,
+  // }, {
+  //   id: uniqueId(),
+  //   description: 'Test',
+  //   date: '2018-05-02',
+  //   isDone: false,
+  // }, {
+  //   id: uniqueId(),
+  //   description: 'Test',
+  //   date: '2018-05-03',
+  //   isDone: false,
+  // }]
 }));
 
 const createNewNote = (state = INITIAL_STATE, {note: rawNote}) => {
@@ -57,6 +58,7 @@ const setSelectedNote = (state = INITIAL_STATE, {note}) => {
 };
 
 const removeSelectedNote = (state = INITIAL_STATE) => {
+  debugger;
   const noteToRemoveId = state.getIn(['selectedNote', 'id']);
   const updatedNotes = state.items.filter((note) => {
     return note.get('id') !== noteToRemoveId;
