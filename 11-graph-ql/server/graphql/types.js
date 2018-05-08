@@ -13,6 +13,7 @@ const {
     getItemGroup,
     getItemAuthor,
     createNote,
+    updateNote,
     deleteNote,
     createGroup,
     deleteGroup
@@ -108,6 +109,14 @@ const Mutation = new GraphQLObjectType({
               isDone: {type: GraphQLBoolean},
             },
             resolve: createNote
+        },
+        updateNote: {
+            type: new GraphQLList(NoteType),
+            args: {
+              id: { type: GraphQLString },
+              description: { type: GraphQLString },
+            },
+            resolve: updateNote
         },
         deleteNote: {
             type: new GraphQLList(NoteType),

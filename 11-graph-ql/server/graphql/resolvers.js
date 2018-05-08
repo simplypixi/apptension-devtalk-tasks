@@ -88,6 +88,14 @@ const deleteNote = (_, {id}) => {
   });
 };
 
+const updateNote = (_, {id, description}) => {
+  return new Promise((resolve, reject) => {
+    Note.findByIdAndUpdate(id, { $set: { description, title: description.slice(0, 10) }}, {}, (err, note) => {
+      err ? reject(err) : resolve([note])
+    });
+  });
+};
+
 const createGroup = (_, {name}) => {
   const group = new Group({name, author_id: mockDb.exampleAuthor});
   return new Promise((resolve, reject) => {
@@ -131,6 +139,7 @@ module.exports = {
     getGroups,
     getItemGroup,
     createNote,
+    updateNote,
     deleteNote,
     createGroup,
     deleteGroup
